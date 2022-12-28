@@ -25,3 +25,16 @@ h3 {
 h1,h2,h3 {
     text-align: center;
 }
+
+.img-overlay {
+    background-color: rgba(0,0,0,0.8);
+    max-width: 100%;
+    filter:brightness(0.2);
+}
+.img-card {
+    width: 100%;
+    height: 40rem;
+}
+.text-justify {
+    text-align: justify;
+}
