@@ -29,7 +29,12 @@ h1,h2,h3 {
 .img-overlay {
     background-color: rgba(0,0,0,0.8);
     max-width: 100%;
-    filter:brightness(0.2);
+    filter:brightness(0.3);
+}
+.img-overlay-2 {
+    background-color: #2a5555;
+    max-width: 100%;
+    opacity: 0.2;
 }
 .img-card {
     width: 100%;
