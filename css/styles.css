@@ -26,20 +26,29 @@ h1,h2,h3 {
     text-align: center;
 }
 
-.img-overlay {
-    background-color: rgba(0,0,0,0.8);
-    max-width: 100%;
-    filter:brightness(0.3);
+.bg-header {
+    background: #222831;
 }
-.img-overlay-2 {
-    background-color: #2a5555;
+.bg-main {
+    background-image: radial-gradient( circle farthest-corner at 83.7% 4.3%,  rgba(15,51,92,1) 0%, rgba(34,40,49,1) 90% );
+}
+.card-img-overlay {
+    background-color: rgba(0,0,0,0.9);
+    right: 50%;
     max-width: 100%;
-    opacity: 0.2;
+}
+.img-overlay {
+    background-color: rgba(42,85,85,0.7);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50%;
 }
 .img-card {
     width: 100%;
-    height: 40rem;
+    height: 45rem;
 }
-.text-justify {
-    text-align: justify;
+.footer {
+    background: #393e46;
 }
