@@ -26,7 +26,8 @@ h1,h2,h3 {
     text-align: center;
 }
 
-.bg-header {
+.bg-header,
+.bg-footer {
     background: #222831;
 }
 .bg-main {
@@ -49,6 +50,13 @@ h1,h2,h3 {
     width: 100%;
     height: 45rem;
 }
+
+/* Footer */
 .footer {
     background: #393e46;
+}
+.footer-link {
+    display: block;
+    text-decoration: none;
+    color: white;
 }
