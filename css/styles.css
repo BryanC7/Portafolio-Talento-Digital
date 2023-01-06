@@ -10,6 +10,7 @@ html {
 body {
     font-size: 16px;
     font-family: 'Krub', sans-serif;
+    padding-top: 5rem;
 }
 
 /* Tipografia */
@@ -26,6 +27,9 @@ h1,h2,h3 {
     text-align: center;
 }
 
+.btn-rounded {
+    border-radius: 1rem;
+}
 .bg-header,
 .bg-footer {
     background: #222831;
