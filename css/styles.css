@@ -63,11 +63,30 @@ h1,h2,h3 {
     bottom: 0;
     left: 50%;
 }
-.iconos {
-    height: 25rem;
+.card-img {
+    max-width: 40rem;
+    max-height: 40rem;
+}
+.img-circle {
     width: 25rem;
-    background-color: #222831;
+    height: 25rem;
     border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0 5px 2px #000000;
+    margin-bottom: 2rem;
+}
+.bg-img-1 {
+    background-image: url(/img/plantillas.jpg);
+}
+.bg-img-2 {
+    background-image: url(/img/paletas.png);
+}
+.bg-img-3 {
+    background-image: url(/img/equipo-de-trabajo.webp);
+}
+
+.iconos {
     display: flex;
     flex-direction: column;
     justify-content: center;
