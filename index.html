@@ -25,22 +25,22 @@
                     <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                        <ul class="navbar-nav align-items-start">
+                        <ul class="navbar-nav align-items-start align-items-md-center">
                             <li class="nav-item p-2 p-lg-4">
-                                <a class="nav-link text-white" href="#">Productos</a>
+                                <a class="nav-link text-white" href="index.html#productos">Productos</a>
                             </li>
                             <li class="nav-item p-2 p-lg-4">
-                                <a class="nav-link text-white" href="#">Quienes somos</a>
+                                <a class="nav-link text-white" href="index.html#quienes-somos">Quienes somos</a>
                             </li>
                             <li class="nav-item p-2 p-lg-4">
                                 <a class="nav-link text-white" href="contacto.html">Contacto</a>
                             </li>
                             <div class="d-flex">
                                 <li class="nav-item p-2 p-lg-4">
-                                    <a href="#" class="btn btn-secondary btn-rounded btn-lg">Inicia Sesión</a>                        
+                                    <button class="custom-btn btn-3"><a href="#"><span class="text-white">Inicia Sesión</span></a></button>                      
                                 </li>
                                 <li class="nav-item p-2 p-lg-4">
-                                    <a href="#" class="btn btn-secondary btn-rounded btn-lg">Registrate</a>
+                                    <button class="custom-btn btn-3"><a href="#"><span class="text-white">Registrate</span></a></button>
                                 </li>
                             </div>
                         </ul>
@@ -51,7 +51,7 @@
 
         <main class="bg-main">
             <div class="container py-5">
-                <div class="row gap-4">
+                <div class="row gap-4" id="productos">
                     <div class="card text-white col mx-auto my-2">
                         <img class="img-card" src="img/productos.png" alt="Productos">
                         <div class="img-overlay"></div>
@@ -62,19 +62,19 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row justify-content-between bg-iconos">
-                        <div class="col-12 col-sm-4 iconos p-3">
+                    <div class="row justify-content-around bg-iconos p-0 m-0">
+                        <div class="col-12 col-md-3 iconos p-3 my-4">
                             <div class="img-circle bg-img-1"></div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box-multiple" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box-multiple" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <rect x="7" y="3" width="14" height="14" rx="2" />
                                 <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
                             </svg>
                             <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque, quae, nemo quis aliquam ratione.</p>
                         </div>
-                        <div class="col-12 col-sm-4 iconos p-3">
+                        <div class="col-12 col-md-3 iconos p-3 my-4">
                             <div class="img-circle bg-img-2"></div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-palette" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-palette" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M12 21a9 9 0 1 1 0 -18a9 8 0 0 1 9 8a4.5 4 0 0 1 -4.5 4h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25">
                                 <circle cx="7.5" cy="10.5" r=".5" fill="currentColor" />
@@ -83,9 +83,9 @@
                             </svg>
                             <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque, quae, nemo quis aliquam ratione.</p>
                         </div>
-                        <div class="col-12 col-sm-4 iconos p-3">
+                        <div class="col-12 col-md-3 iconos p-3 my-4">
                             <div class="img-circle bg-img-3"></div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-codesandbox" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-codesandbox" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M20 7.5v9l-4 2.25l-4 2.25l-4 -2.25l-4 -2.25v-9l4 -2.25l4 -2.25l4 2.25z" />
                                 <path d="M12 12l4 -2.25l4 -2.25" />
@@ -98,7 +98,7 @@
                             <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque, quae, nemo quis aliquam ratione.</p>
                         </div>
                     </div>
-                    <div class="card text-white col mx-auto">
+                    <div class="card text-white col mx-auto" id="quienes-somos">
                         <img class="img-card" src="img/quienes somos.png" alt="Quienes somos">
                         <div class="img-overlay"></div>
                         <div class="card-img-overlay d-flex justify-content-center flex-column">
@@ -116,7 +116,7 @@
                               </div>
                               <div class="contentBx">
                                 <div class="content">
-                                  <h2>Responsive card</h2>
+                                  <h2>Colaboración al 100%</h2>
                                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam culpa sunt voluptates quam, sed quod earum et alias expedita distinctio ad nam fugiat veritatis a.</p>
                                 </div>
                               </div>
@@ -127,7 +127,7 @@
                               </div>
                               <div class="contentBx">
                                 <div class="content">
-                                  <h2>Responsive card</h2>
+                                  <h2>Trabajo eficiente e inteligente</h2>
                                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam culpa sunt voluptates quam, sed quod earum et alias expedita distinctio ad nam fugiat veritatis a.</p>
                               </div>
                             </div>

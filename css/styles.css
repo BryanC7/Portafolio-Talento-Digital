@@ -16,6 +16,10 @@ body {
     padding-top: 6.1rem;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Tipografia */
 h1 {
     font-size: 3.8rem;
@@ -46,7 +50,7 @@ h3 {
 }
 
 .bg-iconos {
-    background: rgba(42, 85, 85, 0.7);
+    background: #212121;
 }
 
 /* Header */
@@ -67,6 +71,104 @@ h3 {
     max-width: 20rem;
     max-height: 5rem;
 }
+
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.btn-3 {
+    background: rgba(15, 51, 92, 1);
+    background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.btn-3 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-3:before,
+.btn-3:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: #8167a9;
+    transition: all 0.3s ease;
+}
+
+.btn-3:before {
+    height: 0%;
+    width: 2px;
+}
+
+.btn-3:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-3:hover {
+    background: transparent;
+    box-shadow: none;
+}
+
+.btn-3:hover:before {
+    height: 100%;
+}
+
+.btn-3:hover:after {
+    width: 100%;
+}
+
+.btn-3 span:hover {
+    color: #8167a9;
+}
+
+.btn-3 span:before,
+.btn-3 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: #8167a9;
+    transition: all 0.3s ease;
+}
+
+.btn-3 span:before {
+    width: 2px;
+    height: 0%;
+}
+
+.btn-3 span:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-3 span:hover:before {
+    height: 100%;
+}
+
+.btn-3 span:hover:after {
+    width: 100%;
+}
+
 
 ::selection {
     color: #fff;
@@ -314,11 +416,6 @@ h3 {
     left: 50%;
 }
 
-.card-horizontal {
-    display: flex;
-    flex: 1 1 auto;
-}
-
 .contenedor {
     width: 100%;
     min-height: 100vh;
@@ -330,13 +427,12 @@ h3 {
 
 .contenedor.cards {
     position: relative;
-    max-width: 1000px;
+    max-width: 100rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     background-color: #c48e82;
-    /* Need to play around with z-index more with backgrounds*/
     z-index: 0;
 }
 
@@ -346,7 +442,7 @@ h3 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 100px 0;
+    margin: 10rem 0;
 }
 
 .contenedor-cards .card-1:nth-child(odd) {
@@ -464,12 +560,12 @@ h3 {
 }
 
 .img-circle {
-    width: 25rem;
-    height: 25rem;
+    width: 20rem;
+    height: 20rem;
     border-radius: 50%;
     background-position: center;
     background-size: cover;
-    box-shadow: 0 0 5px 2px #000000;
+    box-shadow: 0 0 18px 7px #000000;
     margin-bottom: 2rem;
 }
 
@@ -491,7 +587,36 @@ h3 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    background-color: white;
+    color: #000000;
+    border-radius: 1rem;
+    transition: transform .5s;
+}
+
+@media (max-width: 768px) {
+    .iconos {
+        margin: 2rem auto;
+    }
+}
+
+.iconos::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 2s cubic-bezier(.165, .84, .44, 1);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15);
+    content: '';
+    opacity: 0;
+    z-index: -1;
+}
+
+.iconos:hover,
+.iconos:focus {
+    transform: scale3d(1.006, 1.006, 1);
+
+
 }
 
 /* Footer */
