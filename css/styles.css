@@ -46,7 +46,7 @@ h3 {
 }
 
 .bg-main {
-    background-image: radial-gradient(circle farthest-corner at 83.7% 4.3%, rgba(15, 51, 92, 1) 0%, rgba(34, 40, 49, 1) 90%);
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
 
 .bg-iconos {
