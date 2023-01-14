@@ -23,16 +23,11 @@
 }
 
 .contact form button,
-.contact form input,
-.contact form textarea {
+.contact form input{
     width: 100%;
     padding: 1em;
     border: solid 1px #627EDC;
     border-radius: 4px;
-}
-
-.contact form textarea {
-    resize: none;
 }
 
 .contact form button {
@@ -44,8 +39,7 @@
     font-weight: bold;
 }
 
-.contact form button:hover,
-.contact form button:focus {
+.contact form button:hover {
     background: rgba(15, 51, 92, 1);
     color: #ffffff;
     outline: 0;
@@ -76,6 +70,21 @@
         text-align: left;
     }
 }
+.formulario {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+}
+
+.formulario__label {
+	display: block;
+	font-weight: 700;
+	padding: 10px;
+	cursor: pointer;
+}
+.formulario__grupo-input {
+    position: relative;
+}
 .formulario__input {
 	width: 100%;
 	background: #fff;
@@ -105,6 +114,7 @@
 	opacity: 0;
 }
 .formulario__mensaje {
+    width: 100%;
 	height: 45px;
 	line-height: 45px;
 	background: #F66060;
@@ -114,24 +124,26 @@
 }
 
 .formulario__mensaje-activo {
-	display: block;
+	display: inline-block;
 }
 .formulario__mensaje-exito {
-	font-size: 14px;
-	color: #119200;
+    width: 100%;
+	font-size: 1.5rem;
+    background: #2ECC71;
+	color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 2rem;
 	display: none;
 }
 
 .formulario__mensaje-exito-activo {
-	display: block;
+	display: inline-block;
 }
+
 .formulario__grupo-correcto .formulario__validacion-estado {
     color: #1ed12d;
     opacity: 1;
-}
-
-.formulario__grupo-incorrecto .formulario__label {
-    color: #bb2929;
 }
 
 .formulario__grupo-incorrecto .formulario__validacion-estado {
@@ -142,7 +154,9 @@
 .formulario__grupo-incorrecto .formulario__input {
     border: 3px solid #bb2929;
 }
-
+.formulario__grupo-correcto .formulario__input {
+    border: 3px solid #1ed12d;
+}
 
 /* Mediaqueries */
 @media screen and (max-width: 800px) {

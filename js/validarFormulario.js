@@ -72,8 +72,16 @@ formulario.addEventListener('submit', e => {
 
 		document.querySelectorAll('.formulario__grupo-correcto').forEach(icono => icono.classList.remove('formulario__grupo-correcto'));
 	} else {
-        setTimeout(() => {
-            document.querySelector('#formulario__mensaje').classList.add('formulario__mensaje-activo');
-        }, 3000);
+		camposVacios()
+        document.querySelector('#formulario__mensaje').classList.add('formulario__mensaje-activo');
+		setTimeout(() => {
+			document.querySelector('#formulario__mensaje').classList.remove('formulario__mensaje-activo');
+		}, 3000);
 	}
 });
+
+function camposVacios() {
+	if(inputs.value === '') {
+		return
+	}
+}
