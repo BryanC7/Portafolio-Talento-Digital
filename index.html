@@ -40,7 +40,7 @@
                         <div class="d-flex">
                             <li class="nav-item p-2 p-lg-4">
                                 <button class="custom-btn btn-3" data-bs-toggle="modal"
-                                    data-bs-target="#popUpWindow"><span class="text-white">Inicia Sesión</span></button>
+                                    data-bs-target="#modalLogin"><span class="text-white">Inicia Sesión</span></button>
                             </li>
                         </div>
                     </ul>
@@ -208,15 +208,16 @@
         </div>
     </footer>
 
-    <!-- Modal login/register -->
-    <div class="modal fade" id="popUpWindow">
+    <!-- Modals inicio de sesión -->
+    <div class="modal fade" id="modalLogin">
         <div class="modal-dialog">
             <div class="modal-content bg-white p-5 rounded-5 text-secondary shadow">
                 <div class="modal-header">
                     <div class="d-flex justify-content-center">
                         <i class="fa-regular fa-circle-user"></i>                    
                     </div>
-                    <div class="text-center fs-1 fw-bold">Login</div>
+                    <div class="text-center fs-1 fw-bold ms-2">Login</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="input-group mt-4">
@@ -243,13 +244,47 @@
                     <div class="btn btn-info text-white fs-3 w-100 mt-4 p-3 fw-semibold shadow-sm">Login</div>
                     <div class="d-flex gap-1 justify-content-center mt-3">
                         <div>¿Aún no tienes una cuenta?</div>
-                        <a href="#" class="text-decoration-none text-info fw-semibold">Registrate</a>
+                        <a href="#" class="text-decoration-none text-info fw-semibold" data-bs-target="#modalRegister" data-bs-toggle="modal" data-bs-dismiss="modal">Registrate</a>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
                     <div class="btn d-flex gap-2 border mt-3 shadow-sm">
                         <i class="fa-brands fa-google"></i>                        
                     <div class="fw-semibold text-secondary">Continua con Google</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalRegister">
+        <div class="modal-dialog">
+            <div class="modal-content bg-white p-5 rounded-5 text-secondary shadow">
+                <div class="modal-header">
+                    <div class="d-flex justify-content-center">
+                        <i class="fa-regular fa-circle-user"></i>                    
+                    </div>
+                    <div class="text-center fs-1 fw-bold ms-2">Register</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mt-4">
+                        <div class="input-group-text bg-info">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <input class="form-control bg-light p-2" type="email" placeholder="Tu correo electrónico"/>
+                    </div>
+                    <div class="input-group mt-1">
+                        <div class="input-group-text bg-info">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <input class="form-control bg-light p-2" type="password" placeholder="Tu contraseña"/>
+                    </div>
+                    <div class="btn btn-info text-white fs-3 w-100 mt-4 p-3 fw-semibold shadow-sm">Registrate</div>
+                    <div class="modal-footer">
+                        <div class="d-flex gap-1 justify-content-center mt-3">
+                            <button class="btn btn-info text-white fs-4 p-2 fw-semibold shadow-sm" data-bs-target="#modalLogin" data-bs-toggle="modal" data-bs-dismiss="modal">Volver atrás</button>
+                        </div>
                     </div>
                 </div>
             </div>
