@@ -272,6 +272,26 @@ h3 {
 }
 
 /* Main */
+.img-card {
+    width: 100%;
+    height: 40rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@media (max-width: 576px) {
+    .img-card {
+        height: 30rem;
+    }
+}
+.img-card-1 {
+    background-image: url(/img/productos.png);
+}
+.img-card-2 {
+    background-image: url(/img/quienes-somos.png);
+}
+.img-card-3 {
+    background-image: url(/img/contacto.png);
+}
 .card-img-overlay {
     background-color: rgba(0, 0, 0, 0.9);
     right: 50%;
