@@ -24,7 +24,7 @@
 
                         <ul class="list-unstyled w-100">
                             <li class="mb-1 text-start">
-                                <button class="btn btn-toggle align-items-center rounded collapsed btn-color" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                <button class="btn btn-toggle align-items-center rounded collapsed btn-color" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
                                     <h3 class="ms-1">Header</h3>
                                 </button>
                                 <div class="collapse show" id="home-collapse">
@@ -64,67 +64,97 @@
                             <li class="border-top my-3"></li>
                         </ul>
                     </div>
-                    <!-- <div class="d-flex flex-column align-items-center align-items-sm-start p-3 text-white min-vh-100">
-                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                            <li class="nav-item">
-                                <a href="index.html" class="nav-link align-middle px-0">
-                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Volver al inicio</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                    <span class="ms-1 d-none d-sm-inline">Header</span></a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                    <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span>1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span>2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                    <span class="ms-1 d-none d-sm-inline">Main</span></a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                    <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span>1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span>2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                    <span class="ms-1 d-none d-sm-inline">Footer</span></a>
-                                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                    <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <hr>
-                    </div> -->
                 </div>
-                <div class="col py-3">
-                    <h3>Left Sidebar with Submenus</h3>
-                    <p class="lead">
-                        An example 2-level sidebar with collasible menu items. The menu functions like an "accordion" where only a single 
-                        menu is be open at a time. While the sidebar itself is not toggle-able, it does responsively shrink in width on smaller screens.</p>
-                    <ul class="list-unstyled">
-                        <li><h5>Responsive</h5> shrinks in width, hides text labels and collapses to icons only on mobile</li>
-                    </ul>
+                <div class="col-6 mx-auto">
+                    <h1 class="my-5">Vista previa</h1>
+                    <div class="bg-white h-75">
+                        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                            <div class="container-fluid">
+                              <a class="navbar-brand" href="#">Navbar</a>
+                              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                              </button>
+                              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                  <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                  </li>
+                                  <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Dropdown
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">Action</a></li>
+                                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link disabled">Disabled</a>
+                                  </li>
+                                </ul>
+                                <form class="d-flex" role="search">
+                                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                  <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                              </div>
+                            </div>
+                          </nav>
+                          <div id="carouselExample" class="carousel slide">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="img/img-1.jpg" class="d-block w-100 img-carousel">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="img/img-2.jpg" class="d-block w-100 img-carousel">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="img/img-3.jpg" class="d-block w-100 img-carousel">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Siguiente</span>
+                            </button>
+                          </div>
+                          <div class="card-group">
+                            <div class="card">
+                              <img src="https://picsum.photos/id/10/300/200" class="card-img-top">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="https://picsum.photos/id/11/300/200" class="card-img-top">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="https://picsum.photos/id/13/300/200" class="card-img-top">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <footer class="bg-light text-center text-lg-start">
+                            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                              © 2020 Copyright:
+                              <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                            </div>
+                          </footer>
+                    </div>
                 </div>
             </div>
         </div>

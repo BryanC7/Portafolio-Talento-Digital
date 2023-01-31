@@ -79,3 +79,8 @@ h3 {
 .btn-toggle-nav a:focus {
     background-color: #d2f4ea;
 }
+
+/* Estilos componentes plantillas */
+.img-carousel{
+    height: 40rem;
+}
