@@ -88,9 +88,8 @@ h3 {
 }
 
 .btn-3 {
-    background: rgba(15, 51, 92, 1);
-    background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
-    width: 130px;
+    background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    width: 180px;
     height: 40px;
     line-height: 42px;
     padding: 0;
@@ -274,7 +273,7 @@ h3 {
 /* Main */
 .img-card {
     width: 100%;
-    height: 40rem;
+    height: 45rem;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -478,7 +477,7 @@ h3 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: white;
+    background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
     color: #000000;
     border-radius: 1rem;
     transition: all 0.4s ease-in-out;
@@ -493,9 +492,7 @@ h3 {
 .card-productos:hover,
 .card-productos:focus {
     transform: scale(1.1);
-    background-color: #000000;
-    color: white;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Footer */

@@ -11,7 +11,8 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Krub&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/jquery.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -40,7 +41,7 @@
                         <div class="d-flex">
                             <li class="nav-item p-2 p-lg-4">
                                 <button class="custom-btn btn-3" data-bs-toggle="modal"
-                                    data-bs-target="#modalLogin"><span class="text-white">Inicia Sesión</span></button>
+                                    data-bs-target="#modalLogin"><span>Inicia Sesión</span></button>
                             </li>
                         </div>
                     </ul>
@@ -52,7 +53,7 @@
     <main class="bg-main">
         <div class="container py-5">
             <div class="row gap-5" id="productos">
-                <div class="card text-white col mx-auto my-2">
+                <div class="card text-white mx-auto my-2">
                     <div class="img-card img-card-1"></div>
                     <div class="img-overlay"></div>
                     <div class="card-img-overlay d-flex justify-content-center flex-column">
@@ -60,26 +61,34 @@
                         <p class="card-text text-start">Lorem ipsum dolor sit amet consectetur adipiscing elit,
                             aliquam rutrum metus at ex mattis.
                         </p>
+                        <div class="nav-item w-25 mx-auto">
+                            <p id="more-info" class="nav-link fw-bold fs-2 flip">Más información</p>
+                        </div>
                     </div>
                 </div>
-                <div class="row justify-content-around bg-card-productos p-5 m-0">
-                    <div class="col-12 col-md-3 card-productos p-3 my-4">
-                        <div class="img-circle bg-img-1"></div>
-                        <i class="fa-solid fa-cubes"></i>
-                        <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
-                            quae, nemo quis aliquam ratione.</p>
+                <div class="panel bg-card-productos ">
+                    <div class="row justify-content-evenly p-4 m-0">
+                        <div class="col-12 col-md-3 card-productos p-2 my-4">
+                            <div class="img-circle bg-img-1"></div>
+                            <i class="fa-solid fa-cubes"></i>
+                            <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
+                                quae, nemo quis aliquam ratione.</p>
+                        </div>
+                        <div class="col-12 col-md-3 card-productos p-2 my-4">
+                            <div class="img-circle bg-img-2"></div>
+                            <i class="fa-solid fa-palette"></i>
+                            <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
+                                quae, nemo quis aliquam ratione.</p>
+                        </div>
+                        <div class="col-12 col-md-3 card-productos p-2 my-4">
+                            <div class="img-circle bg-img-3"></div>
+                            <i class="fa-regular fa-clone"></i>
+                            <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
+                                quae, nemo quis aliquam ratione.</p>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-3 card-productos p-3 my-4">
-                        <div class="img-circle bg-img-2"></div>
-                        <i class="fa-solid fa-palette"></i>
-                        <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
-                            quae, nemo quis aliquam ratione.</p>
-                    </div>
-                    <div class="col-12 col-md-3 card-productos p-3 my-4">
-                        <div class="img-circle bg-img-3"></div>
-                        <i class="fa-regular fa-clone"></i>
-                        <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
-                            quae, nemo quis aliquam ratione.</p>
+                    <div class="d-flex justify-content-center p-3">
+                        <button onclick="location.href='plantillas.html'" class="custom-btn btn-3"><span>Crea tu propia plantilla</span></button>
                     </div>
                 </div>
                 <div class="card text-white col mx-auto" id="quienes-somos">
@@ -268,6 +277,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/1ad65aac44.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1ad65aac44.js" crossorigin="anonymous"></script>
+    <script src="js/components-effects/index-effects.js"></script>
 </body>
 </html>
