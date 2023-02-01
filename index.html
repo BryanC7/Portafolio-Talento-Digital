@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 
-<body>
+<body id="body">
 
     <header>
         <nav class="navbar navbar-expand-md fixed-top bg-header">
@@ -41,7 +41,7 @@
                         <div class="d-flex">
                             <li class="nav-item p-2 p-lg-4">
                                 <button class="custom-btn btn-3" data-bs-toggle="modal"
-                                    data-bs-target="#modalLogin"><span>Inicia Sesión</span></button>
+                                    data-bs-target="#modal-login"><span>Inicia Sesión</span></button>
                             </li>
                         </div>
                     </ul>
@@ -178,9 +178,18 @@
                     <div class="col-12 col-sm-3 text-white">
                         <h3 class="text-start my-5">Siguenos!</h3>
                         <ul class="p-0">
-                            <a class="footer-link" href="#">Lorem ipsum</a>
-                            <a class="footer-link" href="#">Lorem ipsum</a>
-                            <a class="footer-link" href="#">Lorem ipsum</a>
+                            <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" role="button">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a class="btn text-white btn-floating m-1" style="background-color: #ac2bac;" role="button">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a class="btn text-white btn-floating m-1" style="background-color: #333333;" role="button">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a class="btn text-white btn-floating m-1" style="background-color: #55acee;" role="button">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
                         </ul>
                     </div>
                 </div>
@@ -192,7 +201,7 @@
     </footer>
 
     <!-- Modals inicio de sesión -->
-    <div class="modal fade" id="modalLogin">
+    <div class="modal fade" id="modal-login">
         <div class="modal-dialog">
             <div class="modal-content bg-white p-5 rounded-5 text-secondary shadow">
                 <div class="modal-header">
@@ -207,24 +216,24 @@
                         <div class="input-group-text bg-info">
                             <i class="fa-solid fa-user"></i>
                         </div>
-                        <input class="form-control bg-light p-2" type="email" placeholder="Tu correo electrónico"/>
+                        <input class="form-control bg-light p-2" type="email" id="login-email" placeholder="Tu correo electrónico"/>
                     </div>
                     <div class="input-group mt-1">
                         <div class="input-group-text bg-info">
                             <i class="fa-solid fa-lock"></i>
                         </div>
-                        <input class="form-control bg-light p-2" type="password" placeholder="Tu contraseña"/>
+                        <input class="form-control bg-light p-2" type="password" id="login-password" placeholder="Tu contraseña"/>
                     </div>
                     <div class="d-flex justify-content-around mt-1">
                         <div class="d-flex align-items-center gap-1">
-                            <input class="form-check-input" type="checkbox" />
+                            <input class="form-check-input" type="checkbox"/>
                             <div class="pt-1">Recuerdame</div>
                         </div>
                         <div class="pt-1">
                             <a href="#" class="text-decoration-none text-info fw-semibold fst-italic">¿Olvidaste tu contraseña?</a>
                         </div>
                     </div>
-                    <div class="btn btn-info text-white fs-3 w-100 mt-4 p-3 fw-semibold shadow-sm">Login</div>
+                    <button class="btn btn-info text-white fs-3 w-100 mt-4 p-3 fw-semibold shadow-sm" id="btn-login">Login</button>
                     <div class="d-flex gap-1 justify-content-center mt-3">
                         <div>¿Aún no tienes una cuenta?</div>
                         <a href="#" class="text-decoration-none text-info fw-semibold" data-bs-target="#modalRegister" data-bs-toggle="modal" data-bs-dismiss="modal">Registrate</a>
@@ -255,18 +264,30 @@
                         <div class="input-group-text bg-info">
                             <i class="fa-solid fa-user"></i>
                         </div>
-                        <input class="form-control bg-light p-2" type="email" placeholder="Tu correo electrónico"/>
+                        <input class="form-control bg-light p-2" type="text" id="register-username" placeholder="Tu nombre de usuario"/>
+                    </div>
+                    <div class="input-group mt-1">
+                        <div class="input-group-text bg-info">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <input class="form-control bg-light p-2" type="email" id="register-email" placeholder="Tu correo electrónico"/>
                     </div>
                     <div class="input-group mt-1">
                         <div class="input-group-text bg-info">
                             <i class="fa-solid fa-lock"></i>
                         </div>
-                        <input class="form-control bg-light p-2" type="password" placeholder="Tu contraseña"/>
+                        <input class="form-control bg-light p-2" type="password" id="register-password" placeholder="Tu contraseña"/>
                     </div>
-                    <div class="btn btn-info text-white fs-3 w-100 mt-4 p-3 fw-semibold shadow-sm">Registrate</div>
+                    <div class="input-group mt-1">
+                        <div class="input-group-text bg-info">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <input class="form-control bg-light p-2" type="password" id="register-repeat-password" placeholder="Repite tu contraseña"/>
+                    </div>
+                    <div class="btn btn-info text-white fs-3 w-100 mt-4 p-3 fw-semibold shadow-sm" id="btn-register">Registrate</div>
                     <div class="modal-footer">
                         <div class="d-flex gap-1 justify-content-center mt-3">
-                            <button class="btn btn-info text-white fs-4 p-2 fw-semibold shadow-sm" data-bs-target="#modalLogin" data-bs-toggle="modal" data-bs-dismiss="modal">Volver atrás</button>
+                            <button class="btn btn-info text-white fs-4 p-2 fw-semibold shadow-sm" data-bs-target="#modal-login" data-bs-toggle="modal" data-bs-dismiss="modal">Volver atrás</button>
                         </div>
                     </div>
                 </div>
@@ -280,5 +301,6 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1ad65aac44.js" crossorigin="anonymous"></script>
     <script src="js/components-effects/index-effects.js"></script>
+    <script src="/js/register-login.js"></script>
 </body>
 </html>
