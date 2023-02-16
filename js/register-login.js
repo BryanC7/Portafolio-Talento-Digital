@@ -24,7 +24,7 @@ const registerRepeatPassword = document.querySelector('#register-repeat-password
 btnLogin.addEventListener('click', login)
 
 function login() {
-    const findUser = users.filter(user => {
+    users.filter(user => {
         if(loginEmail.value === user.email && loginPassword.value === user.password) {
             modalLogin.style.display = 'none'
             body.style = 'none'

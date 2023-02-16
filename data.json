@@ -1,0 +1,65 @@
+[
+    {
+        "seccion": "header",
+        "ejemplos": 
+        [
+            {
+                "ejemplo": 1,
+                "data": 
+                ""
+            },
+            {
+                "ejemplo": 2,
+                "data": 
+                ""
+            },
+            {
+                "ejemplo": 3,
+                "data": 
+                ""
+            }
+        ]
+    },
+    {
+        "seccion": "body",
+        "ejemplos":
+        [
+            {
+                "ejemplo": 1,
+                "data": 
+                ""
+            },
+            {
+                "ejemplo": 2,
+                "data": 
+                ""
+            },
+            {
+                "ejemplo": 3,
+                "data": 
+                ""
+            }
+        ]
+    },
+    {
+        "seccion": "footer",
+        "ejemplos":
+        [
+            {
+                "ejemplo": 1,
+                "data": 
+                ""
+            },
+            {
+                "ejemplo": 2,
+                "data": 
+                ""
+            },
+            {
+                "ejemplo": 3,
+                "data": 
+                ""
+            }
+        ]
+    }
+]
