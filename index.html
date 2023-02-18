@@ -16,8 +16,31 @@
 </head>
 
 <body id="body">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top"><img src="/img/digitalizate.png"/></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#services">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+                    <button class="custom-btn btn-3" data-bs-toggle="modal" data-bs-target="#modal-login"><span>Inicia Sesión</span></button>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <header>
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">Migra tu negocio a la era digital</div>
+            <div class="masthead-heading text-uppercase">Bienvenido!</div>
+            <button class="btn btn-3 custom-btn btn-xl text-uppercase flip" href="#services"><span>Revisa nuestros productos</span></button>
+        </div>
+    </header>
+    <!-- <header>
         <nav class="navbar navbar-expand-md fixed-top bg-header">
             <div class="container-fluid">
                 <a href="index.html"><img class="img-fluid logo" src="/img/digitalizate.png" alt="Logo"></a>
@@ -48,25 +71,12 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> -->
 
     <main class="bg-main">
         <div class="container py-5">
             <div class="row gap-5" id="productos">
-                <div class="card text-white mx-auto my-2">
-                    <div class="img-card img-card-1"></div>
-                    <div class="img-overlay"></div>
-                    <div class="card-img-overlay d-flex justify-content-center flex-column">
-                        <h2 class="card-title text-start">Productos</h2>
-                        <p class="card-text text-start">Lorem ipsum dolor sit amet consectetur adipiscing elit,
-                            aliquam rutrum metus at ex mattis.
-                        </p>
-                        <div class="nav-item w-25 mx-auto">
-                            <p id="more-info" class="nav-link fw-bold fs-2 flip">Más info</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel bg-card-productos ">
+                <div class="panel bg-card-productos">
                     <div class="row justify-content-evenly p-4 m-0">
                         <div class="col-12 col-md-3 card-productos p-2 my-4">
                             <div class="img-circle bg-img-1"></div>
@@ -301,6 +311,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1ad65aac44.js" crossorigin="anonymous"></script>
     <script src="js/components-effects/index-effects.js"></script>
+    <script src="js/components-effects/navbar.js"></script>
     <script src="/js/register-login.js"></script>
 </body>
 </html>
