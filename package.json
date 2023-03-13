@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/BryanC7/Portafolio-Talento-Digital#readme",
   "dependencies": {
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "jquery": "^3.6.4",
+    "nodemon": "^2.0.21"
   }
 }
