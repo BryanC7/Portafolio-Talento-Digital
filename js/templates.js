@@ -11,4 +11,3 @@ const footer3 = document.querySelector('#footer-3')
 const footer4 = document.querySelector('#footer-4')
 
 const preview = document.querySelector('#preview')
-window.addEventListener('DOMContentLoaded', loadPreview)

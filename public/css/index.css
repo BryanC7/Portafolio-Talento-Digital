@@ -75,7 +75,6 @@ h3 {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
         border: none;
-        background-color: transparent;
         transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
     }
 
@@ -121,7 +120,7 @@ h3 {
     padding-top: 10.5rem;
     padding-bottom: 6rem;
     text-align: center;
-    background-image: url("/img/hero.jpg");
+    background-image: url("/public/img/hero.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -352,15 +351,15 @@ h3 {
 }
 
 .img-card-1 {
-    background-image: url(/img/productos.png);
+    background-image: url(/public/img/productos.png);
 }
 
 .img-card-2 {
-    background-image: url(/img/quienes-somos.png);
+    background-image: url(/public/img/quienes-somos.png);
 }
 
 .img-card-3 {
-    background-image: url(/img/contacto.png);
+    background-image: url(/public/img/contacto.png);
 }
 
 .card-img-overlay {
@@ -531,15 +530,15 @@ h3 {
 }
 
 .bg-img-1 {
-    background-image: url(/img/paginas.webp);
+    background-image: url(/public/img/paginas.webp);
 }
 
 .bg-img-2 {
-    background-image: url(/img/paletas.png);
+    background-image: url(/public/img/paletas.png);
 }
 
 .bg-img-3 {
-    background-image: url(/img/plantillas.jpg);
+    background-image: url(/public/img/plantillas.jpg);
 }
 
 .card-productos {

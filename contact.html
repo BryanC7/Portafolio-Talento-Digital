@@ -9,35 +9,26 @@
         <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Krub&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/form.css">
+        <link rel="stylesheet" href="/public/css/index.css">
+        <link rel="stylesheet" href="/public/css/form.css">
     </head>
     <body>
         
         <header>
-            <nav class="navbar navbar-expand-md fixed-top bg-header">
-                <div class="container-fluid">
-                    <a href="index.html"><img class="img-fluid logo" src="/img/digitalizate.png" alt="Logo"></a>
-                    
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+                <div class="container">
+                    <a class="navbar-brand" href="#page-top"><img src="/public/img/digitalizate.png"/></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        Menu
                     </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                        <ul class="navbar-nav align-items-start align-items-md-center">
-                            <li class="nav-item p-2 p-lg-4">
-                                <a class="nav-link text-white" href="index.html#productos">Productos</a>
-                            </li>
-                            <li class="nav-item p-2 p-lg-4">
-                                <a class="nav-link text-white" href="index.html#quienes-somos">Quienes somos</a>
-                            </li>
-                            <li class="nav-item p-2 p-lg-4">
-                                <a class="nav-link text-white" href="contacto.html">Contacto</a>
-                            </li>
-                            <div class="d-flex">
-                                <li class="nav-item p-2 p-lg-4">
-                                    <button class="custom-btn btn-3" data-bs-toggle="modal" data-bs-target="#modalLogin"><span>Inicia Sesión</span></button>                      
-                                </li>
-                            </div>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav align-items-lg-center text-uppercase ms-auto py-4 py-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#services">Productos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                            <button class="custom-btn btn-3 mt-3 mt-lg-0" data-bs-toggle="modal" data-bs-target="#modal-login"><span>Inicia Sesión</span></button>
                         </ul>
                     </div>
                 </div>
@@ -108,7 +99,7 @@
             <div class="container">
                 <div class="row justify-content-center p-5 border-bottom">
                     <div class="col-10 col-sm-6 text-center">
-                        <a href="index.html"><img class="img-fluid" src="/img/digitalizate.png" alt="Logo"></a>
+                        <a href="index.html"><img class="img-fluid" src="/public/img/digitalizate.png" alt="Logo"></a>
                     </div>
                     <div class="row justify-content-sm-between">
                         <div class="col-12 col-sm-3 text-white">
@@ -138,9 +129,18 @@
                         <div class="col-12 col-sm-3 text-white">
                             <h3 class="text-start my-5">Siguenos!</h3>
                             <ul class="p-0">
-                                <a class="footer-link" href="#">Lorem ipsum</a>
-                                <a class="footer-link" href="#">Lorem ipsum</a>
-                                <a class="footer-link" href="#">Lorem ipsum</a>
+                                <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" role="button">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                                <a class="btn text-white btn-floating m-1" style="background-color: #ac2bac;" role="button">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a class="btn text-white btn-floating m-1" style="background-color: #333333;" role="button">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                                <a class="btn text-white btn-floating m-1" style="background-color: #55acee;" role="button">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
                             </ul>
                         </div>
                     </div>
