@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Krub&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/loading.css">
-    <link rel="stylesheet" href="css/templates.css">
+    <link rel="stylesheet" href="public/css/loading.css">
+    <link rel="stylesheet" href="public/css/templates.css">
 </head>
 <body onload="timeOutPage()">
     <div id="loader"></div>
@@ -19,7 +19,7 @@
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                     <div class="d-flex flex-column align-items-center align-items-sm-start p-4 text-white min-vh-100">
                         <a href="index.html" class="d-flex align-items-center pb-3 mb-3 text-decoration-none border-bottom">
-                          <h3 class="fw-semibold">Volver al inicio</h3>
+                            <h3 class="fw-semibold">Volver al inicio</h3>
                         </a>
 
                         <ul class="list-unstyled w-100">
@@ -67,7 +67,11 @@
                 </div>
                 <div class="col-8 mx-auto">
                     <h1 class="my-5">Vista previa</h1>
-                    <div class="bg-white" id="preview"></div>
+                    <div class="bg-white" id="preview">
+                        <div>{{> header-1}}</div>
+                        <div>{{> body-2}}</div>
+                        <div>{{> footer-3}}</div>
+                    </div>
                 </div>
             </div>
         </div>
