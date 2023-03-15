@@ -4,10 +4,9 @@ const hbs = require('hbs')
 
 app.set('view engine', 'hbs')
 app.set('views', './views')
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
-app.use(express.static(__dirname + 'public'))
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist/css', { type: 'text/css' }))
+app.use('/css', express.static(__dirname + '/public/css'))
+
 hbs.registerPartials(__dirname + '/views/partials')
 
 app.listen(3000)
@@ -18,4 +17,8 @@ app.get('/index',(req, res)=>{
 
 app.get('/templates',(req, res)=>{
     res.render('templates')
+})
+
+app.get('/contact',(req, res)=>{
+    res.render('contact')
 })
