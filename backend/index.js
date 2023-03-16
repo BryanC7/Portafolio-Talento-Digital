@@ -1,11 +1,17 @@
 const express = require('express')
 const app = express()
 const hbs = require('hbs')
+const path = require('path')
 
 app.set('view engine', 'hbs')
 app.set('views', './views')
-app.use(express.static(__dirname + '/node_modules/bootstrap/dist/css', { type: 'text/css' }))
-app.use('/css', express.static(__dirname + '/public/css'))
+
+
+app.use(express.static(path.join(__dirname , '../node_modules/bootstrap/dist')))
+app.use(express.static(path.join(__dirname , '../node_modules/jquery/dist')))
+
+app.use(express.static('../public'))    
+app.use('/js', express.static('../js'))
 
 hbs.registerPartials(__dirname + '/views/partials')
 
