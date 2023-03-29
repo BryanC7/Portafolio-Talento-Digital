@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitalizate</title>
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link href="/css/bootstrap.min.css"
+      rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Krub&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/jquery.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body id="page-top">
+    
+    {{> navbar}}
+
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">Migra tu negocio a la era digital</div>
+            <div class="masthead-heading text-uppercase">Bienvenido!</div>
+            <button class="btn btn-3 custom-btn btn-xl text-uppercase flip" href="#services"><span class="fw-semibold">Revisa nuestros servicios</span></button>
+        </div>
+    </header>
+    
+    <main class="bg-main">
+        <div class="container py-5">
+            <div class="row gap-5" id="productos">
+                <div id="services" class="panel bg-card-products">
+                    <div class="row justify-content-evenly p-4 m-0">
+                        <div class="col-12 col-md-3 card-products p-2 my-4">
+                            <div class="img-circle bg-img-1"></div>
+                            <i class="fa-solid fa-cubes"></i>
+                            <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
+                                quae, nemo quis aliquam ratione.</p>
+                        </div>
+                        <div class="col-12 col-md-3 card-products p-2 my-4">
+                            <div class="img-circle bg-img-2"></div>
+                            <i class="fa-solid fa-palette"></i>
+                            <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
+                                quae, nemo quis aliquam ratione.</p>
+                        </div>
+                        <div class="col-12 col-md-3 card-products p-2 my-4">
+                            <div class="img-circle bg-img-3"></div>
+                            <i class="fa-regular fa-clone"></i>
+                            <p class="fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deserunt neque,
+                                quae, nemo quis aliquam ratione.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center p-3">
+                        <button onclick="location.href='/templates'" class="custom-btn btn-3"><span>Crea tu propia plantilla</span></button>
+                    </div>
+                </div>
+                <div class="card text-white col mx-auto" id="about-us">
+                    <div class="img-card img-card-2"></div>
+                    <div class="img-overlay"></div>
+                    <div class="card-img-overlay d-flex justify-content-center flex-column">
+                        <h2 class="card-title text-start">Quienes somos</h2>
+                        <p class="card-text text-start">Lorem ipsum dolor sit amet consectetur adipiscing elit,
+                            aliquam rutrum metus at ex mattis.
+                        </p>
+                    </div>
+                </div>
+                <article class="article_container">
+                    <div class="container_cards">
+                        <div class="card-1">
+                            <div class="imgBx">
+                                <img src="/img/equipo-de-trabajo.webp" alt="Work team 1">
+                              </div>
+                              <div class="contentBx">
+                                <div class="content">
+                                    <h2>Colaboración al 100%</h2>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam culpa sunt
+                                        voluptates quam, sed quod earum et alias expedita distinctio ad nam fugiat
+                                        veritatis a.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-1">
+                            <div class="imgBx">
+                                <img src="/img/trabajo-equipo-2.png" alt="Work team 2">
+                            </div>
+                            <div class="contentBx">
+                                <div class="content">
+                                    <h2>Trabajo eficiente e inteligente</h2>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam culpa sunt
+                                        voluptates quam, sed quod earum et alias expedita distinctio ad nam fugiat
+                                        veritatis a.</p>
+                                </div>
+                            </div>
+                        </div>
+                </article>
+                <div class="card text-white col mx-auto">
+                    <div class="img-card img-card-3"></div>
+                    <div class="img-overlay"></div>
+                    <div class="card-img-overlay d-flex justify-content-center flex-column">
+                        <h2 class="card-title text-start">Contacto</h2>
+                        <p class="card-text text-start">Lorem ipsum dolor sit amet consectetur adipiscing elit,
+                            aliquam rutrum metus at ex mattis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {{> footer}}
+
+    {{> modalLogin}}
+    {{> modalRegister}}
+   
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/jquery.js"></script>
+    <script src="https://kit.fontawesome.com/1ad65aac44.js" crossorigin="anonymous"></script>
+    <script src="/js/components-effects/index-effects.js"></script>
+    <script src="/js/components-effects/navbar.js"></script>
+</body>
+</html>

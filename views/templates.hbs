@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitalizate</title>
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Krub&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/loading.css">
+    <link rel="stylesheet" href="/css/templates.css">
+</head>
+<body onload="timeOutPage()">
+    <div id="loader"></div>
+    <div style="display:none;" id="divSpinner" class="animate-bottom">
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start p-4 text-white min-vh-100 sticky-top">
+                        <a href="/index" class="d-flex align-items-center mb-3 text-decoration-none">
+                            <h3 class="fw-semibold">Volver al inicio</h3>
+                        </a>
+
+                        <ul class="list-unstyled w-100 border-top border-bottom m-0">
+                            <li class="mt-3 mb-1 text-start">
+                                <button class="btn btn-toggle align-items-center collapsed btn-color" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                    <h3 class="ms-1">Header</h3>
+                                </button>
+                                <div class="collapse" id="home-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="rounded" onclick="showComponent(header1)">Ejemplo 1</a></li>
+                                        <li><a href="#" class="rounded" onclick="showComponent(header2)">Ejemplo 2</a></li>
+                                        <li><a href="#" class="rounded" onclick="showComponent(header3)">Ejemplo 3</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-1 text-start">
+                                <button class="btn btn-toggle align-items-center collapsed btn-color" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                    <h3 class="ms-1">Body</h3>
+                                </button>
+                                <div class="collapse" id="dashboard-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="rounded" onclick="showComponent(body1)">Ejemplo 1</a></li>
+                                        <li><a href="#" class="rounded" onclick="showComponent(body2)">Ejemplo 2</a></li>
+                                        <li><a href="#" class="rounded" onclick="showComponent(body3)">Ejemplo 3</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="mb-3 text-start">
+                                <button class="btn btn-toggle align-items-center collapsed btn-color" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                    <h3 class="ms-1">Footer</h3>
+                                </button>
+                                <div class="collapse" id="orders-collapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="rounded" onclick="showComponent(footer1)">Ejemplo 1</a></li>
+                                        <li><a href="#" class="rounded" onclick="showComponent(footer2)">Ejemplo 2</a></li>
+                                        <li><a href="#" class="rounded" onclick="showComponent(footer3)">Ejemplo 3</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="w-100 border-bottom">
+                            <h3 class="text-start my-4 fw-semibold">Paletas de colores</h3>
+                            <div class="d-flex flex-column justify-content-center mb-3" id="rectangle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-8 mx-auto" id="views">
+                    <h1 class="mx-auto my-5">Vista previa</h1>
+                    <p>Tipo de vista:</p>
+                    <input class="checkbox" type="checkbox" id="switchView"/><label for="switchView"></label>
+                    <div class="bg-white border border-dark mt-3" id="preview">
+                        <div id="header">
+                            <div hidden id="header1">{{> header1}}</div>
+                            <div hidden id="header2">{{> header2}}</div>
+                            <div hidden id="header3">{{> header3}}</div>
+                        </div>
+                        <div id="body">
+                            <div hidden id="body1">{{> body1}}</div>
+                            <div hidden id="body2">{{> body2}}</div>
+                            <div hidden id="body3">{{> body3}}</div>
+                        </div>
+                        <div id="footer">
+                            <div hidden id="footer1">{{> footer1}}</div>
+                            <div hidden id="footer2">{{> footer2}}</div>
+                            <div hidden id="footer3">{{> footer3}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/1ad65aac44.js" crossorigin="anonymous"></script>
+<script src="/js/components-effects/loading.js"></script>
+<script src="/js/templates.js"></script>
+</html>

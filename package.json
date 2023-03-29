@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "https://github.com/BryanC7/Portafolio-Talento-Digital.git",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init-back": "cd backend && nodemon"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,8 @@
     "express": "^4.18.2",
     "hbs": "^4.2.0",
     "jquery": "^3.6.4",
-    "nodemon": "^2.0.21"
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.21",
+    "sweetalert2": "^11.7.3"
   }
 }

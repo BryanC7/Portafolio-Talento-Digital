@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Digitalizate-Contacto</title>
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Krub&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/form.css">
+    </head>
+    <body id="page-top">
+
+        {{> navbar}}
+
+        <main class="bg-main py-5">
+            <div class="contact container pb-3">
+                <h3 class="pt-5">Comunicate con Nosotros</h3>
+                <form class="contact_form" id="contact-form">
+                    <div class="form_group" id="group-name">
+                        <label for="name" class="form_label">Nombre</label>
+                        <div class="form_group_input">
+                            <input type="text" class="form_input" name="name" id="name" placeholder="Tu nombre">
+                            <i class="form_validate_status fas fa-times-circle"></i>
+                        </div>
+                        <p class="form_input_error">El usuario tiene que ser de 4 a 16 dígitos y no puede contener números, letras y guión bajo.</p>
+                    </div>
+
+                    <div class="form_group" id="group-lastname">
+                        <label for="last_name" class="form_label">Apellido</label>
+                        <div class="form_group_input">
+                            <input type="text" class="form_input" name="lastname" id="lastname" placeholder="Tu apellido">
+                            <i class="form_validate_status fas fa-times-circle"></i>
+                        </div>
+                        <p class="form_input_error">El usuario tiene que ser de 4 a 16 dígitos y no puede contener números, letras y guión bajo.</p>
+                    </div>
+        
+                    <div class="form_group" id="group-email">
+                        <label for="email" class="form_label">Email</label>
+                        <div class="form_group_input">
+                            <input type="email" class="form_input" name="email" id="email" placeholder="Tu correo electrónico">
+                            <i class="form_validate_status fas fa-times-circle"></i>
+                        </div>
+                        <p class="form_input_error">El correo ingresado no es válido</p>
+                    </div>
+
+                    <div class="form_group" id="group-password">
+                        <label for="password" class="form_label">Contraseña</label>
+                        <div class="form_group_input">
+                            <input type="password" class="form_input" name="password" id="password"
+                            placeholder="Tu contraseña">
+                            <i class="form_validate_status fas fa-times-circle"></i>
+                        </div>
+                        <p class="form_input_error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+                    </div>
+
+                    <div class="full form_group" id="group-phone">
+                        <label for="phone" class="form_label">Teléfono</label>
+                        <div class="form_group_input">
+                            <input type="text" class="form_input" name="phone" id="phone" placeholder="Tu teléfono">
+                            <i class="form_validate_status fas fa-times-circle"></i>
+                        </div>
+                        <p class="form_input_error">El teléfono debe ser entre 8 y 14 dígitos.</p>
+                    </div>
+
+                    <div class="full form_message" id="form-message">
+                        <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                    </div>
+
+                    <button type="submit" class="full form_btn">Enviar</button>
+
+                    <div class="full form_group form_group_btn_submit">
+                        <p class="form_message_success" id="form-message-success">Formulario enviado exitosamente</p>
+                    </div>
+                </form>
+            </div>    
+        </main>
+        
+        {{> footer}}
+
+        {{> modalLogin}}
+        {{> modalRegister}}
+
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/1ad65aac44.js" crossorigin="anonymous"></script>
+        <script src="/js/components-effects/navbar.js"></script>
+        <script src="/js/validate-form.js"></script>
+    </body>
+</html>

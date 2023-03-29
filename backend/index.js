@@ -1,24 +1,22 @@
-const express = require('express')
+import express from "express"
+import hbs from "hbs"
+import {dirname, join} from "path"
+import { fileURLToPath } from "url"
+import indexRoutes from "./routes/routes.js"
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express()
-const hbs = require('hbs')
 
 app.set('view engine', 'hbs')
-app.set('views', './views')
-app.use(express.static(__dirname + '/node_modules/bootstrap/dist/css', { type: 'text/css' }))
-app.use('/css', express.static(__dirname + '/public/css'))
+app.set('views', '../views')
 
-hbs.registerPartials(__dirname + '/views/partials')
+app.use(express.static(join(__dirname , '../node_modules/bootstrap/dist')))
+app.use(express.static(join(__dirname , '../node_modules/jquery/dist')))
+app.use(express.static(join(__dirname , '../node_modules/sweetalert2/dist')))
+app.use(indexRoutes)
+app.use(express.static('../public'))    
+app.use('/js', express.static('../js'))
 
-app.listen(3000)
+hbs.registerPartials(join(__dirname, '../views/partials'))
 
-app.get('/index',(req, res)=>{
-    res.render('index')
-})
-
-app.get('/templates',(req, res)=>{
-    res.render('templates')
-})
-
-app.get('/contact',(req, res)=>{
-    res.render('contact')
-})
+app.listen(3000, () => console.log('Servidor funcionando en el puerto 3000'))

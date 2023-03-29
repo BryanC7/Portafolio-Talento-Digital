@@ -1,7 +1,11 @@
+.bg-main {
+    background: #121212;
+}
+
 .contact {
+    margin-top: 50px;
     background: #dcdfea;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-radius: 1rem;
 }
 
 .contact form {
@@ -25,7 +29,7 @@
 .contact form button,
 .contact form input{
     width: 100%;
-    padding: 1em;
+    padding: 1.2rem;
     border: solid 1px #627EDC;
     border-radius: 4px;
 }
@@ -56,36 +60,28 @@
         padding: 2em;
     }
 
-    .company-info {
-        border-radius: 4px 0 0 4px;
-    }
-
-    .contact {
-        border-radius: 0 4px 4px 0;
-    }
-
     .company-info h3,
     .company-info ul,
     .brand {
         text-align: left;
     }
 }
-.formulario {
+.contact_form {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
 }
 
-.formulario__label {
+.form_label {
 	display: block;
 	font-weight: 700;
 	padding: 10px;
 	cursor: pointer;
 }
-.formulario__grupo-input {
+.form_group_input {
     position: relative;
 }
-.formulario__input {
+.form_input {
 	width: 100%;
 	background: #fff;
 	border: 3px solid transparent;
@@ -95,17 +91,17 @@
 	padding: 0 40px 0 10px;
 	transition: .3s ease all;
 }
-.formulario__input-error {
+.form_input_error {
 	font-size: 12px;
 	margin-bottom: 0;
 	display: none;
 }
 
-.formulario__input-error-activo {
+.form_input_error_active {
 	display: block;
 }
 
-.formulario__validacion-estado {
+.form_validate_status {
 	position: absolute;
 	right: 10px;
 	bottom: 15px;
@@ -113,7 +109,7 @@
 	font-size: 16px;
 	opacity: 0;
 }
-.formulario__mensaje {
+.form_message {
     width: 100%;
 	height: 45px;
 	line-height: 45px;
@@ -123,10 +119,10 @@
 	display: none;
 }
 
-.formulario__mensaje-activo {
+.form_message_active {
 	display: inline-block;
 }
-.formulario__mensaje-exito {
+.form_message_success {
     width: 100%;
 	font-size: 1.5rem;
     background: #2ECC71;
@@ -137,40 +133,40 @@
 	display: none;
 }
 
-.formulario__mensaje-exito-activo {
+.form_message_success_active {
 	display: inline-block;
 }
 
-.formulario__grupo-correcto .formulario__validacion-estado {
+.form_group_correct .form_validate_status {
     color: #1ed12d;
     opacity: 1;
 }
 
-.formulario__grupo-incorrecto .formulario__validacion-estado {
+.form_group_incorrect .form_validate_status {
     color: #bb2929;
     opacity: 1;
 }
 
-.formulario__grupo-incorrecto .formulario__input {
+.form_group_incorrect .form_input {
     border: 3px solid #bb2929;
 }
-.formulario__grupo-correcto .formulario__input {
+.form_group_correct .form_input {
     border: 3px solid #1ed12d;
 }
 
 /* Mediaqueries */
 @media screen and (max-width: 800px) {
-    .formulario {
+    .contact_form {
         grid-template-columns: 1fr;
     }
 
-    .formulario__grupo-terminos,
-    .formulario__mensaje,
-    .formulario__grupo-btn-enviar {
+    .form_group_terms,
+    .form_message,
+    .form_group_btn_submit {
         grid-column: 1;
     }
 
-    .formulario__btn {
+    .form_btn {
         width: 100%;
     }
 }

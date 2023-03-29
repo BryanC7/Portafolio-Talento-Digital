@@ -16,14 +16,9 @@ body {
     background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
 
-/* Tipografia */
 h1 {
-    font-size: 3.8rem;
-    margin: 0;
-}
-
-h2 {
-    font-size: 2.8rem;
+    font-size: 3.5rem;
+    text-align: center;
     margin: 0;
 }
 
@@ -31,6 +26,8 @@ h3 {
     font-size: 1.8rem;
     margin: 0;
 }
+
+/* --- */
 
 .btn-toggle {
     display: inline-flex;
@@ -81,16 +78,21 @@ h3 {
 }
 
 .carousel {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+}
+
+.img-carousel {
+    height: 530px;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .carousel-caption {
-    bottom: 3rem;
     z-index: 10;
 }
 
-.carousel-item {
-    height: 32rem;
+.carousel-indicators {
+    margin-bottom: 0;
 }
 
 .marketing .col-lg-4 {
@@ -111,16 +113,44 @@ h3 {
     letter-spacing: -.05rem;
 }
 
+.carousel-caption h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
 
-@media (min-width: 40em) {
-    .carousel-caption p {
-        margin-bottom: 1.25rem;
-        font-size: 1.25rem;
-        line-height: 1.4;
+.carousel-caption p {
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .img-carousel {
+        height: auto;
     }
-    
+
+    .carousel-caption p {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .carousel-caption h1 {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
     .featurette-heading {
         font-size: 50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h1 {
+        font-size: 1.6rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -128,4 +158,92 @@ h3 {
     .featurette-heading {
         margin-top: 7rem;
     }
+}
+
+.rectangle {
+    width: 4rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .rectangle {
+        width: 5rem;
+        height: 3rem;
+    }
+
+    .carousel-item {
+        height: 32rem;
+    }
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox+label {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    background: linear-gradient(to right, #929aab 0, #6c7a89 20%, #474a56 55%, #0b0b0d 75%) 0 0;
+    background-size: 650px 100%;
+    border-radius: 70px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 500ms ease;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2) inset;
+}
+
+.checkbox+label:before {
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    content: "\e163";
+    font-weight: 900;
+    width: 30px;
+    height: 30px;
+    padding-top: 3px;
+    padding-left: 1px;
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    border-radius: 100%;
+    background: #fff;
+    color: #000000;
+    transition: left 500ms ease, color 500ms ease, transform 150ms ease;
+}
+
+.checkbox+label:active:before {
+    transform: scale(0.95);
+}
+
+.checkbox:checked+label {
+    background-position-x: -350px;
+}
+
+.checkbox:checked+label:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f3cf";
+    font-weight: 900;
+    color: #000000;
+    left: 62px;
+}
+
+.phone {
+    background-color: #36383F;
+    border-radius: 40px;
+    width: 320px;
+    height: 600px;
+    Display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 30px 50px 100px #85888C;
+}
+.content {
+    border: 1px solid #36383F;
+    border-radius: 20px;
+    width: 94%;
+    height: 91%;
+    background-color: #F5F6FA;
+    overflow: hidden;
 }

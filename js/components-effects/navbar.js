@@ -9,11 +9,9 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
         }
-
     }
  
     navbarShrink()
-
     document.addEventListener('scroll', navbarShrink)
 
     const mainNav = document.body.querySelector('#mainNav')
@@ -25,9 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     const navbarToggler = document.body.querySelector('.navbar-toggler')
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    )
+    const responsiveNavItems = [].slice.call(document.querySelectorAll('#navbarResponsive .nav-link'))
     responsiveNavItems.map(function (responsiveNavItem) {
         responsiveNavItem.addEventListener('click', () => {
             if (window.getComputedStyle(navbarToggler).display !== 'none') {
