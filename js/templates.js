@@ -1,8 +1,12 @@
 const buttons = document.querySelectorAll('.rounded')
 const divPalettes = document.querySelector('#rectangle')
 const btnView = document.querySelector('#switchView')
-const divView = document.querySelector('#preview')
-const divViews = document.querySelector('#views')
+const desktopView = document.querySelector('#preview')
+const phoneView = document.querySelector('.phone')
+const contentPhone = document.querySelector('.content')
+const headers = document.querySelector('#header')
+const bodys = document.querySelector('#body')
+const footers = document.querySelector('#footer')
 
 const colours = [
     {header: '#142d4c', body: '#ececec', footer: '#385170'},
@@ -69,9 +73,9 @@ function changeColor(e) {
 }
 
 function validateElements() {
-    const header = document.querySelector('#header').children
-    const body = document.querySelector('#body').children
-    const footer = document.querySelector('#footer').children
+    const header = headers.children
+    const body = bodys.children
+    const footer = footers.children
 
     const elements = [...header, ...body, ...footer]
     let elementsFound = []
@@ -87,28 +91,21 @@ function validateElements() {
 
 function changeView(e) {
     if(e.target.checked) {
-        const phone = document.querySelector('.phone')
-        if(phone) {
-            phone.style.display = 'flex'
-            preview.style.display = 'none'
-        } else {
-            const divPhone = document.createElement('div')
-            const divContent = document.createElement('div')
-            const headerPhone = document.createElement('div')
-            const bodyPhone = document.createElement('div')
-            const footerPhone = document.createElement('div')
-            divPhone.classList.add('phone', 'mx-auto', 'mt-3')
-            divContent.classList.add('content')
-            console.log(validateElements()[0])
-            console.log(validateElements()[1])
-            console.log(validateElements()[2])
-            divPhone.appendChild(divContent)
-            preview.style.display = 'none'
-            divViews.appendChild(divPhone)
-        }
+        phoneView.removeAttribute('hidden')
+        desktopView.style.display = 'none'
+        validateElements().forEach(element => contentPhone.appendChild(element))
     } else {
-        document.querySelector('.phone').style.display = 'none'
-        preview.style.display = 'block'
+        for(let i = 0; i <= contentPhone.children.length; i++) {
+            if(contentPhone.children[i].id.includes('header')) {
+                headers.appendChild(contentPhone.children[i])
+            } else if (contentPhone.children[i].id.includes('body')) {
+                bodys.appendChild(contentPhone.children[i])
+            } else {
+                footers.appendChild(contentPhone.children[i])
+            }
+        }
+        phoneView.setAttribute('hidden', '')
+        desktopView.style.display = 'block'
     }
 }
 
