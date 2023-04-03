@@ -9,6 +9,7 @@ router.use(bodyParser.json())
 router.get('/index', (req, res) => res.render('index'))
 router.get('/templates', (req, res) => res.render('templates'))
 router.get('/contact', (req, res) => res.render('contact'))
+router.get('/admin', (req, res) => res.render('admin'))
 
 router.post('/login', (req, res) => {
     const email = req.body.email
