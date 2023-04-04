@@ -1,6 +1,7 @@
 const buttons = document.querySelectorAll('.rounded')
 const divPalettes = document.querySelector('#rectangle')
 const btnView = document.querySelector('#switchView')
+const btnFinish = document.querySelector('#btnFinish')
 const desktopView = document.querySelector('#preview')
 const views = document.querySelector('#views')
 const phoneView = document.querySelector('.phone')
@@ -52,6 +53,7 @@ function showComponent(id) {
             divChildren[i].setAttribute('hidden', '')
         }
     }
+    activateSwitch()
 }
 
 function changeColor(e) {
@@ -90,11 +92,17 @@ function validateElements() {
     return elementsFound
 }
 
+function activateSwitch() {
+    if(validateElements().length === 3) {
+        btnView.removeAttribute('disabled')
+        btnFinish.removeAttribute('disabled')
+    }
+}
+
 function changeView(e) {
     if(e.target.checked) {
         desktopView.style.display = 'none'
         phoneView.removeAttribute('hidden')
-        views.style.width = ''
         validateElements().forEach(element => contentPhone.appendChild(element))
     } else {
         for(let i = 0; i < contentPhone.children.length; i++) {

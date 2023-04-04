@@ -234,7 +234,7 @@ h3 {
 }
 
 .desktop-view {
-    max-height: 50rem;
+    max-height: 80rem;
     overflow-y: scroll;
 }
 

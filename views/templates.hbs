@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start p-4 text-white min-vh-100 sticky-top">
+                    <div class="d-flex flex-column align-items-sm-start p-4 text-white min-vh-100 sticky-top">
                         <a href="/index" class="d-flex align-items-center mb-3 text-decoration-none">
                             <h3 class="fw-semibold">Volver al inicio</h3>
                         </a>
@@ -65,12 +65,13 @@
                             <h3 class="text-start my-4 fw-semibold">Paletas de colores</h3>
                             <div class="d-flex flex-column justify-content-center mb-3" id="rectangle"></div>
                         </div>
+                        <button onclick="location.href='/pay'" class="btn btn-success w-100 mt-4 p-3 fs-4" id="btnFinish" disabled>Terminar template</button>
                     </div>
                 </div>
                 <div class="col-6 col-sm-8 mx-auto" id="views">
                     <h1 class="mx-auto my-2">Vista previa</h1>
                     <p>Tipo de vista:</p>
-                    <input class="checkbox" type="checkbox" id="switchView"/><label for="switchView"></label>
+                    <input class="checkbox" type="checkbox" id="switchView" disabled/><label for="switchView"></label>
                     <div class="phone mx-auto mt-2" hidden>
                         <div class="content"></div>
                     </div>

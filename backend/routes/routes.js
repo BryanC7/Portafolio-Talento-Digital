@@ -8,6 +8,7 @@ router.use(bodyParser.json())
 
 router.get('/index', (req, res) => res.render('index'))
 router.get('/templates', (req, res) => res.render('templates'))
+router.get('/pay', (req, res) => res.render('pay'))
 router.get('/contact', (req, res) => res.render('contact'))
 router.get('/admin', (req, res) => res.render('admin'))
 
