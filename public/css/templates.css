@@ -4,6 +4,10 @@ html {
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 *,
 *:before,
 *:after {
@@ -229,10 +233,15 @@ h3 {
     left: 62px;
 }
 
+.desktop-view {
+    max-height: 50rem;
+    overflow-y: scroll;
+}
+
 .phone {
     background-color: #36383F;
     border-radius: 40px;
-    width: 320px;
+    width: 342px;
     height: 600px;
     Display: flex;
     justify-content: center;
@@ -242,8 +251,9 @@ h3 {
 .content {
     border: 1px solid #36383F;
     border-radius: 20px;
-    width: 94%;
-    height: 91%;
+    max-width: 94%;
+    max-height: 91%;
     background-color: #F5F6FA;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }

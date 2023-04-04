@@ -2,6 +2,7 @@ const buttons = document.querySelectorAll('.rounded')
 const divPalettes = document.querySelector('#rectangle')
 const btnView = document.querySelector('#switchView')
 const desktopView = document.querySelector('#preview')
+const views = document.querySelector('#views')
 const phoneView = document.querySelector('.phone')
 const contentPhone = document.querySelector('.content')
 const headers = document.querySelector('#header')
@@ -91,16 +92,19 @@ function validateElements() {
 
 function changeView(e) {
     if(e.target.checked) {
-        phoneView.removeAttribute('hidden')
         desktopView.style.display = 'none'
+        phoneView.removeAttribute('hidden')
+        views.style.width = ''
         validateElements().forEach(element => contentPhone.appendChild(element))
     } else {
-        for(let i = 0; i <= contentPhone.children.length; i++) {
+        for(let i = 0; i < contentPhone.children.length; i++) {
             if(contentPhone.children[i].id.includes('header')) {
                 headers.appendChild(contentPhone.children[i])
-            } else if (contentPhone.children[i].id.includes('body')) {
+            }
+            if(contentPhone.children[i].id.includes('body')) {
                 bodys.appendChild(contentPhone.children[i])
-            } else {
+            }
+            if(contentPhone.children[i].id.includes('footer')) {
                 footers.appendChild(contentPhone.children[i])
             }
         }
