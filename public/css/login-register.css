@@ -1,0 +1,21 @@
+@media (min-width: 992px) {
+    #mainNav {
+        background-color: #212529;
+    }
+}
+
+.fixed-top {
+    position: initial;
+}
+
+.login {
+    margin: 0 3rem;
+}
+
+@media (min-width: 568px) {
+    .login {
+        min-height: 50vh;
+        width: 70%;
+        margin: 0 auto;
+    }
+}

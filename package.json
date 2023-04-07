@@ -20,11 +20,19 @@
   "homepage": "https://github.com/BryanC7/Portafolio-Talento-Digital#readme",
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
     "hbs": "^4.2.0",
     "jquery": "^3.6.4",
-    "mysql": "^2.18.1",
     "nodemon": "^2.0.21",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.30.0",
+    "sequelize-cli": "^6.6.0",
     "sweetalert2": "^11.7.3"
   }
 }

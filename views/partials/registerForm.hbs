@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center align-items-center login my-4">
+    <div class="bg-white w-100 p-3 p-sm-5 rounded-3 text-secondary shadow">
+        <div class="d-flex justify-content-center align-items-center">
+            <i class="fa-regular fa-circle-user fa-xl"></i>                    
+            <div class="text-center fs-1 fw-bold ms-2">Registra un usuario</div>
+        </div>
+        <form action="register-user" method="post">
+            <div class="input-group mt-3">
+                <div class="input-group-text bg-info">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <input class="form-control bg-light p-3 fs-3" type="text" placeholder="Tu nombre" name="name"/>
+            </div>
+            <div class="input-group mt-4 mb-3">
+                <div class="input-group-text bg-info">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <input class="form-control bg-light p-3 fs-3" type="text" placeholder="Tus apellidos" name="lastNames"/>
+            </div>
+            <div class="input-group mt-4 mb-3">
+                <div class="input-group-text bg-info">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <input class="form-control bg-light p-3 fs-3" type="email" placeholder="Tu correo electrónico" name="email"/>
+            </div>
+            <div class="input-group mt-4 mb-3">
+                <div class="input-group-text bg-info">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <input class="form-control bg-light p-3 fs-3" type="password" placeholder="Tu contraseña" name="password"/>
+            </div>
+            <button class="btn btn-info text-white fs-3 w-100 mt-4 p-3 fw-semibold shadow-sm" type="submit">Registrate</button>
+        </form>
+        <div class="d-flex gap-1 justify-content-end mt-5">
+            <button class="btn btn-info text-white fs-5 p-2 fw-semibold shadow-sm">Volver atrás</button>
+        </div>
+    </div>
+</div>

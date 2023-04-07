@@ -1,51 +1,76 @@
 import { Router } from "express"
+import passport from "passport"
 import bodyParser from "body-parser"
-import conexion from "../db.js"
+import flash from 'express-flash'
+import cookieParser from "cookie-parser"
+import session from "express-session"
+import { Strategy } from "passport-local"
 
 const router = Router()
+
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
-router.get('/index', (req, res) => res.render('index'))
-router.get('/templates', (req, res) => res.render('templates'))
-router.get('/pay', (req, res) => res.render('pay'))
-router.get('/contact', (req, res) => res.render('contact'))
-router.get('/admin', (req, res) => res.render('admin'))
+router.use(cookieParser('secretpassword'))
+router.use(session({
+    secret: 'secretpassword',
+    resave: true,
+    saveUninitialized: true
+}))
 
-router.post('/login', (req, res) => {
-    const email = req.body.email
-    const password = req.body.password
-    
-    conexion.query('select * from usuario;',(error, results) => {
-        if(error) throw error
-        else {
-            results.forEach(result => {
-                if(email === result.email && password === result.password) {
-                    res.render('index')
-                } 
-            })
-        }  
-    })
+router.use(flash())
+
+router.use(passport.initialize())
+router.use(passport.session())
+
+passport.use(new Strategy(function(username, password, done){
+    if(username === 'correo@correo.com' && password === '1234') {
+        return done(null, {id: 1, name: 'Pablo'})
+    }
+    done(null, false)
+}))
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id)
 })
+
+passport.deserializeUser(function(id, done) {
+    done(null, {id})
+})
+
+router.get('/index', (req, res) => res.render('index'))
+
+router.get('/templates', (req, res, next) => {
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
+}, (req, res) => {
+    res.render('templates')
+})
+router.get('/pay',(req, res, next) => {
+
+}, (req, res) => {
+    res.render('pay')
+})
+
+router.get('/contact', (req, res) => res.render('contact'))
+router.get('/login', (req, res) => res.render('login'))
+router.get('/register', (req, res) => res.render('register'))
+router.get('/admin', (req, res, next) => {
+
+}, (req, res) => {
+    res.render('admin')
+})
+
+router.post('/login-user', passport.authenticate('local', {
+    successRedirect: '/index',
+    failureRedirect: '/login'
+}))
 
 router.post('/register', (req, res) => {
     const name = req.body.name
     const lastNames = req.body.lastNames
     const email = req.body.email
     const password = req.body.password
-
-    conexion.query(`insert into usuario (name, lastNames, email, password) values ('${name}', '${lastNames}', '${email}', '${password}');`,(error, results) => {
-        if(error) throw error
-        else {
-            conexion.query('select * from usuario;',(error, results) => {
-                if(error) throw error
-                else {
-                    console.log(results)
-                }  
-            })
-            
-        }  
-    })
 })
 
 export default router
