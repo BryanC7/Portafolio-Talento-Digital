@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser"
 import session from "express-session"
 import { Strategy } from "passport-local"
 
-const router = Router()
+export const router = Router()
 
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
@@ -55,10 +55,17 @@ router.get('/pay',(req, res, next) => {
 router.get('/contact', (req, res) => res.render('contact'))
 router.get('/login', (req, res) => res.render('login'))
 router.get('/register', (req, res) => res.render('register'))
-router.get('/admin', (req, res, next) => {
 
+router.get('/clientView', (req, res, next) => {
+    next()
 }, (req, res) => {
-    res.render('admin')
+    res.render('clientView')
+})
+
+router.get('/adminView', (req, res, next) => {
+    next()
+}, (req, res) => {
+    res.render('adminView')
 })
 
 router.post('/login-user', passport.authenticate('local', {
