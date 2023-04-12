@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init-back": "cd backend && nodemon"
+    "init-back": "cd backend && nodemon",
+    "init-db": "cd backend && nodemon db.js"
   },
   "repository": {
     "type": "git",

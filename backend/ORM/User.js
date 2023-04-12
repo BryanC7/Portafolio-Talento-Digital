@@ -1,21 +1,21 @@
-import { DataTypes, Model } from "DataTypes";
-import sequelize from "../../backend/index.js";
+import { DataTypes, Model } from "sequelize";
+import sequelize from "../index.js";
 
 import { Order } from "./Order.js";
 
 export class User extends Model{}
 
 User.init({
-    idUser: {
+    id_usuario: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    name: {
+    nombre: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    lastNames: {
+    apellido: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -31,14 +31,14 @@ User.init({
         sequelize,
         createdAt: false,
         updatedAt: false,
-        tableName: 'users'
+        tableName: 'usuarios'
     }
 )
 
 User.hasMany(Order, {
-    foreignKey:'idUser'
+    foreignKey:'id_usuario'
 })
 
 Order.belongsTo(User, {
-    foreignKey:'idUser'
+    foreignKey:'id_usuario'
 })
