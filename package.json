@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init-back": "cd backend && nodemon",
-    "init-db": "cd backend && nodemon db.js"
+    "create-db": "cd backend && npx sequelize-cli db:create",
+    "init-back": "cd backend && nodemon"
   },
   "repository": {
     "type": "git",
