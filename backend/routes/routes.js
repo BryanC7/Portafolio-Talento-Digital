@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser"
 import session from "express-session"
 import { Strategy } from "passport-local"
 
+import usuarios from "../models/usuarios.js"
+
 export const router = Router()
 
 router.use(bodyParser.urlencoded({ extended: false }))
@@ -73,11 +75,24 @@ router.post('/login-user', passport.authenticate('local', {
     failureRedirect: '/login'
 }))
 
-router.post('/register', (req, res) => {
+router.post('/register-user', (req, res) => {
     const name = req.body.name
-    const lastNames = req.body.lastNames
+    const lastName = req.body.lastName
     const email = req.body.email
     const password = req.body.password
+    
+    try {
+        usuarios.create({
+            nombre: name,
+            apellido: lastName,
+            email,
+            password
+        })
+
+        console.log('El usuario se ha registrado correctamente')
+    } catch (error) {
+        console.log('El usuario no se pudo registrar', error)
+    }
 })
 
 export default router
