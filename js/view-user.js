@@ -10,16 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-// async function ssAPI(e) {
-//     e.preventDefault()
-//     const apiKey = 'eb3d526de9c347b489f71b57ef75fb87'
-//     const url = 'http://localhost:3000/index'
-//     const endpoint = `https://api.apiflash.com/v1/urltoimage?access_key=${apiKey}&url=${url}&response_type=json`
-//     const response = await fetch(endpoint)
-//     const data = await response.json()
-//     console.log(data)
-// }
-
 function createComponentsClient() {
     titleMenu.textContent = 'Información cliente'
     redirectLink.setAttribute('href', '/clientView')
@@ -47,7 +37,7 @@ function createComponentsAdmin() {
         </a>
     </li>
     <li class="mb-3">
-        <a href="#" class="nav-link px-0 align-middle text-icon">
+        <a href="/tableUsers" class="nav-link px-0 align-middle text-icon">
             <i class="fa-solid fa-users-line fa-lg"></i><span class="ms-3 d-none d-sm-inline text-light">Listado de clientes</span> 
         </a>
     </li>

@@ -1,0 +1,24 @@
+{{#> userView}}
+<div class="container mt-3">
+    <table class="table table-light">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo electrónico</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each usersList}}
+            <tr class="text-center">
+                <td>{{id_usuario}}</td>
+                <td>{{nombre}}</td>
+                <td>{{apellido}}</td>
+                <td>{{email}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{/userView}}

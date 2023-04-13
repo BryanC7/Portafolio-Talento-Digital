@@ -11,7 +11,6 @@ import {newOrder} from '../../js/class/Order.js'
 
 export const router = Router()
 const users = await getTableUser()
-let currentUser
 
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
@@ -54,12 +53,13 @@ passport.deserializeUser(function(user, done) {
 })
 
 router.get('/index', (req, res) => {
-    currentUser = req.session.passport.user
-    if(currentUser !== undefined) {
-        res.render('index', {user: currentUser})
-    } else {
-        res.render('index')
-    }
+    // if(req.session.passport.user) {
+    //     currentUser = req.session.passport.user
+    //     res.render('index', {user: currentUser})
+    // } else {
+    //     res.render('index')
+    // }
+    res.render('index')
 })
 
 router.get('/templates', (req, res, next) => {
@@ -68,13 +68,17 @@ router.get('/templates', (req, res, next) => {
 }, (req, res) => {
     res.render('templates')
 })
-router.get('/pay',(req, res, next) => {
 
+router.get('/pay',(req, res, next) => {
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
 }, (req, res) => {
     res.render('pay')
 })
 
 router.get('/contact', (req, res) => res.render('contact'))
+router.get('/register', (req, res) => res.render('register'))
+
 router.get('/login', (req, res) => {
     if (req.session.flash) {
         if (req.session.flash.error) {
@@ -87,7 +91,6 @@ router.get('/login', (req, res) => {
         res.render('login')
     } 
 })
-router.get('/register', (req, res) => res.render('register'))
 
 router.get('/clientView', (req, res, next) => {
     next()
@@ -98,7 +101,19 @@ router.get('/clientView', (req, res, next) => {
 router.get('/adminView', (req, res, next) => {
     next()
 }, (req, res) => {
-    res.render('adminView')
+    res.render('adminView', {usersList: users})
+})
+
+router.get('/tableUsers', (req, res, next) => {
+    next()
+}, (req, res) => {
+    res.render('tableUsers', {"usersList": users})
+})
+
+router.get('/tableOrders', (req, res, next) => {
+    next()
+}, (req, res) => {
+    res.render('tableOrders', {"usersList": users})
 })
 
 router.post('/login-user', passport.authenticate('local', {
@@ -107,15 +122,15 @@ router.post('/login-user', passport.authenticate('local', {
     failureFlash: true
 }))
 
-router.post('/register-user', (req, res) => {
+router.post('/register-user', async (req, res) => {
     const name = req.body.name
     const lastName = req.body.lastName
     const email = req.body.email
     const password = req.body.password
     
     try {
-        newUser(name, lastName, email, password)
-        console.log('El usuario se ha registrado correctamente')
+        await newUser(name, lastName, email, password)
+        await res.redirect('/login')
     } catch (error) {
         console.log('El usuario no se pudo registrar', error)
     }
