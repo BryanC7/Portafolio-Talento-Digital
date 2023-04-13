@@ -1,19 +1,15 @@
-'use strict'
-const {Model} = require('sequelize')
+import {Model, DataTypes} from 'sequelize'
+import { sequelize } from '../connect_db.js'
 
-module.exports = (sequelize, DataTypes) => {
-    class pedidos extends Model {
-        static associate(models) {
-            pedidos.belongsTo(models.usuarios, { foreignKey: "usuario_id" })
-        }
-    }
-    pedidos.init({
-        nro_pedido: DataTypes.INTEGER
-    }, 
-    {
-        sequelize,
-        modelName: 'pedidos',
-    }
-    )
-    return pedidos
-}
+export class pedidos extends Model {}
+
+pedidos.init({
+    nro_pedido: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    } 
+}, 
+{
+    sequelize,
+    tableName: 'pedidos',
+})

@@ -1,25 +1,37 @@
-'use strict'
+import {Model, DataTypes} from 'sequelize'
+import { sequelize } from '../connect_db.js'
+import { pedidos } from './pedidos.js'
 
-const {Model} = require('sequelize')
+export class usuarios extends Model {}
 
-module.exports = (sequelize, DataTypes) => {
-    class usuarios extends Model {
-        static associate(models) {
-            usuarios.belongsTo(models.pedidos)
-        }
-    }
-    
-    usuarios.init({
-        id_usuario: DataTypes.INTEGER,
-        nombre: DataTypes.STRING,
-        apellido: DataTypes.STRING,
-        email: DataTypes.STRING,
-        password: DataTypes.STRING
+usuarios.init({
+    id_usuario: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true
+    },
+    nombre: {
+        type: DataTypes.STRING(15),
+        allowNull: false,
+    },
+    apellido: {
+        type: DataTypes.STRING(15),
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING(40),
+        allowNull: false
     }, 
-    {
-        sequelize,
-        modelName: 'usuarios',
-    }
-)
-  return usuarios
-}
+    password: {
+        type: DataTypes.STRING(15),
+        allowNull: false
+    },
+}, 
+{
+    sequelize,
+    tableName: 'usuarios',
+})
+
+usuarios.hasMany(pedidos,{foreignKey:'id_usuario'})
+pedidos.belongsTo(usuarios,{foreignKey:'id_usuario'})
