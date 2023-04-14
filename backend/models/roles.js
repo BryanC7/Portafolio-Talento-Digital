@@ -1,21 +1,21 @@
 import {Model, DataTypes} from 'sequelize'
 import { sequelize } from '../connect_db.js'
 
-export class pedidos extends Model {}
+export class roles extends Model {}
 
-pedidos.init({
-    id_pedido:{
+roles.init({
+    id_rol:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true
     },
-    nro_pedido: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    tipo: {
+        type: DataTypes.STRING(10),
+        allowNull: false,
     } 
 }, 
 {
     sequelize,
-    tableName: 'pedidos',
+    tableName: 'roles',
 })

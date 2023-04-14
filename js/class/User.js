@@ -23,4 +23,11 @@ export async function getTableUser(){
     return data
 }
 
-sequelize.sync()
+export async function syncTables(){
+    try {
+      await sequelize.sync()
+      console.log('Tablas sincronizadas correctamente.')
+    } catch (error) {
+      console.error('Error en la sincronización', error)
+    }
+}

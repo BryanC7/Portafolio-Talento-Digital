@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import { Strategy } from 'passport-local'
 
-import {newUser, getTableUser} from '../../js/class/User.js'
+import {newUser, getTableUser, syncTables} from '../../js/class/User.js'
 import {newOrder} from '../../js/class/Order.js'
 
 export const router = Router()
@@ -30,7 +30,7 @@ router.use(passport.session())
 
 passport.use(new Strategy(function(email, password, done) {
     let userFound
-    if(users.includes(user => user.email === email)) {
+    if(users.filter(user => user.email === email)) {
         userFound = users.filter(user => user.email === email)[0]
     }
     
@@ -137,7 +137,8 @@ router.post('/register-user', async (req, res) => {
     
     try {
         await newUser(name, lastName, email, password)
-        await res.redirect('/login')
+        await syncTables()
+        res.redirect('/login')
     } catch (error) {
         console.log('El usuario no se pudo registrar', error)
     }

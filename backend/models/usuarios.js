@@ -1,6 +1,7 @@
 import {Model, DataTypes} from 'sequelize'
 import { sequelize } from '../connect_db.js'
 import { pedidos } from './pedidos.js'
+import { roles } from './roles.js'
 
 export class usuarios extends Model {}
 
@@ -26,12 +27,15 @@ usuarios.init({
     password: {
         type: DataTypes.STRING(15),
         allowNull: false
-    },
+    }
 }, 
 {
     sequelize,
     tableName: 'usuarios',
 })
 
-usuarios.hasMany(pedidos,{foreignKey:'id_usuario'})
-pedidos.belongsTo(usuarios,{foreignKey:'id_usuario'})
+usuarios.hasMany(pedidos, {foreignKey:'id_usuario'})
+pedidos.belongsTo(usuarios, {foreignKey:'id_usuario'})
+
+roles.hasMany(usuarios, {foreignKey:'id_rol'})
+usuarios.belongsTo(roles, {foreignKey:'id_rol'})

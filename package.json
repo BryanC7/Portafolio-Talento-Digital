@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "create-db": "cd backend && npx sequelize-cli db:create",
-    "create-tables": "cd backend && npx sequelize-cli db:migrate",
+    "create-tables": "cd backend && nodemon query.js",
     "init-back": "cd backend && nodemon"
   },
   "repository": {
