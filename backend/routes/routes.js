@@ -29,12 +29,12 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 passport.use(new Strategy(function(email, password, done) {
-    let userFound = false
-    if(users.includes(user => user.email === email) === false) {
+    let userFound
+    if(users.includes(user => user.email === email)) {
         userFound = users.filter(user => user.email === email)[0]
     }
     
-    if(userFound !== false) {
+    if(userFound) {
         if(userFound.password === password) {
             return done(null, {id: userFound.id_usuario, name: userFound.nombre, lastName: userFound.apellido, email: userFound.email})
         } else {
@@ -92,9 +92,10 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/clientView', (req, res, next) => {
-    next()
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
 }, (req, res) => {
-    res.render('clientView')
+    res.render('clientView', {'user': currentUser.user})
 })
 
 router.get('/adminView', (req, res, next) => {
@@ -120,6 +121,13 @@ router.post('/login-user', passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true
 }))
+
+router.get('/logout', (req, res, next) => {
+    req.logout(err => {
+        if (err) return next(err)
+        res.redirect("index")
+    })  
+})
 
 router.post('/register-user', async (req, res) => {
     const name = req.body.name
