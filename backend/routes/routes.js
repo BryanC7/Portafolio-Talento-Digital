@@ -11,6 +11,7 @@ import {newOrder} from '../../js/class/Order.js'
 
 export const router = Router()
 const users = await getTableUser()
+let currentUser
 
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
@@ -52,15 +53,16 @@ passport.deserializeUser(function(user, done) {
     done(null, user)
 })
 
-router.get('/index', (req, res) => {
-    // if(req.session.passport.user) {
-    //     currentUser = req.session.passport.user
-    //     res.render('index', {user: currentUser})
-    // } else {
-    //     res.render('index')
-    // }
-    res.render('index')
+router.get('/index', (req ,res) => {
+    currentUser = req.session.passport
+    if(!currentUser) {
+        res.render('index')
+    } else {
+        res.render('index', {'username': currentUser.user.name})
+    }
 })
+router.get('/contact', (req, res) => res.render('contact'))
+router.get('/register', (req, res) => res.render('register'))
 
 router.get('/templates', (req, res, next) => {
     if(req.isAuthenticated()) return next()
@@ -75,9 +77,6 @@ router.get('/pay',(req, res, next) => {
 }, (req, res) => {
     res.render('pay')
 })
-
-router.get('/contact', (req, res) => res.render('contact'))
-router.get('/register', (req, res) => res.render('register'))
 
 router.get('/login', (req, res) => {
     if (req.session.flash) {
@@ -101,7 +100,7 @@ router.get('/clientView', (req, res, next) => {
 router.get('/adminView', (req, res, next) => {
     next()
 }, (req, res) => {
-    res.render('adminView', {usersList: users})
+    res.render('adminView', {"usersList": users})
 })
 
 router.get('/tableUsers', (req, res, next) => {

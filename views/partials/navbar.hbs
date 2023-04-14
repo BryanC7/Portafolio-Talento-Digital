@@ -11,14 +11,16 @@
                 <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about-us">Sobre</a></li>
                 <li class="nav-item"><a class="nav-link" href="/contact">Contacto</a></li>
-                {{#if user}}
+                {{#if username}}
                 <div class="dropdown">
-                    <a href="#">
-                        <i class="fa-solid fa-circle-user fa-lg" style="color: #000000;"></i>
-                        Bienvenido: {{user.nombre}}
-                    </a>
+                    <li class="nav-item" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="nav-link dropdown-toggle">
+                            <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
+                            Bienvenido: {{username}}
+                        </a>
+                    </li>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/clientView">Ver perfil</a></li>
+                        <li><a class="dropdown-item" type="button" href="/clientView">Ver perfil</a></li>
                     </ul>
                 </div>
                 {{else}}
