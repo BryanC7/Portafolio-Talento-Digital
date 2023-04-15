@@ -6,11 +6,13 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import { Strategy } from 'passport-local'
 
-import {newUser, getTableUser, syncTables} from '../../js/class/User.js'
-import {newOrder} from '../../js/class/Order.js'
+import {newUser, getTableUser, getUsersCount} from '../../js/class/User.js'
+import {newOrder, getOrdersCount} from '../../js/class/Order.js'
 
 export const router = Router()
 const users = await getTableUser()
+const amountUsers = await getUsersCount()
+const amountOrders = await getOrdersCount()
 let currentUser
 
 router.use(bodyParser.urlencoded({ extended: false }))
@@ -36,7 +38,7 @@ passport.use(new Strategy(function(email, password, done) {
     
     if(userFound) {
         if(userFound.password === password) {
-            return done(null, {id: userFound.id_usuario, name: userFound.nombre, lastName: userFound.apellido, email: userFound.email})
+            return done(null, {id: userFound.id_usuario, name: userFound.nombre, lastName: userFound.apellido, email: userFound.email, id_rol: userFound.id_rol})
         } else {
             return done(null, false, {message: 'Contraseña incorrecta'})
         }
@@ -61,7 +63,7 @@ router.get('/index', (req ,res) => {
         currentUser.user.isAdmin = false
         if (currentUser.user.id_rol === 1){
             currentUser.user.isAdmin = true
-        } 
+        }
         res.render('index', {'username': currentUser.user.name, 'isAdmin': currentUser.user.isAdmin})
     }
 })
@@ -106,7 +108,7 @@ router.get('/clientView', (req, res, next) => {
 router.get('/adminView', (req, res, next) => {
     next()
 }, (req, res) => {
-    res.render('adminView', {"usersList": users})
+    res.render('adminView', {"usersList": users, 'usersAmount': amountUsers, 'ordersAmount': amountOrders})
 })
 
 router.get('/tableUsers', (req, res, next) => {

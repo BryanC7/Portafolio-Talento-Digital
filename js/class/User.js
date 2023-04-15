@@ -1,7 +1,7 @@
 import { sequelize } from "../../backend/connect_db.js"
 import { usuarios } from "../../backend/models/usuarios.js"
 
-export async function newUser(name, lastName, email, password){
+export async function newUser(name, lastName, email, password) {
     try {
         const user = await usuarios.create({
             nombre: name,
@@ -16,15 +16,32 @@ export async function newUser(name, lastName, email, password){
     }
 }
 
-export async function getTableUser(){
+export async function getTableUser() {
     const data = await usuarios.findAll({
-        raw:true
+        where: {
+            id_rol: 2
+        }
     })
    
     return data
 }
 
-export async function syncTables(){
+export async function adminUser() {
+    usuarios.update (
+        {id_rol: 1},
+        {where: sequelize.literal('id_usuario % 3 = 0')}
+    )
+}
+
+export async function getUsersCount() {
+    const amount = await usuarios.count({
+        col: 'nombre'
+    })
+
+    return amount
+}
+
+export async function syncTables() {
     try {
       await sequelize.sync()
       console.log('Tablas sincronizadas correctamente.')

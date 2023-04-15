@@ -1,4 +1,3 @@
-import { sequelize } from "../../backend/connect_db.js"
 import { pedidos } from "../../backend/models/pedidos.js"
 
 export async function newOrder(num_order){
@@ -12,4 +11,10 @@ export async function newOrder(num_order){
     }
 }
 
-sequelize.sync()
+export async function getOrdersCount() {
+    const amount = await pedidos.count({
+        col: 'nro_pedido'
+    })
+
+    return amount
+}

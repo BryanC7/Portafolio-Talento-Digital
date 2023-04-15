@@ -1,7 +1,9 @@
-import { syncTables } from "../js/class/User.js"
+import { syncTables, adminUser } from "../js/class/User.js"
 import { newRole } from "../js/class/Role.js"
+
 
 await syncTables()
 
-await newRole('Admin')
-await newRole('Client')
+// await adminUser()
+// await newRole('Admin')
+// await newRole('Client')
