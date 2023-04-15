@@ -10,6 +10,7 @@ export async function newUser(name, lastName, email, password){
             password
         })
         console.log('El nuevo usuario ha sido creado con éxito.')
+        await syncTables()
     } catch (error) {
         console.error('Error al crear el nuevo usuario', error)
     }

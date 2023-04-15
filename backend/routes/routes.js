@@ -58,9 +58,14 @@ router.get('/index', (req ,res) => {
     if(!currentUser) {
         res.render('index')
     } else {
-        res.render('index', {'username': currentUser.user.name})
+        currentUser.user.isAdmin = false
+        if (currentUser.user.id_rol === 1){
+            currentUser.user.isAdmin = true
+        } 
+        res.render('index', {'username': currentUser.user.name, 'isAdmin': currentUser.user.isAdmin})
     }
 })
+
 router.get('/contact', (req, res) => res.render('contact'))
 router.get('/register', (req, res) => res.render('register'))
 
@@ -137,7 +142,6 @@ router.post('/register-user', async (req, res) => {
     
     try {
         await newUser(name, lastName, email, password)
-        await syncTables()
         res.redirect('/login')
     } catch (error) {
         console.log('El usuario no se pudo registrar', error)

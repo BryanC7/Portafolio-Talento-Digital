@@ -14,13 +14,17 @@
                 {{#if username}}
                 <div class="dropdown">
                     <li class="nav-item" data-bs-toggle="dropdown" aria-expanded="false">
-                        <a href="#" class="nav-link dropdown-toggle">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown">
                             <i class="fa-solid fa-circle-user fa-lg" style="color: #ffffff;"></i>
                             Bienvenido: {{username}}
                         </a>
                     </li>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {{#if isAdmin}}
+                        <li><a class="dropdown-item" type="button" href="/adminView">Administrador</a></li>
+                        {{else}}
                         <li><a class="dropdown-item" type="button" href="/clientView">Ver perfil</a></li>
+                        {{/if}}
                         <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
                     </ul>
                 </div>

@@ -27,6 +27,11 @@ usuarios.init({
     password: {
         type: DataTypes.STRING(15),
         allowNull: false
+    },
+    id_rol: {
+        type: DataTypes.INTEGER,
+        defaultValue: 2,     
+        allowNull: false
     }
 }, 
 {
