@@ -6,11 +6,12 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import { Strategy } from 'passport-local'
 
-import {newUser, getTableUser, getUsersCount} from '../../js/class/User.js'
+import {newUser, getTableUser, getUsersCount, getClients} from '../../js/class/User.js'
 import {newOrder, getOrdersCount} from '../../js/class/Order.js'
 
 export const router = Router()
 const users = await getTableUser()
+const clients = await getClients()
 const amountUsers = await getUsersCount()
 const amountOrders = await getOrdersCount()
 let currentUser
@@ -102,19 +103,20 @@ router.get('/clientView', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
 }, (req, res) => {
-    res.render('clientView', {'user': currentUser.user})
+    res.render('clientView', {'user': currentUser.user.name})
 })
 
 router.get('/adminView', (req, res, next) => {
-    next()
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
 }, (req, res) => {
-    res.render('adminView', {"usersList": users, 'usersAmount': amountUsers, 'ordersAmount': amountOrders})
+    res.render('adminView', {'user': currentUser.user.name, "usersList": users, 'usersAmount': amountUsers, 'ordersAmount': amountOrders})
 })
 
 router.get('/tableUsers', (req, res, next) => {
     next()
 }, (req, res) => {
-    res.render('tableUsers', {"usersList": users})
+    res.render('tableUsers', {"usersList": clients})
 })
 
 router.get('/tableOrders', (req, res, next) => {

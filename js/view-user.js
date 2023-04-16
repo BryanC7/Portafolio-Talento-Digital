@@ -32,7 +32,7 @@ function createComponentsAdmin() {
     redirectLink.setAttribute('href', '/adminView')
     menuSidebar.innerHTML += `
     <li class="mb-3">
-        <a href="#" class="nav-link px-0 align-middle text-icon">
+        <a href="/tableOrders" class="nav-link px-0 align-middle text-icon">
             <i class="fa-regular fa-calendar-days fa-lg"></i><span class="ms-3 d-none d-sm-inline text-light">Pedidos realizados</span>
         </a>
     </li>
@@ -43,3 +43,26 @@ function createComponentsAdmin() {
     </li>
     `
 }
+
+// function editarProducto(id) {
+//     productoFiltrado = productos.filter(producto => producto.id === id)[0]
+
+//     const { nombre, idCategoria, precio, link, stock, idSucursal, etiqueta, descripcion} = productoFiltrado
+//     inputNombre.value = nombre
+//     selectCategorias.value = idCategoria
+//     inputPrecio.value = precio
+//     inputImagen.value = link
+//     inputStock.value = stock
+//     inputDescripcion.value = descripcion
+//     inputEtiqueta.value = etiqueta
+//     inputId.value = id
+//     inputIdCategoria.value = idCategoria
+//     inputIdSucursal.value = idSucursal
+// }
+
+// function eliminarProducto(id){
+//     const confirmar = confirm('¿Estás seguro de eliminar este producto?')
+//     if(confirmar) {
+//         producto.eliminarProductoApi(id)
+//     } 
+// }

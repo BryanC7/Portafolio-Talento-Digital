@@ -1,21 +1,24 @@
 {{#> userView}}
 <div class="container mt-3">
-    <table class="table table-light">
+    <h1 class="mb-3">Listado de clientes</h1>
+    <table class="table table-light table-bordered table-hover">
         <thead>
-            <tr class="text-center">
+            <tr class="text-center table-dark">
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Correo electrónico</th>
+                <th scope="col">Eliminar usuario</th>
             </tr>
         </thead>
         <tbody>
             {{#each usersList}}
             <tr class="text-center">
-                <td>{{id_usuario}}</td>
+                <td class="table-info">{{id_usuario}}</td>
                 <td>{{nombre}}</td>
                 <td>{{apellido}}</td>
                 <td>{{email}}</td>
+                <td><a href="#"><i class="fa-solid fa-trash-can"></i></a></td>
             </tr>
             {{/each}}
         </tbody>

@@ -18,6 +18,14 @@ export async function newUser(name, lastName, email, password) {
 
 export async function getTableUser() {
     const data = await usuarios.findAll({
+        raw: true
+    })
+   
+    return data
+}
+
+export async function getClients() {
+    const data = await usuarios.findAll({
         where: {
             id_rol: 2
         }

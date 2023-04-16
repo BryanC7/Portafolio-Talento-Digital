@@ -11,6 +11,14 @@ export async function newOrder(num_order){
     }
 }
 
+export async function getTableOrders() {
+    const data = await pedidos.findAll({
+        raw: true
+    })
+   
+    return data
+}
+
 export async function getOrdersCount() {
     const amount = await pedidos.count({
         col: 'nro_pedido'
