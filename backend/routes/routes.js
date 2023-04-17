@@ -116,13 +116,13 @@ router.get('/adminView', (req, res, next) => {
 router.get('/tableUsers', (req, res, next) => {
     next()
 }, (req, res) => {
-    res.render('tableUsers', {"usersList": clients})
+    res.render('tableUsers', {'user': currentUser.user.name, "usersList": clients})
 })
 
 router.get('/tableOrders', (req, res, next) => {
     next()
 }, (req, res) => {
-    res.render('tableOrders', {"usersList": users})
+    res.render('tableOrders', {'user': currentUser.user.name, "usersList": users})
 })
 
 router.post('/login-user', passport.authenticate('local', {
