@@ -1,6 +1,9 @@
+// import { deleteUser } from "./class/User.js"
+
 const menuSidebar = document.querySelector('#menu')
 const titleMenu = document.querySelector('#title-menu')
 const redirectLink = document.querySelector('#redirect-link')
+const message = document.querySelector('#msg')
 
 document.addEventListener('DOMContentLoaded', () => {
     if(window.location.pathname.slice(1) === 'clientView') {
@@ -8,7 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         createComponentsAdmin()
     }
+
+    if(message) {
+        setTimeout(() => {
+            message.classList.add('d-none')
+        }, 3000)
+    }
 })
+
 
 function createComponentsClient() {
     titleMenu.textContent = 'Información cliente'
@@ -44,25 +54,10 @@ function createComponentsAdmin() {
     `
 }
 
-// function editarProducto(id) {
-//     productoFiltrado = productos.filter(producto => producto.id === id)[0]
-
-//     const { nombre, idCategoria, precio, link, stock, idSucursal, etiqueta, descripcion} = productoFiltrado
-//     inputNombre.value = nombre
-//     selectCategorias.value = idCategoria
-//     inputPrecio.value = precio
-//     inputImagen.value = link
-//     inputStock.value = stock
-//     inputDescripcion.value = descripcion
-//     inputEtiqueta.value = etiqueta
-//     inputId.value = id
-//     inputIdCategoria.value = idCategoria
-//     inputIdSucursal.value = idSucursal
-// }
-
-// function eliminarProducto(id){
-//     const confirmar = confirm('¿Estás seguro de eliminar este producto?')
-//     if(confirmar) {
-//         producto.eliminarProductoApi(id)
-//     } 
-// }
+function deleteUserDB(id) {
+    const alert = confirm('¿Estás seguro de eliminar a este usuario?')
+    if(alert) {
+        console.log(`Eliminando usuario con el id: ${id}`)
+        // deleteUser(id)
+    }
+}

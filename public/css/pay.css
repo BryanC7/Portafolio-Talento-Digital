@@ -61,12 +61,12 @@ input {
 }
 
 .input-group-two .expiry-input-group input {
-	width: 18px;
+	width: 50px;
 }
 
 
 .input-group-cvc {
-	max-width: 30px;
+	max-width: 60px;
 }
 
 .input-group-two .card-number input {
@@ -226,7 +226,11 @@ label {
 	text-transform: uppercase;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
+
+	input {
+		margin-top: 8px;
+	}
 
 	.card-pay {
 		border-radius: 0;

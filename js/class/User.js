@@ -10,7 +10,6 @@ export async function newUser(name, lastName, email, password) {
             password
         })
         console.log('El nuevo usuario ha sido creado con éxito.')
-        await syncTables()
     } catch (error) {
         console.error('Error al crear el nuevo usuario', error)
     }
@@ -38,6 +37,23 @@ export async function adminUser() {
     usuarios.update (
         {id_rol: 1},
         {where: sequelize.literal('id_usuario % 3 = 0')}
+    )
+}
+
+export async function updateInfoUser(id, name, lastName, email, password) {
+    usuarios.update ({
+        nombre: name,
+        apellido: lastName,
+        email,
+        password
+    },
+    {where: sequelize.literal(`id_usuario = ${id}`)}
+    )
+}
+
+export async function deleteUser(id) {
+    usuarios.destroy(
+        {where: sequelize.literal(`id_usuario = ${id}`)}
     )
 }
 

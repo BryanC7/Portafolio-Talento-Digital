@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import { Strategy } from 'passport-local'
 
-import {newUser, getTableUser, getUsersCount, getClients} from '../../js/class/User.js'
+import {newUser, getTableUser, getUsersCount, getClients, updateInfoUser} from '../../js/class/User.js'
 import {newOrder, getOrdersCount} from '../../js/class/Order.js'
 
 export const router = Router()
@@ -39,7 +39,13 @@ passport.use(new Strategy(function(email, password, done) {
     
     if(userFound) {
         if(userFound.password === password) {
-            return done(null, {id: userFound.id_usuario, name: userFound.nombre, lastName: userFound.apellido, email: userFound.email, id_rol: userFound.id_rol})
+            return done(null, {
+                id: userFound.id_usuario, 
+                name: userFound.nombre, 
+                lastName: userFound.apellido, 
+                email: userFound.email, 
+                id_rol: userFound.id_rol
+            })
         } else {
             return done(null, false, {message: 'Contraseña incorrecta'})
         }
@@ -65,14 +71,24 @@ router.get('/index', (req ,res) => {
         if (currentUser.user.id_rol === 1){
             currentUser.user.isAdmin = true
         }
-        res.render('index', {'username': currentUser.user.name, 'isAdmin': currentUser.user.isAdmin})
+        res.render('index', {
+            'username': currentUser.user.name, 
+            'isAdmin': currentUser.user.isAdmin
+        })
     }
 })
 
 router.get('/contact', (req, res) => res.render('contact'))
 router.get('/register', (req, res) => res.render('register'))
 router.get('/editInfo', (req, res) => {
-    res.render('editInfo', {'user': currentUser.user.name, 'name': userFound.nombre, 'lastName': userFound.apellido, 'email': userFound.email, 'password': userFound.password})
+    res.render('editInfo', {
+        'user': currentUser.user.name, 
+        'id': userFound.id_usuario, 
+        'name': userFound.nombre, 
+        'lastName': userFound.apellido, 
+        'email': userFound.email, 
+        'password': userFound.password
+    })
 })
 
 router.get('/templates', (req, res, next) => {
@@ -113,19 +129,30 @@ router.get('/adminView', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
 }, (req, res) => {
-    res.render('adminView', {'user': currentUser.user.name, "usersList": users, 'usersAmount': amountUsers, 'ordersAmount': amountOrders})
+    res.render('adminView', {
+        'user': currentUser.user.name, 
+        "usersList": users, 
+        'usersAmount': amountUsers, 
+        'ordersAmount': amountOrders
+    })
 })
 
 router.get('/tableUsers', (req, res, next) => {
     next()
 }, (req, res) => {
-    res.render('tableUsers', {'user': currentUser.user.name, "usersList": clients})
+    res.render('tableUsers', {
+        'user': currentUser.user.name, 
+        "usersList": clients
+    })
 })
 
 router.get('/tableOrders', (req, res, next) => {
     next()
 }, (req, res) => {
-    res.render('tableOrders', {'user': currentUser.user.name, "usersList": users})
+    res.render('tableOrders', {
+        'user': currentUser.user.name, 
+        "usersList": users
+    })
 })
 
 router.post('/login-user', passport.authenticate('local', {
@@ -159,17 +186,19 @@ router.post('/register-user', async (req, res) => {
     }
 })
 
-// router.put('/edit-user', async (req, res) => {
-//     const name = req.body.name
-//     const lastName = req.body.lastName
-//     const email = req.body.email
-//     const password = req.body.password
+router.post('/edit-user', async (req, res) => {
+    const id = userFound.id_usuario
+    const name = req.body.name
+    const lastName = req.body.lastName
+    const email = req.body.email
+    const password = req.body.password
     
-//     try {
-        
-//     } catch (error) {
-//         console.log('El usuario no se pudo editar', error)
-//     }
-// })
+    try {
+        await updateInfoUser(id, name, lastName, email, password)
+        res.render('editInfo', {message: 'Usuario editado correctamente'})
+    } catch (error) {
+        console.log('El usuario no se pudo editar', error)
+    }
+})
 
 export default router
