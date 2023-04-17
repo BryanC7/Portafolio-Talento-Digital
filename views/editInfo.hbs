@@ -1,3 +1,22 @@
 {{#> userView}}
-
+<div class="mx-auto w-75 mt-5">
+    <div class="bg-dark bg-gradient p-4 border rounded-end">
+        <h2 class="text-center text-light mb-5">Editar tu información de usuario</h2>
+        <form action="edit-user" method="put">
+            <div class="input-group mt-3">
+                <input class="form-control bg-light p-2 fs-5" type="text" placeholder="Tu nombre" name="name"/>
+            </div>
+            <div class="input-group mt-4 mb-3">
+                <input class="form-control bg-light p-2 fs-5" type="text" placeholder="Tus apellido" name="lastName"/>
+            </div>
+            <div class="input-group mt-4 mb-3">
+                <input class="form-control bg-light p-2 fs-5" type="email" placeholder="Tu correo electrónico" name="email"/>
+            </div>
+            <div class="input-group mt-4 mb-3">
+                <input class="form-control bg-light p-2 fs-5" type="password" placeholder="Tu contraseña" name="password"/>
+            </div>
+            <button class="btn btn-primary text-white fs-5 w-50 mt-4 p-2 fw-semibold shadow-sm" type="submit">Guardar información</button>
+        </form>
+    </div>
+</div>
 {{/userView}}

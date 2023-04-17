@@ -20,7 +20,7 @@ function createComponentsClient() {
         </a>
     </li>
     <li class="mb-3">
-        <a href="#" class="nav-link px-0 align-middle text-icon">
+        <a href="/editInfo" class="nav-link px-0 align-middle text-icon">
             <i class="fa-solid fa-pen-to-square fa-lg"></i><span class="ms-3 d-none d-sm-inline text-light">Editar datos personales</span>
         </a>
     </li>

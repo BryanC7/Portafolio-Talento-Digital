@@ -14,6 +14,7 @@ const users = await getTableUser()
 const clients = await getClients()
 const amountUsers = await getUsersCount()
 const amountOrders = await getOrdersCount()
+let userFound
 let currentUser
 
 router.use(bodyParser.urlencoded({ extended: false }))
@@ -32,7 +33,6 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 passport.use(new Strategy(function(email, password, done) {
-    let userFound
     if(users.filter(user => user.email === email)) {
         userFound = users.filter(user => user.email === email)[0]
     }
@@ -71,6 +71,9 @@ router.get('/index', (req ,res) => {
 
 router.get('/contact', (req, res) => res.render('contact'))
 router.get('/register', (req, res) => res.render('register'))
+router.get('/editInfo', (req, res) => {
+    res.render('editInfo', {'user': currentUser.user.name, 'name': userFound.nombre, 'lastName': userFound.apellido, 'email': userFound.email, 'password': userFound.password})
+})
 
 router.get('/templates', (req, res, next) => {
     if(req.isAuthenticated()) return next()
@@ -90,7 +93,7 @@ router.get('/login', (req, res) => {
     if (req.session.flash) {
         if (req.session.flash.error) {
             let msjError = req.session.flash.error[0].toString()
-            res.render('login', {error:msjError})  
+            res.render('login', {error: msjError})  
         }  else {
             res.render('login')
         }
@@ -144,12 +147,29 @@ router.post('/register-user', async (req, res) => {
     const email = req.body.email
     const password = req.body.password
     
-    try {
-        await newUser(name, lastName, email, password)
-        res.redirect('/login')
-    } catch (error) {
-        console.log('El usuario no se pudo registrar', error)
+    if(users.filter(user => user.email === email) == []) {
+        res.render('register', {error: 'El correo electrónico ya se encuentra registrado'})
+    } else {
+        try {
+            await newUser(name, lastName, email, password)
+            res.redirect('/login')
+        } catch (error) {
+            console.log('El usuario no se pudo registrar', error)
+        }
     }
 })
+
+// router.put('/edit-user', async (req, res) => {
+//     const name = req.body.name
+//     const lastName = req.body.lastName
+//     const email = req.body.email
+//     const password = req.body.password
+    
+//     try {
+        
+//     } catch (error) {
+//         console.log('El usuario no se pudo editar', error)
+//     }
+// })
 
 export default router
