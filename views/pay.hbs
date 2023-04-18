@@ -43,34 +43,34 @@
                 </div>
                 <div class="details">
                     <img class="payment-method-logo" src="https://res.cloudinary.com/dj7k0lade/image/upload/v1525487657/codepen/credit_card_checkout/visa.png"/>
-                    <form>
+                    <form id="form-pay">
                         <div class="input-name-card">
                             <label>Name on Card</label>
-                            <input placeholder="Lewis Alberto Briffa"/>
+                            <input placeholder="Lewis Alberto Briffa" id="card-name" name="card-name" minlength="10" maxlength="40"/>
                         </div>
                         
                         <div class="input-group-two">
                             <div class="card-number">
                                 <label>Card Number</label>
-                                <input placeholder="4800 2800 1920 1234"/>
+                                <input placeholder="4800 2800 1920 1234" id="card-number" name="card-number" maxlength="19"/>
                             </div>
                             <div class="input-group-expiry">
                                 <label>
                                     Expiry Date
                                     <div class="expiry-input-group">
-                                        <input placeholder="05"/>
-                                        <input placeholder="09"/>
-                                        <input placeholder="18"/>
+                                        <input placeholder="05" id="expiry-1" name="expiry-1" maxlength="2"/>
+                                        <input placeholder="09" id="expiry-2" name="expiry-2" maxlength="2"/>
+                                        <input placeholder="18" id="expiry-3" name="expiry-3" maxlength="2"/>
                                     </div>
                                 </label>
                             </div>
                         </div>
                         <div class="input-group-cvc">
                             <label>CVC</label>
-                            <input placeholder="321"/>
+                            <input placeholder="321" id="cvc" name="cvc" maxlength="3"/>
                         </div>
+                        <button class="pay">Realizar pago</button>
                     </form>
-                    <button class="pay">Pay $92.96</button>
                 </div>
             </div>   
         </div>
@@ -78,3 +78,4 @@
 </body>
 
 <script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/validate-pay.js"></script>

@@ -99,8 +99,8 @@ router.get('/templates', (req, res, next) => {
 })
 
 router.get('/pay',(req, res, next) => {
-    if(req.isAuthenticated()) return next()
-    res.redirect('/index')
+    next()
+    // res.redirect('/index')
 }, (req, res) => {
     res.render('pay')
 })

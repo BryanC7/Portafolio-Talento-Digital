@@ -216,11 +216,11 @@ label {
 .pay {
 	position: absolute;
 	background: var(--yellow);
-	bottom: 20px;
-	right: 20px;
+	bottom: 0px;
+	right: 60px;
 	border-radius: 66px;
 	border: 0;
-	padding: 20px 44px;
+	padding: 18px 40px;
 	font-weight: 400;
 	font-size: 14px;
 	text-transform: uppercase;
@@ -240,6 +240,11 @@ label {
 		border-radius: 0;
 		width: 100%;
 		float: right;
+	}
+
+	.pay {
+		bottom: 0px;
+		right: 60px;
 	}
 
 	.details {
@@ -274,5 +279,15 @@ label {
 
 	.input-name-card input{
 		width: 80%;
+	}
+
+	.pay {
+		bottom: 8px;
+		right: 25px;
+		padding: 10px 20px;
+	}
+
+	.details {
+		height: 92%;
 	}
 }

@@ -1,5 +1,3 @@
-// import { deleteUser } from "./class/User.js"
-
 const menuSidebar = document.querySelector('#menu')
 const titleMenu = document.querySelector('#title-menu')
 const redirectLink = document.querySelector('#redirect-link')
@@ -18,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000)
     }
 })
-
 
 function createComponentsClient() {
     titleMenu.textContent = 'Información cliente'
@@ -52,12 +49,4 @@ function createComponentsAdmin() {
         </a>
     </li>
     `
-}
-
-function deleteUserDB(id) {
-    const alert = confirm('¿Estás seguro de eliminar a este usuario?')
-    if(alert) {
-        console.log(`Eliminando usuario con el id: ${id}`)
-        // deleteUser(id)
-    }
 }
