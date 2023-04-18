@@ -7,11 +7,12 @@ import session from 'express-session'
 import { Strategy } from 'passport-local'
 
 import {newUser, getTableUser, getUsersCount, getClients, updateInfoUser} from '../../js/class/User.js'
-import {newOrder, getOrdersCount} from '../../js/class/Order.js'
+import {newOrder, getTableOrders , getOrdersCount} from '../../js/class/Order.js'
 
 export const router = Router()
 const users = await getTableUser()
 const clients = await getClients()
+const orders = await getTableOrders()
 const amountUsers = await getUsersCount()
 const amountOrders = await getOrdersCount()
 let userFound
@@ -99,8 +100,8 @@ router.get('/templates', (req, res, next) => {
 })
 
 router.get('/pay',(req, res, next) => {
-    next()
-    // res.redirect('/index')
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
 }, (req, res) => {
     res.render('pay')
 })
@@ -138,7 +139,8 @@ router.get('/adminView', (req, res, next) => {
 })
 
 router.get('/tableUsers', (req, res, next) => {
-    next()
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
 }, (req, res) => {
     res.render('tableUsers', {
         'user': currentUser.user.name, 
@@ -147,11 +149,12 @@ router.get('/tableUsers', (req, res, next) => {
 })
 
 router.get('/tableOrders', (req, res, next) => {
-    next()
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
 }, (req, res) => {
     res.render('tableOrders', {
         'user': currentUser.user.name, 
-        "usersList": users
+        "orderList": orders
     })
 })
 
@@ -198,6 +201,15 @@ router.post('/edit-user', async (req, res) => {
         res.render('editInfo', {message: 'Usuario editado correctamente'})
     } catch (error) {
         console.log('El usuario no se pudo editar', error)
+    }
+})
+
+router.post('/payment', async (req, res) => {
+    try {
+        await newOrder(Math.round(Math.random()*999999), currentUser.user.id)
+        res.render('index')
+    } catch (error) {
+        console.log('No se logró realizar el pedido', error)
     }
 })
 

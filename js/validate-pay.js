@@ -1,15 +1,14 @@
-const cardName = document.querySelector('#card-name')
-const cardNumber = document.querySelector('#card-number')
-const expiry1 = document.querySelector('#expiry-1')
-const expiry2 = document.querySelector('#expiry-2')
-const expiry3 = document.querySelector('#expiry-3')
-const cvc = document.querySelector('#cvc')
 const inputs = document.querySelectorAll('#form-pay input')
-const form = document.querySelector('#form-pay')
+const btnPay = document.querySelector('#btn-pay')
 
-inputs.forEach(input => {
-	input.addEventListener('blur', validations)
-})
+const cardData = {
+    cardName: '',
+    cardNumber: '',
+    expiry1: '',
+    expiry2: '',
+    expiry3: '',
+    cvc: ''
+}
 
 const expressions = {
     nameCard: /^[a-zA-ZÀ-ÿ\s]{10,40}$/,
@@ -18,21 +17,27 @@ const expressions = {
     expiryDate: /^\d{2}$/
 }
 
+document.addEventListener('DOMContentLoaded', checkObj)
+
+inputs.forEach(input => {
+    input.addEventListener('blur', validations)
+})
+
 function validations(e) {
     switch (e.target.name) {
-        case "card-name":
+        case "cardName":
             validateField(expressions.nameCard, e.target)
         break
-		case "card-number":
+		case "cardNumber":
 			validateField(expressions.numberCard, e.target)
 		break
-        case "expiry-1":
+        case "expiry1":
             validateField(expressions.expiryDate, e.target)
         break
-		case "expiry-2":
+		case "expiry2":
 			validateField(expressions.expiryDate, e.target)
 		break
-		case "expiry-3":
+		case "expiry3":
 			validateField(expressions.expiryDate, e.target)
 		break
 		case "cvc":
@@ -42,19 +47,24 @@ function validations(e) {
 }
 
 function validateField(expression, input) {
-    if(expression.test(input.value)){
-        input.classList.remove('border-danger')
-		input.classList.add('border', 'border-success')
-	} else {
+    if(!expression.test(input.value) || input.value === ''){
         input.classList.remove('border-success')
 		input.classList.add('border', 'border-danger')
+        cardData[input.name] = ''
+        checkObj()
+        return
+	} else {
+        input.classList.remove('border-danger')
+		input.classList.add('border', 'border-success')
+        cardData[input.name] = input.value.trim().toLowerCase()
+        checkObj()
 	}
 }
 
-form.addEventListener('submit', e => {
-    e.preventDefault()
-    let array = []
-    for(let i = 0; i < inputs.length; i++) {
-        array.push(inputs[i].value)
-    }
-})
+function checkObj() {
+    if(Object.values(cardData).includes('')) {
+        btnPay.disabled = true
+        return
+    } 
+    btnPay.disabled = false
+}

@@ -11,6 +11,14 @@
             </tr>
         </thead>
         <tbody>
+            {{#each orderList}}
+            <tr class="text-center">
+                <td class="table-info">{{id_pedido}}</td>
+                <td>{{nro_pedido}}</td>
+                <td>{{id_usuario}}</td>
+                <td><a href="#"><i class="fa-solid fa-trash-can"></i></a></td>
+            </tr>
+            {{/each}}
         </tbody>
     </table>
 </div>

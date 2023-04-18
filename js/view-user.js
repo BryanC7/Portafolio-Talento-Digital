@@ -49,4 +49,11 @@ function createComponentsAdmin() {
         </a>
     </li>
     `
+    calculateProfits()
+}
+
+function calculateProfits() {
+    const profitDiv = document.querySelector('#profits')
+    const profitValue = parseInt(profitDiv.textContent)
+    profitDiv.textContent = '$' + profitValue * 250000
 }

@@ -158,7 +158,7 @@ input {
 .product-description {
 	float: left;
 	font-size: 12.5px;
-	max-width: 130px;
+	max-width: 250px;
 	padding-left: 15px;
 }
 
@@ -271,6 +271,7 @@ label {
 	form {
 		left: 0%;
 		margin-left: 15px;
+		top: -55px;
 	}
 
 	label {

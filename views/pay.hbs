@@ -19,57 +19,54 @@
             <div class="card-pay">
                 <div class="order">
                     <div class="order-header">
-                        <div class="order-title">Order</div>
-                        <div class="order-number">657234</div>
+                        <div class="order-title">Número de órden</div>
+                        <div class="order-number">1</div>
                     </div>
                     <div class="products">
                         <div class="product">
-                            <img src="https://res.cloudinary.com/dj7k0lade/image/upload/v1525487587/codepen/credit_card_checkout/bag_1.png"/>
-                            <p class="product-description">Vintage Military Men Canvas Messenger Bag </p><span class="product-price">$32.99</span>
+                            <p class="product-description m-0 p-0">Página con componentes funcionales</p>
                         </div>
                         <div class="product">
-                            <img src="https://res.cloudinary.com/dj7k0lade/image/upload/v1525487620/codepen/credit_card_checkout/hat_1.png"/>
-                            <p class="product-description">Black Fedora Plain Hat Outfit accessory for Gangster Fancy Dress</p><span class="product-price">$9.99</span>
+                            <p class="product-description m-0 p-0">Información almacenada en base de datos</p>
                         </div>
                         <div class="product">
-                            <img src="https://res.cloudinary.com/dj7k0lade/image/upload/v1525487636/codepen/credit_card_checkout/toaster_1.png"/>
-                            <p class="product-description">Swan Products ST17010GRN 4-Slice Retro Toaster, 800 W, Grey</p><span class="product-price">$39.99</span>
+                            <p class="product-description m-0 p-0">Autosustentable con mantenimientos periódicos</p>
                         </div>
                     </div>
                     <div class="order-total">
                         <div class="order-total-label">Total</div>
-                        <div class="order-total-price">$92.96</div>
+                        <div class="order-total-price">$250.000</div>
                     </div>
                 </div>
                 <div class="details">
                     <img class="payment-method-logo" src="https://res.cloudinary.com/dj7k0lade/image/upload/v1525487657/codepen/credit_card_checkout/visa.png"/>
-                    <form id="form-pay">
+                    <form id="form-pay" class="p-1" action="payment" method="post">
                         <div class="input-name-card">
-                            <label>Name on Card</label>
-                            <input placeholder="Lewis Alberto Briffa" id="card-name" name="card-name" minlength="10" maxlength="40"/>
+                            <label>Nombre de la tarjeta</label>
+                            <input placeholder="Javier Torres Díaz" name="cardName" minlength="10" maxlength="40"/>
                         </div>
                         
                         <div class="input-group-two">
                             <div class="card-number">
-                                <label>Card Number</label>
-                                <input placeholder="4800 2800 1920 1234" id="card-number" name="card-number" maxlength="19"/>
+                                <label>Número de la tarjeta</label>
+                                <input placeholder="4800 2800 1920 1234" name="cardNumber" maxlength="19"/>
                             </div>
                             <div class="input-group-expiry">
                                 <label>
-                                    Expiry Date
+                                    Fecha expiración
                                     <div class="expiry-input-group">
-                                        <input placeholder="05" id="expiry-1" name="expiry-1" maxlength="2"/>
-                                        <input placeholder="09" id="expiry-2" name="expiry-2" maxlength="2"/>
-                                        <input placeholder="18" id="expiry-3" name="expiry-3" maxlength="2"/>
+                                        <input placeholder="05" name="expiry1" maxlength="2"/>
+                                        <input placeholder="09" name="expiry2" maxlength="2"/>
+                                        <input placeholder="18" name="expiry3" maxlength="2"/>
                                     </div>
                                 </label>
                             </div>
                         </div>
                         <div class="input-group-cvc">
-                            <label>CVC</label>
-                            <input placeholder="321" id="cvc" name="cvc" maxlength="3"/>
+                            <label>CVV</label>
+                            <input placeholder="321" name="cvc" maxlength="3"/>
                         </div>
-                        <button class="pay">Realizar pago</button>
+                        <button class="pay" id="btn-pay">Realizar pago</button>
                     </form>
                 </div>
             </div>   
