@@ -5,9 +5,11 @@ import flash from 'express-flash'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import { Strategy } from 'passport-local'
+import methodOverride from 'method-override'
 
-import {newUser, getTableUser, getUsersCount, getClients, updateInfoUser} from '../../js/class/User.js'
+import {newUser, getTableUser, getUsersCount, getClients, updateInfoUser, deleteUser} from '../../js/class/User.js'
 import {newOrder, getTableOrders , getOrdersCount} from '../../js/class/Order.js'
+// import { sendEmail } from '../../js/email.js'
 
 export const router = Router()
 const users = await getTableUser()
@@ -18,6 +20,7 @@ const amountOrders = await getOrdersCount()
 let userFound
 let currentUser
 
+router.use(methodOverride("_method", { methods: ["GET", "POST"] }))
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
@@ -158,18 +161,19 @@ router.get('/tableOrders', (req, res, next) => {
     })
 })
 
-router.post('/login-user', passport.authenticate('local', {
-    successRedirect: '/index',
-    failureRedirect: '/login',
-    failureFlash: true
-}))
-
 router.get('/logout', (req, res, next) => {
     req.logout(err => {
         if (err) return next(err)
         res.redirect("index")
     })  
 })
+
+router.post('/login-user', passport.authenticate('local', {
+    successRedirect: '/index',
+    failureRedirect: '/login',
+    failureFlash: true
+}))
+
 
 router.post('/register-user', async (req, res) => {
     const name = req.body.name
@@ -207,9 +211,20 @@ router.post('/edit-user', async (req, res) => {
 router.post('/payment', async (req, res) => {
     try {
         await newOrder(Math.round(Math.random()*999999), currentUser.user.id)
+        // await sendEmail(currentUser.user.name, currentUser.user.email)
         res.render('index')
     } catch (error) {
         console.log('No se logró realizar el pedido', error)
+    }
+})
+
+router.delete("/tableUsers/:id", async (req, res) => {
+    const {id} = req.params
+    try {
+        await deleteUser(id)
+        res.redirect('/tableUsers')
+    } catch (error) {
+        console.log('No se pudo eliminar usuario', error)
     }
 })
 
