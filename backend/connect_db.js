@@ -1,9 +1,15 @@
 import { Sequelize } from "sequelize"
+import dotenv from 'dotenv'
 
-export const sequelize = new Sequelize('digitalizate_db', 'postgres', '1234', {
-    host: 'localhost',
-    dialect: 'postgres',
-    define: {
-        timestamps: false
+dotenv.config()
+
+export const sequelize = new Sequelize (
+    process.env.NAME_DB,
+    process.env.USER_DB,
+    process.env.PASSWORD_DB,
+    { 
+        host:process.env.HOST_DB, 
+        dialect:'postgres',
+        define: {timestamps: false}
     }
-})
+)
