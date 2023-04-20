@@ -1,75 +1,25 @@
-import { sequelize } from "../../backend/connect_db.js"
-import { usuarios } from "../../backend/models/usuarios.js"
-
-export async function newUser(name, lastName, email, password) {
-    try {
-        const user = await usuarios.create({
-            nombre: name,
-            apellido: lastName,
-            email,
-            password
-        })
-        console.log('El nuevo usuario ha sido creado con éxito.')
-    } catch (error) {
-        console.error('Error al crear el nuevo usuario', error)
+export class User {
+    constructor() {
+        this.url = ''
     }
-}
 
-export async function getTableUser() {
-    const data = await usuarios.findAll({
-        raw: true
-    })
-   
-    return data
-}
+    getUsers = async () => {
+        await fetch(this.url)
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
 
-export async function getClients() {
-    const data = await usuarios.findAll({
-        where: {
-            id_rol: 2
-        }
-    })
-   
-    return data
-}
+    getClients = async () => {
+        await fetch(this.url)
+            .then(res = res.json())
+            .then(data = console.log(data))
+    }
 
-export async function adminUser() {
-    usuarios.update (
-        {id_rol: 1},
-        {where: sequelize.literal('id_usuario % 3 = 0')}
-    )
-}
+    editUser = async () => {
+        await fetch(this.url,)
+    }
 
-export async function updateInfoUser(id, name, lastName, email, password) {
-    usuarios.update ({
-        nombre: name,
-        apellido: lastName,
-        email,
-        password
-    },
-    {where: sequelize.literal(`id_usuario = ${id}`)}
-    )
-}
-
-export async function deleteUser(id) {
-    usuarios.destroy(
-        {where: sequelize.literal(`id_usuario = ${id}`)}
-    )
-}
-
-export async function getUsersCount() {
-    const amount = await usuarios.count({
-        col: 'nombre'
-    })
-
-    return amount
-}
-
-export async function syncTables() {
-    try {
-      await sequelize.sync()
-      console.log('Tablas sincronizadas correctamente.')
-    } catch (error) {
-      console.error('Error en la sincronización', error)
+    deleteUser = async () => {
+        await fetch(this.url,)
     }
 }

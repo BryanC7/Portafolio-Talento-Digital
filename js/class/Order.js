@@ -1,29 +1,17 @@
-import { pedidos } from "../../backend/models/pedidos.js"
-
-export async function newOrder(num_order, id){
-    try {
-        const order = await pedidos.create({
-            nro_pedido: num_order,
-            id_usuario: id
-        })
-        console.log('El pedido ha sido creado con éxito.')
-    } catch (error) {
-        console.error('Error al crear el nuevo pedido', error)
+export class Order {
+    constructor() {
+        this.url = ''
     }
-}
 
-export async function getTableOrders() {
-    const data = await pedidos.findAll({
-        raw: true
-    })
-   
-    return data
-}
+    addOrder = async() => {
+        await fetch(this.url,)
+    }
 
-export async function getOrdersCount() {
-    const amount = await pedidos.count({
-        col: 'nro_pedido'
-    })
+    getOrders = async() => {
+        await fetch(this.url)
+    }
 
-    return amount
+    getCountOrders = async() => {
+        await fetch(this.url)
+    }
 }
