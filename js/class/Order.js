@@ -1,17 +1,44 @@
 export class Order {
     constructor() {
-        this.url = ''
+        this.url = 'http://localhost:4000/orders'
     }
 
-    addOrder = async() => {
-        await fetch(this.url,)
+    async getOrders() {
+        const response = await fetch(this.url)
+        const data = await response.json()
+
+        return data
     }
 
-    getOrders = async() => {
-        await fetch(this.url)
+    async getOrdersCount() {
+        const response = await fetch(`${this.url}/countOrders`)
+        const data = await response.json()
+
+        return data
     }
 
-    getCountOrders = async() => {
-        await fetch(this.url)
+    async addOrder(order) {
+        await fetch(this.url,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(order)
+            } 
+        )
+    }
+
+    async deleteOrder(id) {
+        await fetch(`${this.url}/${id}`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+            } 
+        )
     }
 }

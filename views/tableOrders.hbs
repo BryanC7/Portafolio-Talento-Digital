@@ -7,6 +7,8 @@
                 <th scope="col">ID</th>
                 <th scope="col">Número de orden</th>
                 <th scope="col">ID de usuario</th>
+                <th scope="col">Nombre usuario</th>
+                <th scope="col">Apellido usuario</th>
                 <th scope="col">Eliminar pedido</th>
             </tr>
         </thead>
@@ -16,7 +18,9 @@
                 <td class="table-info">{{id_pedido}}</td>
                 <td>{{nro_pedido}}</td>
                 <td>{{id_usuario}}</td>
-                <td><a href="#"><i class="fa-solid fa-trash-can"></i></a></td>
+                <td>{{user.nombre}}</td>
+                <td>{{user.apellido}}</td>
+                <td><a href="/tableOrders/{{id_pedido}}?_method=delete"><i class="fa-solid fa-trash-can"></i></a></td>
             </tr>
             {{/each}}
         </tbody>

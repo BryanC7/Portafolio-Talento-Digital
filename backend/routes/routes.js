@@ -8,17 +8,18 @@ import session from 'express-session'
 import { Strategy } from 'passport-local'
 import methodOverride from 'method-override'
 
-// Importaciones de funciones
-import {newUser, getTableUser, getUsersCount, getClients, updateInfoUser, deleteUser} from '../../js/class/User.js'
-import {newOrder, getTableOrders , getOrdersCount} from '../../js/class/Order.js'
+// Importaciones de clases
+import { User } from '../../js/class/User.js'
+import { Order } from '../../js/class/Order.js'
 
-// Variables
+// Router para el uso de rutas 
 const router = Router()
-const users = await getTableUser()
-const clients = await getClients()
-const orders = await getTableOrders()
-const amountUsers = await getUsersCount()
-const amountOrders = await getOrdersCount()
+
+// Instancias de clases
+const user = new User()
+const order = new Order()
+
+// Variables globales para validar y autenticar usuario activo en sesión
 let userFound
 let currentUser
 
@@ -37,7 +38,8 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 // Uso de estrategia para el control del inicio de sesión de usuarios
-passport.use(new Strategy(function(email, password, done) {
+passport.use(new Strategy(async function(email, password, done) {
+    const users = await user.getUsers()
     if(users.filter(user => user.email === email)) {
         userFound = users.filter(user => user.email === email)[0]
     } 
@@ -118,7 +120,7 @@ router.get('/pay',(req, res, next) => {
     res.render('pay')
 })
 
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
     if (req.session.flash) {
         if (req.session.flash.error) {
             let msjError = req.session.flash.error[0].toString()
@@ -130,6 +132,7 @@ router.get('/login', (req, res) => {
             res.render('login')
         }
     } else {
+        await user.getUsers() 
         res.render('login')
     } 
 })
@@ -144,32 +147,32 @@ router.get('/clientView', (req, res, next) => {
 router.get('/adminView', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
-}, (req, res) => {
+}, async (req, res) => {
     res.render('adminView', {
         'user': currentUser.user.name, 
-        "usersList": users, 
-        'usersAmount': amountUsers, 
-        'ordersAmount': amountOrders
+        "usersList": await user.getClients(), 
+        'usersAmount': await user.getUsersCount(), 
+        'ordersAmount': await order.getOrdersCount()
     })
 })
 
 router.get('/tableUsers', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
-}, (req, res) => {
+}, async (req, res) => {
     res.render('tableUsers', {
         'user': currentUser.user.name, 
-        "usersList": clients
+        "usersList": await user.getClients()
     })
 })
 
 router.get('/tableOrders', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
-}, (req, res) => {
+}, async (req, res) => {
     res.render('tableOrders', {
         'user': currentUser.user.name, 
-        "orderList": orders
+        "orderList": await order.getOrders()
     })
 })
 
@@ -188,13 +191,20 @@ router.post('/login-user', passport.authenticate('local', {
 
 
 router.post('/register-user', async (req, res) => {
-    const { name, lastName, email, password} = req.body
+    const users = await user.getUsers()
+
+    const newUser = {
+        nombre: req.body.name,
+        apellido: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password
+    }
     
-    if(users.filter(user => user.email === email) == []) {
+    if(await users.filter(user => user.email === newUser.email) == []) {
         res.render('register', {error: 'El correo electrónico ya se encuentra registrado'})
     } else {
         try {
-            await newUser(name, lastName, email, password)
+            await user.addUser(newUser)
             res.send("<script>alert('Usuario registrado correctamente');window.location.href='/login'</script>")
         } catch (error) {
             console.log('El usuario no se pudo registrar', error)
@@ -203,10 +213,16 @@ router.post('/register-user', async (req, res) => {
 })
 
 router.post('/edit-user', async (req, res) => {
-    const { id, name, lastName, email, password} = req.body
+    const userEdited = {
+        id: currentUser.user.id,
+        nombre: req.body.name,
+        apellido: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password
+    }
 
     try {
-        await updateInfoUser(id, name, lastName, email, password)
+        await user.editUser(userEdited)
         res.render('editInfo', {message: 'Usuario editado correctamente'})
     } catch (error) {
         res.send("<script>alert('El usuario no se pudo editar');window.location.href='/editInfo'</script>")
@@ -215,9 +231,14 @@ router.post('/edit-user', async (req, res) => {
 })
 
 router.post('/payment', async (req, res) => {
+    const newOrder = {
+        nro_pedido: Math.round(Math.random()*999999),
+        id_usuario: currentUser.user.id
+    }
+
     try {
-        await newOrder(Math.round(Math.random()*999999), currentUser.user.id)
-        res.render('index')
+        await order.addOrder(newOrder)
+        res.send("<script>alert('Se ha autorizado el pago y se almacenó tu pedido');window.location.href='/index'</script>")
     } catch (error) {
         res.send("<script>alert('No se logró realizar el pedido');window.location.href='/payment'</script>")
         console.log(error)
@@ -227,10 +248,20 @@ router.post('/payment', async (req, res) => {
 router.delete("/tableUsers/:id", async (req, res) => {
     const { id } = req.params
     try {
-        await deleteUser(id)
+        await user.deleteUser(id)
         res.redirect('/tableUsers')
     } catch (error) {
         console.log('No se pudo eliminar usuario', error)
+    }
+})
+
+router.delete("/tableOrders/:id", async (req, res) => {
+    const { id } = req.params
+    try {
+        await order.deleteOrder(id)
+        res.redirect('/tableOrders')
+    } catch (error) {
+        console.log('No se pudo eliminar pedido', error)
     }
 })
 
