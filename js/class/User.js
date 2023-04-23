@@ -18,7 +18,7 @@ export class User {
     }
 
     async getUsersCount() {
-        const response = await fetch(`${this.url}/countUsers`)
+        const response = await fetch(`${this.url}/userscount`)
         const data = await response.json()
 
         return data

@@ -10,6 +10,13 @@ export class Order {
         return data
     }
 
+    async getOrdersUser(id) {
+        const response = await fetch(`${this.url}/${id}`)
+        const data = await response.json()
+
+        return data
+    }
+
     async getOrdersCount() {
         const response = await fetch(`${this.url}/countOrders`)
         const data = await response.json()

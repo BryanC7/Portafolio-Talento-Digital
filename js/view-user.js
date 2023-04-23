@@ -2,9 +2,10 @@ const menuSidebar = document.querySelector('#menu')
 const titleMenu = document.querySelector('#title-menu')
 const redirectLink = document.querySelector('#redirect-link')
 const message = document.querySelector('#msg')
+const currentUrl = window.location.pathname.slice(1)
 
 document.addEventListener('DOMContentLoaded', () => {
-    if(window.location.pathname.slice(1) === 'clientView') {
+    if(currentUrl === 'clientView' || currentUrl === 'editInfo' || currentUrl === 'ordersUser') {
         createComponentsClient()
     } else {
         createComponentsAdmin()
@@ -22,7 +23,7 @@ function createComponentsClient() {
     redirectLink.setAttribute('href', '/clientView')
     menuSidebar.innerHTML += `
     <li class="mb-3">
-        <a href="#" class="nav-link px-0 align-middle text-icon">
+        <a href="/ordersUser" class="nav-link px-0 align-middle text-icon">
             <i class="fa-solid fa-list fa-lg"></i><span class="ms-3 d-none d-sm-inline text-light">Mis pedidos</span>
         </a>
     </li>

@@ -1,0 +1,23 @@
+{{#> userView}}
+<div class="container mt-3">
+    <h1 class="mb-3">Listado de tus pedidos</h1>
+    <table class="table table-light table-bordered table-hover">
+        <thead>
+            <tr class="text-center table-dark">
+                <th scope="col">ID</th>
+                <th scope="col">Número de pedido</th>
+                <th scope="col">Eliminar pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each orderList}}
+            <tr class="text-center">
+                <td class="table-info">{{id_pedido}}</td>
+                <td>{{nro_pedido}}</td>
+                <td><a href="/tableOrders/{{id_pedido}}?_method=delete"><i class="fa-solid fa-trash-can"></i></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{/userView}}

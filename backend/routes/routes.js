@@ -148,10 +148,12 @@ router.get('/adminView', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
 }, async (req, res) => {
+    const arrayAmounts = await user.getUsersCount()
     res.render('adminView', {
         'user': currentUser.user.name, 
         "usersList": await user.getClients(), 
-        'usersAmount': await user.getUsersCount(), 
+        'adminsAmount': arrayAmounts[1].cantidad, 
+        'usersAmount': arrayAmounts[0].cantidad, 
         'ordersAmount': await order.getOrdersCount()
     })
 })
@@ -173,6 +175,16 @@ router.get('/tableOrders', (req, res, next) => {
     res.render('tableOrders', {
         'user': currentUser.user.name, 
         "orderList": await order.getOrders()
+    })
+})
+
+router.get('/ordersUser/', (req, res, next) => {
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
+}, async (req, res) => {
+    res.render('ordersUser', {
+        'user': currentUser.user.name, 
+        "orderList": await order.getOrdersUser(userFound.id_usuario)
     })
 })
 
@@ -260,6 +272,16 @@ router.delete("/tableOrders/:id", async (req, res) => {
     try {
         await order.deleteOrder(id)
         res.redirect('/tableOrders')
+    } catch (error) {
+        console.log('No se pudo eliminar pedido', error)
+    }
+})
+
+router.delete("/ordersUser/:id", async (req, res) => {
+    const { id } = req.params
+    try {
+        await order.deleteOrder(id)
+        res.redirect('/ordersUser')
     } catch (error) {
         console.log('No se pudo eliminar pedido', error)
     }
