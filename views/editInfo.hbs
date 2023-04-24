@@ -1,26 +1,26 @@
 {{#> userView}}
-<div class="mx-auto w-75 mt-5">
+<div class="my-5 mx-2 mx-md-5">
     <div class="bg-dark bg-gradient p-4 border rounded-end">
         <h2 class="text-center text-light mb-5">Editar tu información de usuario</h2>
         <form action="edit-user" method="post">
             <div class="input-group mt-3">
-                <input class="form-control bg-light p-2 fs-5" type="text" placeholder="Tu nombre" name="name" id="name"/>
+                <input class="form-control bg-light p-2 fs-6" type="text" placeholder="Tu nombre" name="name" id="name"/>
             </div>
             <div class="input-group mt-4 mb-3">
-                <input class="form-control bg-light p-2 fs-5" type="text" placeholder="Tu apellido" name="lastName" id="last-name"/>
+                <input class="form-control bg-light p-2 fs-6" type="text" placeholder="Tu apellido" name="lastName" id="last-name"/>
             </div>
             <div class="input-group mt-4 mb-3">
-                <input class="form-control bg-light p-2 fs-5" type="email" placeholder="Tu correo electrónico" name="email" id="email"/>
+                <input class="form-control bg-light p-2 fs-6" type="email" placeholder="Tu correo electrónico" name="email" id="email"/>
             </div>
             <div class="input-group mt-4 mb-3">
-                <input class="form-control bg-light p-2 fs-5" type="password" placeholder="Tu contraseña" name="password" id="password"/>
+                <input class="form-control bg-light p-2 fs-6" type="password" placeholder="Tu contraseña" name="password" id="password"/>
             </div>
             {{#if message}}
             <div class="w-50 bg-success p-2 border-3 rounded mt-3 mx-auto text-center" id="msg">
                 <span class="text-light fw-bold fs-4">{{message}}</span>
             </div>
             {{/if}}
-            <button class="btn btn-primary text-white fs-5 w-50 mt-4 p-2 fw-semibold shadow-sm" type="submit">Guardar información</button>
+            <button class="btn btn-primary text-white fs-6 mt-4 p-2 fw-semibold shadow-sm" type="submit">Guardar información</button>
         </form>
     </div>
 </div>

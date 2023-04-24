@@ -1,27 +1,29 @@
 {{#> userView}}
 <div class="container mt-3">
     <h1 class="mb-3">Listado de clientes</h1>
-    <table class="table table-light table-bordered table-hover">
-        <thead>
-            <tr class="text-center table-dark">
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Correo electrónico</th>
-                <th scope="col">Eliminar usuario</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each usersList}}
-            <tr class="text-center">
-                <td class="table-info">{{id_usuario}}</td>
-                <td>{{nombre}}</td>
-                <td>{{apellido}}</td>
-                <td>{{email}}</td>
-                <td><a href="/tableUsers/{{id_usuario}}?_method=delete"><i class="fa-solid fa-trash-can"></i></a></td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr class="text-center table-dark">
+                    <th scope="col" class="align-middle">ID</th>
+                    <th scope="col" class="align-middle">Nombre</th>
+                    <th scope="col" class="align-middle">Apellido</th>
+                    <th scope="col" class="align-middle">Correo electrónico</th>
+                    <th scope="col" class="align-middle">Eliminar usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each usersList}}
+                <tr class="text-center">
+                    <th scope="row" class="table-info">{{id_usuario}}</th>
+                    <td>{{nombre}}</td>
+                    <td>{{apellido}}</td>
+                    <td>{{email}}</td>
+                    <td><a href="/tableUsers/{{id_usuario}}?_method=delete"><i class="fa-solid fa-trash-can"></i></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
 </div>
 {{/userView}}

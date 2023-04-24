@@ -243,7 +243,7 @@ h3 {
     border-radius: 40px;
     width: 342px;
     height: 600px;
-    Display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 30px 50px 100px #85888C;

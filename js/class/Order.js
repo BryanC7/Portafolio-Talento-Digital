@@ -49,7 +49,7 @@ export class Order {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
-                },
+                }
             } 
         )
     }

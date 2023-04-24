@@ -1,29 +1,31 @@
 {{#> userView}}
 <div class="container mt-3">
     <h1 class="mb-3">Listado de pedidos</h1>
-    <table class="table table-light table-bordered table-hover">
-        <thead>
-            <tr class="text-center table-dark">
-                <th scope="col">ID</th>
-                <th scope="col">Número de orden</th>
-                <th scope="col">ID de usuario</th>
-                <th scope="col">Nombre usuario</th>
-                <th scope="col">Apellido usuario</th>
-                <th scope="col">Eliminar pedido</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each orderList}}
-            <tr class="text-center">
-                <td class="table-info">{{id_pedido}}</td>
-                <td>{{nro_pedido}}</td>
-                <td>{{id_usuario}}</td>
-                <td>{{user.nombre}}</td>
-                <td>{{user.apellido}}</td>
-                <td><a href="/tableOrders/{{id_pedido}}?_method=delete"><i class="fa-solid fa-trash-can"></i></a></td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr class="text-center table-dark">
+                    <th scope="col" class="align-middle">ID</th>
+                    <th scope="col" class="align-middle">Número de orden</th>
+                    <th scope="col" class="align-middle">ID de usuario</th>
+                    <th scope="col" class="align-middle">Nombre usuario</th>
+                    <th scope="col" class="align-middle">Apellido usuario</th>
+                    <th scope="col" class="align-middle">Eliminar pedido</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orderList}}
+                <tr class="text-center">
+                    <td class="table-info">{{id_pedido}}</td>
+                    <td>{{nro_pedido}}</td>
+                    <td>{{id_usuario}}</td>
+                    <td>{{user.nombre}}</td>
+                    <td>{{user.apellido}}</td>
+                    <td><a href="/tableOrders/{{id_pedido}}?_method=delete"><i class="fa-solid fa-trash-can"></i></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
 </div>
 {{/userView}}
