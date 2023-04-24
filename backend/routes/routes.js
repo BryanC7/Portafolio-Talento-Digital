@@ -105,7 +105,7 @@ router.get('/editInfo', (req, res) => {
     })
 })
 
-// Valida si el usuario está autenticado para acceder a la vista templates
+// Valida si el usuario está autenticado para acceder a la vistas
 router.get('/templates', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -120,6 +120,7 @@ router.get('/pay',(req, res, next) => {
     res.render('pay')
 })
 
+// Si la estrategia falla por no recibir ni un valor o no encuentra al usuario aqui se controla el error 
 router.get('/login', async (req, res) => {
     if (req.session.flash) {
         if (req.session.flash.error) {
@@ -137,6 +138,7 @@ router.get('/login', async (req, res) => {
     } 
 })
 
+// Vista de los datos cliente 
 router.get('/clientView', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -144,6 +146,7 @@ router.get('/clientView', (req, res, next) => {
     res.render('clientView', {'user': currentUser.user.name})
 })
 
+// Vista administrador, control de pedidos y clientes 
 router.get('/adminView', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -158,6 +161,7 @@ router.get('/adminView', (req, res, next) => {
     })
 })
 
+// Vista hacia la tabla de usuarios
 router.get('/tableUsers', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -168,6 +172,7 @@ router.get('/tableUsers', (req, res, next) => {
     })
 })
 
+// Vista hacia la tabla de pedidos
 router.get('/tableOrders', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -178,6 +183,7 @@ router.get('/tableOrders', (req, res, next) => {
     })
 })
 
+// Vista hacia los pedidos de cierto usuario
 router.get('/ordersUser/', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -188,6 +194,7 @@ router.get('/ordersUser/', (req, res, next) => {
     })
 })
 
+// Logout de la sesión
 router.get('/logout', (req, res, next) => {
     req.logout(err => {
         if (err) return next(err)
@@ -195,13 +202,14 @@ router.get('/logout', (req, res, next) => {
     })  
 })
 
+// En caso de autenticación fallida o correcta del usuario, los respectivos redireccionamientos 
 router.post('/login-user', passport.authenticate('local', {
     successRedirect: '/index',
     failureRedirect: '/login',
     failureFlash: true
 }))
 
-
+// Ruta encargada de leer los datos del formulario de registro para su inserción. Además valida si el correo registrado ya existe
 router.post('/register-user', async (req, res) => {
     const users = await user.getUsers()
 
@@ -224,6 +232,7 @@ router.post('/register-user', async (req, res) => {
     }
 })
 
+// Ruta para la edición del usuario
 router.post('/edit-user', async (req, res) => {
     const userEdited = {
         id: currentUser.user.id,
@@ -242,6 +251,7 @@ router.post('/edit-user', async (req, res) => {
     }
 })
 
+// Ruta que una vez se realiza el pago del pedido se almacena en la base de datos
 router.post('/payment', async (req, res) => {
     const newOrder = {
         nro_pedido: Math.round(Math.random()*999999),
@@ -257,6 +267,7 @@ router.post('/payment', async (req, res) => {
     }
 })
 
+// Ruta para eliminar un usuario en la vista administrador
 router.delete("/tableUsers/:id", async (req, res) => {
     const { id } = req.params
     try {
@@ -267,6 +278,7 @@ router.delete("/tableUsers/:id", async (req, res) => {
     }
 })
 
+// Ruta para eliminar un pedido en la vista administrador
 router.delete("/tableOrders/:id", async (req, res) => {
     const { id } = req.params
     try {
@@ -277,6 +289,7 @@ router.delete("/tableOrders/:id", async (req, res) => {
     }
 })
 
+// Ruta para que el usuario pueda eliminar sus pedidos
 router.delete("/ordersUser/:id", async (req, res) => {
     const { id } = req.params
     try {
@@ -287,4 +300,5 @@ router.delete("/ordersUser/:id", async (req, res) => {
     }
 })
 
+// Exportación de la variable router para su uso en archivo index.js
 export default router

@@ -1,6 +1,8 @@
+// Variables
 const form = document.querySelector('#contact-form')
 const inputs = document.querySelectorAll('#contact-form input')
 
+// Expresiones regulares para validar inputs
 const expressions = {
 	name: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, 
 	lastname: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, 
@@ -9,6 +11,7 @@ const expressions = {
 	phone: /^\d{8,14}$/
 }
 
+// Objeto con campos en falso
 const fields = {
 	name: false,
 	lastname: false,
@@ -17,6 +20,7 @@ const fields = {
 	phone: false
 }
 
+// Función que valida por campos dependiendo del atributo name
 const validateForm = e => {
 	switch (e.target.name) {
         case "name":
@@ -37,6 +41,7 @@ const validateForm = e => {
 	}
 }
 
+// Si el campo pasa o no la validación con la expresión regular se le da ciertas clases
 const validateField = (expresion, input, field) => {
 	if(expresion.test(input.value)){
 		document.querySelector(`#group-${field}`).classList.remove('form_group_incorrect')
@@ -55,10 +60,12 @@ const validateField = (expresion, input, field) => {
 	}
 }
 
+// A cada input se le da el evento para validar después de salir del input
 inputs.forEach(input => {
 	input.addEventListener('blur', validateForm)
 })
 
+// Evento submit del formulario
 form.addEventListener('submit', e => {
 	e.preventDefault()
 

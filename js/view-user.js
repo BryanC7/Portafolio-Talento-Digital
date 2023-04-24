@@ -1,9 +1,11 @@
+// Variables
 const menuSidebar = document.querySelector('#menu')
 const titleMenu = document.querySelector('#title-menu')
 const redirectLink = document.querySelector('#redirect-link')
 const message = document.querySelector('#msg')
 const currentUrl = window.location.pathname.slice(1)
 
+// Evento que cuando cargue la págia verifica el pathname de la url y carga componentes de vista cliente o administrador 
 document.addEventListener('DOMContentLoaded', () => {
     if(currentUrl === 'clientView' || currentUrl === 'editInfo' || currentUrl === 'ordersUser') {
         createComponentsClient()
@@ -11,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         createComponentsAdmin()
     }
 
+    // Si es que existe el mensaje eliminarlo a los 3 segundos
     if(message) {
         setTimeout(() => {
             message.classList.add('d-none')
@@ -18,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
+// Función que crea componentes en vista cliente
 function createComponentsClient() {
     titleMenu.textContent = 'Información cliente'
     redirectLink.setAttribute('href', '/clientView')
@@ -35,6 +39,7 @@ function createComponentsClient() {
     `
 }
 
+// Función que crea componentes en vista administrador
 function createComponentsAdmin() {
     titleMenu.textContent = 'Menú administrador'
     redirectLink.setAttribute('href', '/adminView')
@@ -53,6 +58,7 @@ function createComponentsAdmin() {
     calculateProfits()
 }
 
+// Función que en vista administrador calcula las ganancias de la página para su visualización
 function calculateProfits() {
     const profitDiv = document.querySelector('#profits')
     const profitValue = parseInt(profitDiv.textContent)

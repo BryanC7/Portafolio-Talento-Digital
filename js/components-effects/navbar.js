@@ -1,3 +1,4 @@
+// Evento que al momento de cargar la página y hacer scroll en el sitio web la barra de navegación pasa de transparente a color sólido
 window.addEventListener('DOMContentLoaded', () => {
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav')

@@ -1,6 +1,8 @@
+// Variables
 const inputs = document.querySelectorAll('#form-pay input')
 const btnPay = document.querySelector('#btn-pay')
 
+// Objeto con los datos de la tarjeta
 const cardData = {
     cardName: '',
     cardNumber: '',
@@ -10,6 +12,7 @@ const cardData = {
     cvc: ''
 }
 
+// Expresiones regulares
 const expressions = {
     nameCard: /^[a-zA-ZÀ-ÿ\s]{10,40}$/,
     numberCard: /^\d{16,19}$/,
@@ -17,12 +20,15 @@ const expressions = {
     expiryDate: /^\d{2}$/
 }
 
+// Cuando carga el sitio web checkea el objeto con datos 
 document.addEventListener('DOMContentLoaded', checkObj)
 
+// A cada input se le da el evento para validar después de salir del input
 inputs.forEach(input => {
     input.addEventListener('blur', validations)
 })
 
+// Función que valida por campos dependiendo del atributo name
 function validations(e) {
     switch (e.target.name) {
         case "cardName":
@@ -46,6 +52,7 @@ function validations(e) {
 	}
 }
 
+// Si el campo pasa o no la validación con la expresión regular se le da ciertas clases
 function validateField(expression, input) {
     if(!expression.test(input.value) || input.value === ''){
         input.classList.remove('border-success')
@@ -61,6 +68,7 @@ function validateField(expression, input) {
 	}
 }
 
+// Función donde se checkea cada cambio al objeto, cuando el objeto esté lleno se libera el botón para poder realizar el registro del pedido
 function checkObj() {
     if(Object.values(cardData).includes('')) {
         btnPay.disabled = true

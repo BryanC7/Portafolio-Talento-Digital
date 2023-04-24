@@ -3,6 +3,7 @@ export class User {
         this.url = 'http://localhost:4000/users'
     }
 
+    // Método para obtener todos los usuarios
     async getUsers() {
         const response = await fetch(this.url)
         const data = await response.json()
@@ -10,6 +11,7 @@ export class User {
         return data
     }
 
+    // Método para obtener sólo clientes
     async getClients() {
         const response = await fetch(`${this.url}/clients`)
         const data = await response.json()
@@ -17,6 +19,7 @@ export class User {
         return data
     }
 
+    // Método para traer las cantidades de clientes y administradores
     async getUsersCount() {
         const response = await fetch(`${this.url}/userscount`)
         const data = await response.json()
@@ -24,6 +27,7 @@ export class User {
         return data
     }
 
+    // Método para agregar un nuevo usuario
     async addUser(user) {
         await fetch(this.url,
             {
@@ -37,6 +41,7 @@ export class User {
         )
     }
 
+    // Método para editar un usuario
     async editUser(user) {
         await fetch(this.url,
             {
@@ -50,6 +55,7 @@ export class User {
         )
     }
 
+    // Método para eliminar un usuario
     async deleteUser(id) {
         await fetch(`${this.url}/${id}`,
             {

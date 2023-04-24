@@ -120,10 +120,3 @@ function changeView(e) {
         desktopView.style.display = 'block'
     }
 }
-
-// Object.values(section).forEach(colour => {
-//     const divRectangle = document.createElement('div')
-//     divRectangle.classList.add('rectangle', 'mb-4')
-//     divRectangle.style.background = colour
-//     divPalettes.appendChild(divRectangle)
-// })
