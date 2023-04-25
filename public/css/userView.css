@@ -25,8 +25,3 @@
     color: #06BBCC !important;
     transition: .3s;
 }
-
-.table-responsive {
-    max-width: 40rem;
-    overflow-x: scroll;
-}

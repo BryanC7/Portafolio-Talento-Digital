@@ -2,22 +2,17 @@
 const menuSidebar = document.querySelector('#menu')
 const titleMenu = document.querySelector('#title-menu')
 const redirectLink = document.querySelector('#redirect-link')
-const message = document.querySelector('#msg')
 const currentUrl = window.location.pathname.slice(1)
 
 // Evento que cuando cargue la págia verifica el pathname de la url y carga componentes de vista cliente o administrador 
 document.addEventListener('DOMContentLoaded', () => {
     if(currentUrl === 'clientView' || currentUrl === 'editInfo' || currentUrl === 'ordersUser') {
         createComponentsClient()
+    } else if(currentUrl === 'adminView') {
+        createComponentsAdmin()
+        calculateProfits()
     } else {
         createComponentsAdmin()
-    }
-
-    // Si es que existe el mensaje eliminarlo a los 3 segundos
-    if(message) {
-        setTimeout(() => {
-            message.classList.add('d-none')
-        }, 3000)
     }
 })
 
@@ -55,7 +50,6 @@ function createComponentsAdmin() {
         </a>
     </li>
     `
-    calculateProfits()
 }
 
 // Función que en vista administrador calcula las ganancias de la página para su visualización

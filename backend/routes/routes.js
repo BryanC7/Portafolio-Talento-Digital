@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import { Strategy } from 'passport-local'
 import methodOverride from 'method-override'
+import bcrypt from 'bcryptjs'
 
 // Importaciones de clases
 import { User } from '../../js/class/User.js'
@@ -45,7 +46,7 @@ passport.use(new Strategy(async function(email, password, done) {
     } 
 
     if(userFound) {
-        if(userFound.password === password) {
+        if(bcrypt.compare(password, userFound.password)) {
             return done(null, {
                 id: userFound.id_usuario, 
                 name: userFound.nombre, 
@@ -94,7 +95,10 @@ router.get('/contact', (req, res) => res.render('contact'))
 router.get('/register', (req, res) => res.render('register'))
 
 // Muestra la información del usuario activo en la vista editInfo
-router.get('/editInfo', (req, res) => {
+router.get('/editInfo', (req, res, next) => {
+    if(req.isAuthenticated()) return next()
+    res.redirect('/index')
+}, (req, res) => {
     res.render('editInfo', {
         'user': currentUser.user.name, 
         'id': userFound.id_usuario, 
@@ -212,14 +216,16 @@ router.post('/login-user', passport.authenticate('local', {
 // Ruta encargada de leer los datos del formulario de registro para su inserción. Además valida si el correo registrado ya existe
 router.post('/register-user', async (req, res) => {
     const users = await user.getUsers()
+    const salt = await bcrypt.genSalt(8)
+    const passwordHash = await bcrypt.hash(req.body.password, salt)
 
     const newUser = {
         nombre: req.body.name,
         apellido: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
+        password: passwordHash
     }
-    
+
     if(await users.filter(user => user.email === newUser.email) == []) {
         res.render('register', {error: 'El correo electrónico ya se encuentra registrado'})
     } else {
@@ -234,17 +240,20 @@ router.post('/register-user', async (req, res) => {
 
 // Ruta para la edición del usuario
 router.post('/edit-user', async (req, res) => {
+    const salt = await bcrypt.genSalt(8)
+    const passwordHash = await bcrypt.hash(req.body.password, salt)
+
     const userEdited = {
         id: currentUser.user.id,
         nombre: req.body.name,
         apellido: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
+        password: passwordHash
     }
 
     try {
         await user.editUser(userEdited)
-        res.render('editInfo', {message: 'Usuario editado correctamente'})
+        res.send("<script>alert('Tus datos se han actualizado correctamente, no los olvides para volver a iniciar sesión');window.location.href='/index'</script>")
     } catch (error) {
         res.send("<script>alert('El usuario no se pudo editar');window.location.href='/editInfo'</script>")
         console.log(error)

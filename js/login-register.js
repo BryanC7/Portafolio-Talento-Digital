@@ -1,4 +1,8 @@
 // Set time-out para quitar el mensaje de error pasados 3 segundos en formulario login
-setTimeout(() => {
-    document.querySelector('#msgError').classList.add('d-none')
-}, 3000)
+const msgError = document.querySelector('#msgError')
+
+if(msgError) {
+    setTimeout(() => {
+        msgError.classList.add('d-none')
+    }, 3000)
+}
