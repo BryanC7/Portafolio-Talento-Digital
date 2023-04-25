@@ -13,7 +13,9 @@ const footers = document.querySelector('#footer')
 const colours = [
     {header: '#142d4c', body: '#ececec', footer: '#385170'},
     {header: '#2f1b41', body: '#fecd51', footer: '#613864'},
-    {header: '#2c786c', body: '#faf5e4', footer: '#004445'}
+    {header: '#2c786c', body: '#faf5e4', footer: '#004445'},
+    {header: '#0881a3', body: '#fde9df', footer: '#ffd6a4'},
+    {header: '#4ecca3', body: '#eeeeee', footer: '#393e46'}
 ]
 
 window.addEventListener('DOMContentLoaded', loadContent)

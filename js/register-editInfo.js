@@ -26,7 +26,8 @@ inputs.forEach(input => {
     input.addEventListener('input', validations)
 })
 
-// Función que valida por campos dependiendo del atributo name
+
+
 function validations(e) {
     switch (e.target.name) {
         case "name":
