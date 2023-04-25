@@ -8,6 +8,8 @@ import session from 'express-session'
 import { Strategy } from 'passport-local'
 import methodOverride from 'method-override'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
 
 // Importaciones de clases
 import { User } from '../../js/class/User.js'
@@ -16,6 +18,9 @@ import { Order } from '../../js/class/Order.js'
 // Router para el uso de rutas 
 const router = Router()
 
+// Uso de variables de entorno para JWT
+dotenv.config()
+
 // Instancias de clases
 const user = new User()
 const order = new Order()
@@ -23,6 +28,8 @@ const order = new Order()
 // Variables globales para validar y autenticar usuario activo en sesión
 let userFound
 let currentUser
+let token
+let editInfo
 
 // Uso de la variable router para la aplicación de dependencias
 router.use(methodOverride("_method", { methods: ["GET", "POST"] }))
@@ -47,6 +54,13 @@ passport.use(new Strategy(async function(email, password, done) {
 
     if(userFound) {
         if(bcrypt.compare(password, userFound.password)) {
+            if(userFound.id_rol === 1) {
+                token = jwt.sign({
+                    exp: Math.floor(Date.now() / 1000) + (60 * 60)
+                },
+                process.env.JWT_KEY
+                )
+            }
             return done(null, {
                 id: userFound.id_usuario, 
                 name: userFound.nombre, 
@@ -105,7 +119,8 @@ router.get('/editInfo', (req, res, next) => {
         'name': userFound.nombre, 
         'lastName': userFound.apellido, 
         'email': userFound.email, 
-        'password': userFound.password
+        'password': userFound.password,
+        'editInfo': true
     })
 })
 
@@ -152,7 +167,7 @@ router.get('/clientView', (req, res, next) => {
 
 // Vista administrador, control de pedidos y clientes 
 router.get('/adminView', (req, res, next) => {
-    if(req.isAuthenticated()) return next()
+    if(req.isAuthenticated() && token) return next()
     res.redirect('/index')
 }, async (req, res) => {
     const arrayAmounts = await user.getUsersCount()
@@ -167,7 +182,7 @@ router.get('/adminView', (req, res, next) => {
 
 // Vista hacia la tabla de usuarios
 router.get('/tableUsers', (req, res, next) => {
-    if(req.isAuthenticated()) return next()
+    if(req.isAuthenticated() && token) return next()
     res.redirect('/index')
 }, async (req, res) => {
     res.render('tableUsers', {
@@ -178,7 +193,7 @@ router.get('/tableUsers', (req, res, next) => {
 
 // Vista hacia la tabla de pedidos
 router.get('/tableOrders', (req, res, next) => {
-    if(req.isAuthenticated()) return next()
+    if(req.isAuthenticated() && token) return next()
     res.redirect('/index')
 }, async (req, res) => {
     res.render('tableOrders', {
@@ -202,6 +217,7 @@ router.get('/ordersUser/', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
     req.logout(err => {
         if (err) return next(err)
+        token = ''
         res.redirect("index")
     })  
 })
@@ -226,7 +242,7 @@ router.post('/register-user', async (req, res) => {
         password: passwordHash
     }
 
-    if(await users.filter(user => user.email === newUser.email) == []) {
+    if(await users.filter(user => user.email === newUser.email)) {
         res.render('register', {error: 'El correo electrónico ya se encuentra registrado'})
     } else {
         try {

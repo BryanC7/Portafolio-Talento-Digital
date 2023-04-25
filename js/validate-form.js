@@ -4,8 +4,8 @@ const inputs = document.querySelectorAll('#contact-form input')
 
 // Expresiones regulares para validar inputs
 const expressions = {
-	name: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, 
-	lastname: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, 
+	name: /^[a-zA-ZÀ-ÿ\s]{3,20}$/, 
+	lastname: /^[a-zA-ZÀ-ÿ\s]{3,20}$/, 
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	password: /^.{4,12}$/, 
 	phone: /^\d{8,14}$/
@@ -62,7 +62,7 @@ const validateField = (expresion, input, field) => {
 
 // A cada input se le da el evento para validar después de salir del input
 inputs.forEach(input => {
-	input.addEventListener('blur', validateForm)
+	input.addEventListener('input', validateForm)
 })
 
 // Evento submit del formulario

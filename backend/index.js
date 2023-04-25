@@ -11,7 +11,6 @@ import indexRoutes from "./routes/routes.js"
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express()
 
-
 // Uso de hbs para vistas 
 app.set('view engine', 'hbs')
 app.set('views', '../views')

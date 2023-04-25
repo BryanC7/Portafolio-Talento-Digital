@@ -1,23 +1,21 @@
 // Variables
-const inputs = document.querySelectorAll('#form-pay input')
-const btnPay = document.querySelector('#btn-pay')
+const inputs = document.querySelectorAll('form input')
+const btnForm = document.querySelector('[type="submit"]')
 
 // Objeto con los datos de la tarjeta
-const cardData = {
-    cardName: '',
-    cardNumber: '',
-    expiry1: '',
-    expiry2: '',
-    expiry3: '',
-    cvc: ''
+const dataForm = {
+    name: '',
+    lastName: '',
+    email: '',
+    password: ''
 }
 
 // Expresiones regulares
 const expressions = {
-    nameCard: /^[a-zA-ZÀ-ÿ\s]{10,40}$/,
-    numberCard: /^\d{16,19}$/,
-    cvc: /^\d{3}$/,
-    expiryDate: /^\d{2}$/
+    name: /^[a-zA-ZÀ-ÿ\s]{3,20}$/, 
+	lastName: /^[a-zA-ZÀ-ÿ\s]{3,20}$/, 
+	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+	password: /^.{4,12}$/, 
 }
 
 // Cuando carga el sitio web checkea el objeto con datos 
@@ -31,23 +29,17 @@ inputs.forEach(input => {
 // Función que valida por campos dependiendo del atributo name
 function validations(e) {
     switch (e.target.name) {
-        case "cardName":
-            validateField(expressions.nameCard, e.target)
+        case "name":
+            validateField(expressions.name, e.target)
         break
-		case "cardNumber":
-			validateField(expressions.numberCard, e.target)
+		case "lastName":
+			validateField(expressions.lastName, e.target)
 		break
-        case "expiry1":
-            validateField(expressions.expiryDate, e.target)
+        case "email":
+            validateField(expressions.email, e.target)
         break
-		case "expiry2":
-			validateField(expressions.expiryDate, e.target)
-		break
-		case "expiry3":
-			validateField(expressions.expiryDate, e.target)
-		break
-		case "cvc":
-			validateField(expressions.cvc, e.target)
+		case "password":
+			validateField(expressions.password, e.target)
 		break
 	}
 }
@@ -57,22 +49,22 @@ function validateField(expression, input) {
     if(!expression.test(input.value) || input.value === ''){
         input.classList.remove('border-success')
 		input.classList.add('border', 'border-danger')
-        cardData[input.name] = ''
+        dataForm[input.name] = ''
         checkObj()
         return
 	} else {
         input.classList.remove('border-danger')
 		input.classList.add('border', 'border-success')
-        cardData[input.name] = input.value.trim().toLowerCase()
+        dataForm[input.name] = input.value.trim().toLowerCase()
         checkObj()
 	}
 }
 
 // Función donde se checkea cada cambio al objeto, cuando el objeto esté lleno se libera el botón para poder realizar el registro del pedido
 function checkObj() {
-    if(Object.values(cardData).includes('')) {
-        btnPay.disabled = true
+    if(Object.values(dataForm).includes('')) {
+        btnForm.disabled = true
         return
     } 
-    btnPay.disabled = false
+    btnForm.disabled = false
 }
