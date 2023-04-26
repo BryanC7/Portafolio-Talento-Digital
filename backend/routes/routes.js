@@ -50,10 +50,10 @@ passport.use(new Strategy(async function(email, password, done) {
     const users = await user.getUsers()
     if(users.filter(user => user.email === email)) {
         userFound = users.filter(user => user.email === email)[0]
-    } 
-
+    }
+    
     if(userFound) {
-        if(bcrypt.compare(password, userFound.password)) {
+        if(bcrypt.compareSync(password, userFound.password)) {
             if(userFound.id_rol === 1) {
                 token = jwt.sign({
                     exp: Math.floor(Date.now() / 1000) + (60 * 60)
