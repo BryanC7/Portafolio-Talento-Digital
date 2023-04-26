@@ -8,7 +8,7 @@ import {fileURLToPath} from "url"
 import indexRoutes from "./routes/routes.js"
 
 // Variable dirname e inicialización de express
-const __dirname = dirname(fileURLToPath(import.meta.url))
+export const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express()
 
 // Uso de hbs para vistas 

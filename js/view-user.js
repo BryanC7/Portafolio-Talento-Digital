@@ -58,13 +58,3 @@ function calculateProfits() {
     const profitValue = parseInt(profitDiv.textContent)
     profitDiv.textContent = '$' + profitValue * 250000
 }
-
-function confirmDelete(id, name , lastName) {
-    Swal.fire({
-        title: `¿Estás seguro de eliminar a ${name} ${lastName} del listado?`,
-        showCancelButton: true,
-        confirmButtonText: `<a class="text-decoration-none text-light" href="/tableUsers/${id}?_method=delete">Confirmar</a>`,
-    }).then(result => {
-        console.log(result)
-    })
-}

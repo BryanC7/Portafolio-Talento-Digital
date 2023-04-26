@@ -4,7 +4,7 @@
             <i class="fa-regular fa-circle-user fa-xl"></i>                    
             <div class="text-center fs-1 fw-bold ms-2">Registra un usuario</div>
         </div>
-        <form id="register-form" action="register-user" method="post">
+        <form id="register-form" action="register-user" method="post"  enctype="multipart/form-data">
             <div class="input-group mt-3">
                 <div class="input-group-text bg-info">
                     <i class="fa-solid fa-user"></i>
@@ -34,6 +34,10 @@
                 <span class="text-light fw-bold fs-4">{{error}}</span>
             </div>
             {{/if}}
+            <div class="input-group mt-4 mb-3">
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+
             <button id="btn-register" class="btn btn-info text-white fs-3 w-100 mt-4 p-3 fw-semibold shadow-sm" type="submit">Registrate</button>
         </form>
         <div class="d-flex gap-1 justify-content-end mt-5">

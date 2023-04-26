@@ -10,10 +10,13 @@ import methodOverride from 'method-override'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
+import fileUpload from 'express-fileupload'
+import path from 'path' 
 
-// Importaciones de clases
+// Importaciones de variables de otros archivos del proyecto
 import { User } from '../../js/class/User.js'
 import { Order } from '../../js/class/Order.js'
+import { __dirname } from '../index.js'
 
 // Router para el uso de rutas 
 const router = Router()
@@ -42,6 +45,7 @@ router.use(session({
     saveUninitialized: true
 }))
 router.use(flash())
+router.use(fileUpload())
 router.use(passport.initialize())
 router.use(passport.session())
 
@@ -97,9 +101,11 @@ router.get('/index', (req ,res) => {
         if (currentUser.user.id_rol === 1){
             currentUser.user.isAdmin = true
         }
+
         res.render('index', {
             'username': currentUser.user.name, 
-            'isAdmin': currentUser.user.isAdmin
+            'isAdmin': currentUser.user.isAdmin,
+            'imgProfile': userFound.imagen
         })
     }
 })
@@ -114,7 +120,8 @@ router.get('/editInfo', (req, res, next) => {
     res.redirect('/index')
 }, (req, res) => {
     res.render('editInfo', {
-        'user': currentUser.user.name, 
+        'user': currentUser.user.name,
+        'imgProfile': userFound.imagen,  
         'id': userFound.id_usuario, 
         'name': userFound.nombre, 
         'lastName': userFound.apellido, 
@@ -162,7 +169,10 @@ router.get('/clientView', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
 }, (req, res) => {
-    res.render('clientView', {'user': currentUser.user.name})
+    res.render('clientView', {
+        'user': currentUser.user.name,
+        'imgProfile': userFound.imagen
+    })
 })
 
 // Vista administrador, control de pedidos y clientes 
@@ -172,7 +182,8 @@ router.get('/adminView', (req, res, next) => {
 }, async (req, res) => {
     const arrayAmounts = await user.getUsersCount()
     res.render('adminView', {
-        'user': currentUser.user.name, 
+        'user': currentUser.user.name,
+        'imgProfile': userFound.imagen, 
         "usersList": await user.getClients(), 
         'adminsAmount': arrayAmounts[1].cantidad, 
         'usersAmount': arrayAmounts[0].cantidad, 
@@ -186,7 +197,8 @@ router.get('/tableUsers', (req, res, next) => {
     res.redirect('/index')
 }, async (req, res) => {
     res.render('tableUsers', {
-        'user': currentUser.user.name, 
+        'user': currentUser.user.name,
+        'imgProfile': userFound.imagen, 
         "usersList": await user.getClients()
     })
 })
@@ -197,7 +209,8 @@ router.get('/tableOrders', (req, res, next) => {
     res.redirect('/index')
 }, async (req, res) => {
     res.render('tableOrders', {
-        'user': currentUser.user.name, 
+        'user': currentUser.user.name,
+        'imgProfile': userFound.imagen,  
         "orderList": await order.getOrders()
     })
 })
@@ -208,7 +221,8 @@ router.get('/ordersUser/', (req, res, next) => {
     res.redirect('/index')
 }, async (req, res) => {
     res.render('ordersUser', {
-        'user': currentUser.user.name, 
+        'user': currentUser.user.name,
+        'imgProfile': userFound.imagen,  
         "orderList": await order.getOrdersUser(userFound.id_usuario)
     })
 })
@@ -235,14 +249,25 @@ router.post('/register-user', async (req, res) => {
     const salt = await bcrypt.genSalt(8)
     const passwordHash = await bcrypt.hash(req.body.password, salt)
 
+    const img = req.files.image
+    const parentDir = path.resolve(__dirname, '..')
+    const uploadPath =  parentDir + '/public/img/' + img.name 
+    const upload =  '/img/' + img.name 
+
+    img.mv(uploadPath, function(err) {
+    if (err)
+        return res.status(500).send(err)
+    })
+
     const newUser = {
         nombre: req.body.name,
         apellido: req.body.lastName,
         email: req.body.email,
-        password: passwordHash
+        password: passwordHash,
+        imagen: upload
     }
 
-    if(await users.filter(user => user.email === newUser.email)) {
+    if(await users.includes(user => user.email === newUser.email)) {
         res.render('register', {error: 'El correo electrónico ya se encuentra registrado'})
     } else {
         try {
