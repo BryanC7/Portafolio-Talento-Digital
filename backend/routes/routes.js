@@ -125,8 +125,8 @@ router.get('/editInfo', (req, res, next) => {
         'id': userFound.id_usuario, 
         'name': userFound.nombre, 
         'lastName': userFound.apellido, 
-        'email': userFound.email, 
-        'password': userFound.password,
+        'email': userFound.email,
+        'password': userFound.password, 
         'editInfo': true
     })
 })
@@ -272,7 +272,7 @@ router.post('/register-user', async (req, res) => {
     } else {
         try {
             await user.addUser(newUser)
-            res.send("<script>alert('Usuario registrado correctamente');window.location.href='/login'</script>")
+            res.redirect('/login')
         } catch (error) {
             console.log('El usuario no se pudo registrar', error)
         }
@@ -284,19 +284,29 @@ router.post('/edit-user', async (req, res) => {
     const salt = await bcrypt.genSalt(8)
     const passwordHash = await bcrypt.hash(req.body.password, salt)
 
+    const img = req.files.image
+    const parentDir = path.resolve(__dirname, '..')
+    const uploadPath =  parentDir + '/public/img/' + img.name 
+    const upload =  '/img/' + img.name 
+
+    img.mv(uploadPath, function(err) {
+    if (err)
+        return res.status(500).send(err)
+    })
+
     const userEdited = {
         id: currentUser.user.id,
         nombre: req.body.name,
         apellido: req.body.lastName,
         email: req.body.email,
-        password: passwordHash
+        password: passwordHash,
+        imagen: upload
     }
 
     try {
         await user.editUser(userEdited)
-        res.send("<script>alert('Tus datos se han actualizado correctamente, no los olvides para volver a iniciar sesión');window.location.href='/index'</script>")
+        res.send("<script>alert('Tu nueva información ha sido actualizada con éxito. No la olvides para volver a iniciar sesión');window.location.href='/logout'</script>")
     } catch (error) {
-        res.send("<script>alert('El usuario no se pudo editar');window.location.href='/editInfo'</script>")
         console.log(error)
     }
 })
@@ -310,9 +320,7 @@ router.post('/payment', async (req, res) => {
 
     try {
         await order.addOrder(newOrder)
-        res.send("<script>alert('Se ha autorizado el pago y se almacenó tu pedido');window.location.href='/index'</script>")
     } catch (error) {
-        res.send("<script>alert('No se logró realizar el pedido');window.location.href='/payment'</script>")
         console.log(error)
     }
 })
