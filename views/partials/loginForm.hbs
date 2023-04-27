@@ -31,3 +31,12 @@
         </div>
     </div>
 </div>
+
+{{#if validate}}
+<script>
+    document.querySelector('#login-form').addEventListener('submit', e => {
+        e.preventDefault()
+        loginSuccess()
+    })
+</script>
+{{/if}}

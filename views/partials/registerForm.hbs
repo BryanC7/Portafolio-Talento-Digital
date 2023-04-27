@@ -45,3 +45,12 @@
         </div>
     </div>
 </div>
+
+{{#if validate}}
+<script>
+    document.querySelector('#register-form').addEventListener('submit', e => {
+        e.preventDefault()
+        registerSuccess()
+    })
+</script>
+{{/if}}

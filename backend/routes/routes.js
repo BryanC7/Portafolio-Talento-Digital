@@ -73,10 +73,10 @@ passport.use(new Strategy(async function(email, password, done) {
                 id_rol: userFound.id_rol
             })
         } else {
-            return done(null, false, {message: 'Contraseña incorrecta'})
+            return done(null, false, {message: 'Contraseña incorrecta', validate: false})
         }
     } else {
-        return done(null, false, {message: 'El usuario no fue encontrado'})
+        return done(null, false, {message: 'El usuario no fue encontrado', validate: false})
     }
 }))
 
@@ -267,12 +267,12 @@ router.post('/register-user', async (req, res) => {
         imagen: upload
     }
 
-    if(await users.includes(user => user.email === newUser.email)) {
+    if(await users.find(user => user.email === newUser.email)) {
         res.render('register', {error: 'El correo electrónico ya se encuentra registrado'})
     } else {
         try {
+            res.redirect('/register')
             await user.addUser(newUser)
-            res.redirect('/login')
         } catch (error) {
             console.log('El usuario no se pudo registrar', error)
         }
@@ -305,7 +305,6 @@ router.post('/edit-user', async (req, res) => {
 
     try {
         await user.editUser(userEdited)
-        res.send("<script>alert('Tu nueva información ha sido actualizada con éxito. No la olvides para volver a iniciar sesión');window.location.href='/logout'</script>")
     } catch (error) {
         console.log(error)
     }
@@ -320,6 +319,7 @@ router.post('/payment', async (req, res) => {
 
     try {
         await order.addOrder(newOrder)
+        res.send("<script>alert('Se ha autorizado el pago y se almacenó tu pedido');window.location.href='/index'</script>")
     } catch (error) {
         console.log(error)
     }

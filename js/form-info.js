@@ -1,3 +1,4 @@
+const editForm = document.querySelector('#edit-form')
 const inputName = document.querySelector('#name')
 const inputLastName = document.querySelector('#last-name')
 const inputEmail = document.querySelector('#email')
@@ -23,3 +24,22 @@ inputFile.addEventListener('change', () => {
 
     reader.readAsDataURL(file)
 })
+
+editForm.addEventListener('submit', e => {
+    e.preventDefault()
+    saveSuccess()
+})
+
+function saveSuccess() {
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Información actualizada correctamente, no olvides tus nuevas credenciales para iniciar sesión',
+        showConfirmButton: false,
+        timer: 5000,
+    }).then(result => {
+        if(result.isDismissed) {
+            editForm.submit()
+        }
+    })
+}
