@@ -1,4 +1,9 @@
-
+/**
+ * Elimina un usuario mediante un sweetalert
+ * @param {number} id del usuario
+ * @param {string} name | Nombre del usuario
+ * @param {string} lastName | Apellido del usuario 
+ */
 function deleteUser(id, name , lastName) {
     Swal.fire({
         title: `¿Estás seguro de eliminar a ${name} ${lastName} del listado?`,
@@ -12,6 +17,10 @@ function deleteUser(id, name , lastName) {
     })
 }
 
+/**
+ * Elimina un pedido mediante un sweetalert
+ * @param {number} id del pedido 
+ */
 function deleteOrder(id) {
     Swal.fire({
         title: `¿Estás seguro de eliminar este pedido?`,
