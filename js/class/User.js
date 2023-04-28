@@ -19,6 +19,22 @@ export class User {
         return data
     }
 
+    // Método para obtener clientes por nombres en order alfabético
+    async getClientsNameOrder() {
+        const response = await fetch(`${this.url}/clientsnameorder`)
+        const data = await response.json()
+
+        return data
+    }
+
+    // Método para obtener clientes por nombres en order alfabético
+    async getClientsLastNameOrder() {
+        const response = await fetch(`${this.url}/clientslastnameorder`)
+        const data = await response.json()
+
+        return data
+    }
+
     // Método para traer las cantidades de clientes y administradores
     async getUsersCount() {
         const response = await fetch(`${this.url}/userscount`)

@@ -20,6 +20,7 @@ body {
     background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 }
 
+/* Tipografía */
 h1 {
     font-size: 3.5rem;
     text-align: center;
@@ -31,8 +32,7 @@ h3 {
     margin: 0;
 }
 
-/* --- */
-
+/* Sidebar */
 .btn-toggle {
     display: inline-flex;
     align-items: center;
@@ -81,6 +81,7 @@ h3 {
     background-color: #d2f4ea;
 }
 
+/* Responsibidad de los componentes de ejemplo */
 .carousel {
     margin-bottom: 3rem;
 }
@@ -127,6 +128,7 @@ h3 {
     margin-bottom: 2rem;
 }
 
+/* Medias Queries */
 @media (max-width: 768px) {
     .img-carousel {
         height: auto;
@@ -164,12 +166,6 @@ h3 {
     }
 }
 
-.rectangle {
-    width: 4rem;
-    height: 2rem;
-    cursor: pointer;
-}
-
 @media (min-width: 768px) {
     .rectangle {
         width: 5rem;
@@ -181,6 +177,14 @@ h3 {
     }
 }
 
+/* Botones para el cambio de colores de los componentes */
+.rectangle {
+    width: 4rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+/* Botón para vista móvil */
 .checkbox {
     display: none;
 }
@@ -233,11 +237,13 @@ h3 {
     left: 62px;
 }
 
+/* Vista escritorio */
 .desktop-view {
     max-height: 80rem;
     overflow-y: scroll;
 }
 
+/* Vista móvil */
 .phone {
     background-color: #36383F;
     border-radius: 40px;

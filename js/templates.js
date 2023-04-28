@@ -1,3 +1,4 @@
+// Variables con elementos del DOM
 const buttons = document.querySelectorAll('.rounded')
 const divPalettes = document.querySelector('#rectangle')
 const btnView = document.querySelector('#switchView')
@@ -10,6 +11,7 @@ const headers = document.querySelector('#header')
 const bodys = document.querySelector('#body')
 const footers = document.querySelector('#footer')
 
+// Array con colores
 const colours = [
     {header: '#142d4c', body: '#ececec', footer: '#385170'},
     {header: '#2f1b41', body: '#fecd51', footer: '#613864'},
@@ -18,10 +20,14 @@ const colours = [
     {header: '#4ecca3', body: '#eeeeee', footer: '#393e46'}
 ]
 
+// Eventos asociados
 window.addEventListener('DOMContentLoaded', loadContent)
 divPalettes.addEventListener('click', changeColor)
 btnView.addEventListener('click', changeView)
 
+/**
+ * Función que apenas se carga la página bloquea el submit de botones y pinta de forma dinámica botones con colores
+ */
 function loadContent() {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', e => e.preventDefault())
@@ -47,6 +53,11 @@ function loadContent() {
     })
 }
 
+/**
+ * 
+ * Muestra el componente en pantalla de acuerdo a lo que presione el usuario
+ * @param {string} id Nombre único de cada componente
+ */
 function showComponent(id) {
     id.removeAttribute('hidden')
     const divChildren = id.parentNode.children
@@ -58,6 +69,11 @@ function showComponent(id) {
     activateSwitch()
 }
 
+/**
+ * 
+ * Cambia el color de todos los componentes mostrados en pantalla de acuerdo a su id  
+ * @param e Evento de la función
+ */
 function changeColor(e) {
     const divColours = e.target.parentNode.children
     let colours = []
@@ -77,6 +93,10 @@ function changeColor(e) {
     })
 }
 
+/**
+ * Busca los elementos que el usuario presionó y dejó en pantalla
+ * @returns Un array con los elementos encontrados
+ */
 function validateElements() {
     const header = headers.children
     const body = bodys.children
@@ -94,6 +114,9 @@ function validateElements() {
     return elementsFound
 }
 
+/**
+ * Activa los botones para el cambio de vista y finalizar template
+ */
 function activateSwitch() {
     if(validateElements().length === 3) {
         btnView.removeAttribute('disabled')
@@ -101,6 +124,10 @@ function activateSwitch() {
     }
 }
 
+/**
+ * Cambia el div en donde se muestran los elementos que presionó el usuario de vista escritorio a móvil
+ * @param e Evento de la función 
+ */
 function changeView(e) {
     if(e.target.checked) {
         desktopView.style.display = 'none'

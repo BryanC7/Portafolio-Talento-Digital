@@ -1,9 +1,4 @@
-@media (min-width: 992px) {
-    #mainNav {
-        background-color: #212529;
-    }
-}
-
+/* Navbar */
 .fixed-top {
     position: initial;
 }
@@ -12,15 +7,23 @@
     margin: 0 3rem;
 }
 
+/* Sweetalert */
+.swal2-popup {
+    font-size: 1.6rem !important;
+    font-family: Georgia, serif;
+}
+
+/* Medias Queries */
+@media (min-width: 992px) {
+    #mainNav {
+        background-color: #212529;
+    }
+}
+
 @media (min-width: 568px) {
     .login {
         min-height: 50vh;
         width: 70%;
         margin: 0 auto;
     }
-}
-
-.swal2-popup {
-    font-size: 1.6rem !important;
-    font-family: Georgia, serif;
 }

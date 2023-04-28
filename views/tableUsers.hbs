@@ -1,6 +1,18 @@
 {{#> userView}}
 <div class="container mt-3">
     <h1 class="mb-3">Listado de clientes</h1>
+    <div class="dropdown mb-3 text-end">
+        <button class="btn btn-dark dropdown-toggle" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Ordenar por orden alfabético
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/tableNames">Nombre</a></li>
+            <li><a class="dropdown-item" href="/tableLastNames">Apellido</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/tableUsers">Volver</a></li>
+        </ul>
+    </div>
     <div class="table-responsive">
         <table class="table table-light table-bordered table-hover">
             <thead>

@@ -1,3 +1,4 @@
+// Variables con elementos del DOM
 const editForm = document.querySelector('#edit-form')
 const inputName = document.querySelector('#name')
 const inputLastName = document.querySelector('#last-name')
@@ -14,6 +15,7 @@ function loadInfo(name, lastName, email, password, img) {
     inputImg.src = img
 }
 
+// Evento que al seleccionar una imágen con el input file cambie de forma dinámica en el div donde se encuentre.
 inputFile.addEventListener('change', () => {
     const file = inputFile.files[0]
     const reader = new FileReader()
@@ -25,6 +27,7 @@ inputFile.addEventListener('change', () => {
     reader.readAsDataURL(file)
 })
 
+// Evento para evitar el submit del formulario y activar la alerta
 editForm.addEventListener('submit', e => {
     e.preventDefault()
     saveSuccess()

@@ -1,3 +1,4 @@
+
 function deleteUser(id, name , lastName) {
     Swal.fire({
         title: `¿Estás seguro de eliminar a ${name} ${lastName} del listado?`,
@@ -22,4 +23,29 @@ function deleteOrder(id) {
     }).then(result => {
         console.log(result)
     })
+}
+
+// Variable que rescata el formulario de pago.
+const formPay = document.querySelector('#form-pay')
+
+// Valida si existe el formulario para evitar errores en otras páginas y si existe ejecuta el evento
+if(formPay) {
+    formPay.addEventListener('submit', e => {
+        e.preventDefault()
+        confirmPay()
+    })
+}
+
+function confirmPay() {
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Se ha autorizado el pago y se ha almacenado correctamente tu pedido',
+        showConfirmButton: false,
+        timer: 5000,
+    }).then(result => {
+        if(result.isDismissed) {
+            formPay.submit()
+        }
+    })  
 }

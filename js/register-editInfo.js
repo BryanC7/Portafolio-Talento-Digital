@@ -1,4 +1,4 @@
-// Variables
+// Variables con elementos del DOM
 const inputs = document.querySelectorAll('form input')
 const btnForm = document.querySelector('[type="submit"]')
 

@@ -1,4 +1,4 @@
-// Variables
+// Variables con elementos del DOM
 const menuSidebar = document.querySelector('#menu')
 const titleMenu = document.querySelector('#title-menu')
 const redirectLink = document.querySelector('#redirect-link')
@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-// Función que crea componentes en vista cliente
+/**
+ * Muestra textos y componentes en el DOM de vista cliente
+ */
 function createComponentsClient() {
     titleMenu.textContent = 'Información cliente'
     redirectLink.setAttribute('href', '/clientView')
@@ -34,7 +36,9 @@ function createComponentsClient() {
     `
 }
 
-// Función que crea componentes en vista administrador
+/**
+ * Muestra textos y componentes en el DOM de vista administrador
+ */
 function createComponentsAdmin() {
     titleMenu.textContent = 'Menú administrador'
     redirectLink.setAttribute('href', '/adminView')
@@ -52,7 +56,9 @@ function createComponentsAdmin() {
     `
 }
 
-// Función que en vista administrador calcula las ganancias de la página para su visualización
+/**
+ * Calcula las ventas totales de la página
+ */
 function calculateProfits() {
     const profitDiv = document.querySelector('#profits')
     const profitValue = parseInt(profitDiv.textContent)
