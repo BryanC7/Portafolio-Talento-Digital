@@ -49,7 +49,7 @@ router.use(fileUpload())
 router.use(passport.initialize())
 router.use(passport.session())
 
-// Uso de estrategia para el control del inicio de sesión de usuarios, se verifica si el usuario existe en la DB y una vez rescatado se compara con la contraseña encriptada de esa cuenta. Si el rol es 1 (es administrador) se le da un token para dar acceso a las vistas de administrador.
+// Uso de estrategia para el control del inicio de sesión de usuarios, se verifica si el usuario existe en la DB y una vez rescatado se compara con la contraseña encriptada de esa cuenta. Si el rol es 1 (es administrador) se le da un token para dar acceso a las vistas de administrador
 passport.use(new Strategy(async function(email, password, done) {
     const users = await user.getUsers()
     if(users.filter(user => user.email === email)) {
@@ -116,7 +116,7 @@ router.get('/contact', (req, res) => res.render('contact'))
 // Gets hacia vista de registro
 router.get('/register', (req, res) => res.render('register'))
 
-// Muestra la información del usuario activo en la vista editInfo. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index.
+// Muestra la información del usuario activo en la vista editInfo. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index
 router.get('/editInfo', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -133,7 +133,7 @@ router.get('/editInfo', (req, res, next) => {
     })
 })
 
-// Valida si el usuario está autenticado para acceder a la vista de templates. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index.
+// Valida si el usuario está autenticado para acceder a la vista de templates. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index
 router.get('/templates', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -141,7 +141,7 @@ router.get('/templates', (req, res, next) => {
     res.render('templates')
 })
 
-// Valida si el usuario está autenticado para acceder a la vista de pago. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index.
+// Valida si el usuario está autenticado para acceder a la vista de pago. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index
 router.get('/pay',(req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -167,7 +167,7 @@ router.get('/login', async (req, res) => {
     } 
 })
 
-// Vista de los datos cliente. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index. 
+// Vista de los datos cliente. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index
 router.get('/clientView', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -178,7 +178,7 @@ router.get('/clientView', (req, res, next) => {
     })
 })
 
-// Vista administrador, control de pedidos y clientes. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista. 
+// Vista administrador, control de pedidos y clientes. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista 
 router.get('/adminView', (req, res, next) => {
     if(req.isAuthenticated() && token) return next()
     res.redirect('/index')
@@ -194,7 +194,7 @@ router.get('/adminView', (req, res, next) => {
     })
 })
 
-// Vista hacia la tabla de usuarios. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista. 
+// Vista hacia la tabla de usuarios. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista 
 router.get('/tableUsers', (req, res, next) => {
     if(req.isAuthenticated() && token) return next()
     res.redirect('/index')
@@ -206,7 +206,7 @@ router.get('/tableUsers', (req, res, next) => {
     })
 })
 
-// Vista hacia la tabla de usuarios ordenados por su nombre de forma alfabética. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista.
+// Vista hacia la tabla de usuarios ordenados por su nombre de forma alfabética. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista
 router.get('/tableNames', (req, res, next) => {
     if(req.isAuthenticated() && token) return next()
     res.redirect('/index')
@@ -218,7 +218,7 @@ router.get('/tableNames', (req, res, next) => {
     })
 })
 
-// Vista hacia la tabla de usuarios ordenados por su apellido de forma alfabética. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista.
+// Vista hacia la tabla de usuarios ordenados por su apellido de forma alfabética. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista
 router.get('/tableLastNames', (req, res, next) => {
     if(req.isAuthenticated() && token) return next()
     res.redirect('/index')
@@ -230,7 +230,7 @@ router.get('/tableLastNames', (req, res, next) => {
     })
 })
 
-// Vista hacia la tabla de pedidos. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista. 
+// Vista hacia la tabla de pedidos. Si el usuario logeado es cliente (id_rol === 2) o no esta autenticado no tiene los permisos para acceder a esta vista 
 router.get('/tableOrders', (req, res, next) => {
     if(req.isAuthenticated() && token) return next()
     res.redirect('/index')
@@ -242,7 +242,7 @@ router.get('/tableOrders', (req, res, next) => {
     })
 })
 
-// Vista hacia los pedidos de cierto usuario. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index. 
+// Vista hacia los pedidos de cierto usuario. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index
 router.get('/ordersUser/', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
@@ -308,7 +308,7 @@ router.post('/register-user', async (req, res) => {
     }
 })
 
-// Ruta para la edición del usuario, encripta la contraseña y rescata la url de imágen para almacenarla con el resto de datos en la DB
+// Ruta para la edición del usuario, encripta la contraseña y rescata la url de imágen para almacenarla con el resto de datos en la base de datos
 router.post('/edit-user', async (req, res) => {
     const salt = await bcrypt.genSalt(8)
     const passwordHash = await bcrypt.hash(req.body.password, salt)

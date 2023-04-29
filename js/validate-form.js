@@ -69,6 +69,7 @@ inputs.forEach(input => {
 form.addEventListener('submit', e => {
 	e.preventDefault()
 
+	// Si los campos están con la información validada por las exp. regulares remueve los estilos de mensaje correcto y resetea el formulario
 	if(fields.name && fields.lastname && fields.email && fields.password && fields.phone){
 		document.querySelectorAll('.form_group_correct').forEach(icon => icon.classList.remove('form_group_correct'))
 		document.querySelector('#form-message-success').classList.add('form_message_success_active')
