@@ -25,12 +25,12 @@ function createComponentsClient() {
     menuSidebar.innerHTML += `
     <li class="mb-3">
         <a href="/ordersUser" class="nav-link px-0 align-middle text-icon">
-            <i class="fa-solid fa-list fa-lg"></i><span class="ms-3 d-none d-sm-inline text-light">Mis pedidos</span>
+            <i class="fa-solid fa-list fa-lg"></i><span class="ms-3 d-none d-lg-inline text-light">Mis pedidos</span>
         </a>
     </li>
     <li class="mb-3">
         <a href="/editInfo" class="nav-link px-0 align-middle text-icon">
-            <i class="fa-solid fa-pen-to-square fa-lg"></i><span class="ms-3 d-none d-sm-inline text-light">Editar datos personales</span>
+            <i class="fa-solid fa-pen-to-square fa-lg"></i><span class="ms-3 d-none d-lg-inline text-light">Editar datos personales</span>
         </a>
     </li>
     `
@@ -45,12 +45,12 @@ function createComponentsAdmin() {
     menuSidebar.innerHTML += `
     <li class="mb-3">
         <a href="/tableOrders" class="nav-link px-0 align-middle text-icon">
-            <i class="fa-regular fa-calendar-days fa-lg"></i><span class="ms-3 d-none d-sm-inline text-light">Pedidos realizados</span>
+            <i class="fa-regular fa-calendar-days fa-lg"></i><span class="ms-3 d-none d-lg-inline text-light">Pedidos realizados</span>
         </a>
     </li>
     <li class="mb-3">
         <a href="/tableUsers" class="nav-link px-0 align-middle text-icon">
-            <i class="fa-solid fa-users-line fa-lg"></i><span class="ms-3 d-none d-sm-inline text-light">Listado de clientes</span> 
+            <i class="fa-solid fa-users-line fa-lg"></i><span class="ms-3 d-none d-lg-inline text-light">Listado de clientes</span> 
         </a>
     </li>
     `
