@@ -243,7 +243,7 @@ router.get('/tableOrders', (req, res, next) => {
 })
 
 // Vista hacia los pedidos de cierto usuario. Si el usuario no se encuentra autenticado (logeado), se le redirige de manera forzada a la vista index
-router.get('/ordersUser/', (req, res, next) => {
+router.get('/ordersUser', (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/index')
 }, async (req, res) => {

@@ -18,7 +18,7 @@ function deleteUser(id, name , lastName) {
 }
 
 /**
- * Elimina un pedido mediante un sweetalert
+ * Elimina un pedido desde vista administrador mediante un sweetalert
  * @param {number} id del pedido 
  */
 function deleteOrder(id) {
@@ -29,6 +29,23 @@ function deleteOrder(id) {
         cancelButtonText: 'Cancelar',
         confirmButtonColor: '#d33',
         confirmButtonText: `<a class="text-decoration-none text-light" href="/tableOrders/${id}?_method=delete">Confirmar</a>`,
+    }).then(result => {
+        console.log(result)
+    })
+}
+
+/**
+ * Elimina un pedido de cierto usuario mediante un sweetalert
+ * @param {number} id del pedido 
+ */
+function deleteUserOrder(id) {
+    Swal.fire({
+        title: `¿Estás seguro de eliminar este pedido?`,
+        showCancelButton: true,
+        cancelButtonColor: '#6e7881',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#d33',
+        confirmButtonText: `<a class="text-decoration-none text-light" href="/ordersUser/${id}?_method=delete">Confirmar</a>`,
     }).then(result => {
         console.log(result)
     })
