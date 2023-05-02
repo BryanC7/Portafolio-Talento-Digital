@@ -28,7 +28,10 @@ inputs.forEach(input => {
     input.addEventListener('input', validations)
 })
 
-// Función que valida por campos dependiendo del atributo name
+/**
+ * En base al campo con un atributo name específico ejecuta la función de validateField
+ * @param e Evento de la función 
+ */
 function validations(e) {
     switch (e.target.name) {
         case "cardName":
@@ -52,7 +55,12 @@ function validations(e) {
 	}
 }
 
-// Si el campo pasa o no la validación con la expresión regular se le da ciertas clases
+/**
+ * Valida si la información del campo pasa o no la expresión regular
+ * @param expression | Expresión regular utilizada en el campo 
+ * @param input | Campo específico 
+ * @returns Quiebre de la función
+ */
 function validateField(expression, input) {
     if(!expression.test(input.value) || input.value === ''){
         input.classList.remove('border-success')
@@ -68,7 +76,10 @@ function validateField(expression, input) {
 	}
 }
 
-// Función donde se checkea cada cambio al objeto, cuando el objeto esté lleno se libera el botón para poder realizar el registro del pedido
+/**
+ * Checkea cada cambio al objeto, cuando el objeto esté lleno se libera el botón para poder realizar el registro del pedido
+ * @returns Quiebre de la función
+ */
 function checkObj() {
     if(Object.values(cardData).includes('')) {
         btnPay.disabled = true

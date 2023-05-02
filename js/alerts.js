@@ -62,6 +62,9 @@ if(formPay) {
     })
 }
 
+/**
+ * Sweetalert que despúes de 5 segundos activa el submit del formulario de pago
+ */
 function confirmPay() {
     Swal.fire({
         position: 'center',

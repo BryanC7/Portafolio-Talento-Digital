@@ -33,6 +33,9 @@ editForm.addEventListener('submit', e => {
     saveSuccess()
 })
 
+/**
+ * Sweetalert que despúes de 5 segundos activa el submit del formulario de edición de información del usuario
+ */
 function saveSuccess() {
     Swal.fire({
         position: 'center',

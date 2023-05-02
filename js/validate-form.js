@@ -20,7 +20,10 @@ const fields = {
 	phone: false
 }
 
-// Función que valida por campos dependiendo del atributo name
+/**
+ * En base al campo con un atributo name específico ejecuta la función de validateField
+ * @param e Evento de la función 
+ */
 const validateForm = e => {
 	switch (e.target.name) {
         case "name":
@@ -41,7 +44,12 @@ const validateForm = e => {
 	}
 }
 
-// Si el campo pasa o no la validación con la expresión regular se le da ciertas clases
+/**
+ * Valida si la información del campo pasa o no la expresión regular
+ * @param expression | Expresión regular utilizada en el campo 
+ * @param input | Input específico 
+ * @param field | Campo específico
+ */
 const validateField = (expresion, input, field) => {
 	if(expresion.test(input.value)){
 		document.querySelector(`#group-${field}`).classList.remove('form_group_incorrect')
