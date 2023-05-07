@@ -4,8 +4,8 @@
 https://github.com/BryanC7/Portafolio-Talento-Digital.git
 
 ## Links de instalación
-https://nodejs.org/en/download
-https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+- https://nodejs.org/en/download
+- https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 
 ## Instrucciones para la ejecución del proyecto  
 1. En primer lugar, es necesario la instalación de: `node.js` `postgreSQL` en tu pc.
