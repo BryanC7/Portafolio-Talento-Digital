@@ -188,8 +188,8 @@ router.get('/adminView', (req, res, next) => {
         'user': currentUser.user.name,
         'imgProfile': userFound.imagen, 
         "usersList": await user.getClients(), 
-        'adminsAmount': arrayAmounts[1].cantidad, 
-        'usersAmount': arrayAmounts[0].cantidad, 
+        'adminsAmount': arrayAmounts.filter(e => e.id_rol === 1)[0].cantidad || 0, 
+        'usersAmount': arrayAmounts.filter(e => e.id_rol === 2)[0].cantidad || 0, 
         'ordersAmount': await order.getOrdersCount()
     })
 })
